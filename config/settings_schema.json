@@ -1,0 +1,1003 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Sitar",
+    "theme_version": "1.0.4",
+    "theme_author": "Winter Infotech",
+    "theme_documentation_url": "https:\/\/sitar-doc.winterinfotech.com",
+    "theme_support_url": "https:\/\/support.winterinfotech.com"
+  },
+  {
+    "name": "t:settings_schema.logo.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:settings_schema.logo.settings.logo_image.label"
+      },
+      {
+        "type": "image_picker",
+        "id": "transparent_logo",
+        "label": "t:settings_schema.logo.settings.transparent_header_logo.label"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 250,
+        "step": 2,
+        "default": 100,
+        "unit": "px",
+        "label": "Logo width"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings_schema.logo.settings.favicon.label",
+        "info": "t:settings_schema.logo.settings.favicon.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.colors.name",
+    "settings": [
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "t:settings_schema.colors.settings.background.label",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "t:settings_schema.colors.settings.background_gradient.label",
+            "info": "t:settings_schema.colors.settings.background_gradient.info"
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "t:settings_schema.colors.settings.text.label",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "button",
+            "label": "t:settings_schema.colors.settings.button_background.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button_label",
+            "label": "t:settings_schema.colors.settings.button_label.label",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "button_hover",
+            "label": "Button hover background color",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "button_label_hover",
+            "label": "Button hover label color",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label",
+            "label": "t:settings_schema.colors.settings.secondary_button_label.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "link_hover",
+            "label": "t:settings_schema.colors.settings.link_hover.label",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "shadow",
+            "label": "t:settings_schema.colors.settings.shadow.label",
+            "default": "#121212"
+          }
+        ],
+        "role": {
+          "text": "text",
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
+          "links": "secondary_button_label",
+          "icons": "text",
+          "primary_button": "button",
+          "on_primary_button": "button_label",
+          "primary_button_border": "button",
+          "secondary_button": "background",
+          "on_secondary_button": "secondary_button_label",
+          "secondary_button_border": "secondary_button_label"
+        }
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.typography.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__1.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_header_font.label",
+        "info": "t:settings_schema.typography.settings.type_header_font.info"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.heading_scale.label",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__2.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_body_font.label",
+        "info": "t:settings_schema.typography.settings.type_body_font.info"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 100,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.body_scale.label",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.layout.name",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1850,
+        "step": 50,
+        "default": 1200,
+        "unit": "px",
+        "label": "t:settings_schema.layout.settings.page_width.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.layout.settings.header__grid.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.layout.settings.paragraph__grid.content"
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_horizontal",
+        "min": 4,
+        "max": 40,
+        "step": 2,
+        "default": 8,
+        "unit": "px",
+        "label": "t:settings_schema.layout.settings.spacing_grid_horizontal.label"
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_vertical",
+        "min": 4,
+        "max": 40,
+        "step": 2,
+        "default": 8,
+        "unit": "px",
+        "label": "t:settings_schema.layout.settings.spacing_grid_vertical.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.animations.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animations_reveal_on_scroll",
+        "label": "t:settings_schema.animations.settings.animations_reveal_on_scroll.label",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Corner radius",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "range",
+        "id": "media_radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.buttons.name"
+      },
+      {
+        "type": "range",
+        "id": "buttons_radius",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.variant_pills.name"
+      },
+      {
+        "type": "range",
+        "id": "variant_pills_radius",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 40
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.inputs.name"
+      },
+      {
+        "type": "range",
+        "id": "inputs_radius",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Contents"
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.popups.name"
+      },
+      {
+        "type": "range",
+        "id": "popup_corner_radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.drawers.name"
+      },
+      {
+        "type": "range",
+        "id": "drawer_corner_radius",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.badges.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "percentage",
+        "label": "Show percentage discount",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "diff_price",
+        "label": "Show price differance",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "badge_corner_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 40
+      },
+      {
+        "type": "select",
+        "id": "sale_icon",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__1.label"
+          },
+          {
+            "value": "fire",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__14.label"
+          },
+          {
+            "value": "lightning_bolt",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__20.label"
+          },
+          {
+            "value": "map_pin",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__23.label"
+          },
+          {
+            "value": "price_tag",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__31.label"
+          },
+          {
+            "value": "star",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__41.label"
+          },
+          {
+            "value": "color_fire",
+            "label": "Color fire"
+          },
+          {
+            "value": "color_lightning_bolt",
+            "label": "Color lightning bolt"
+          }
+        ],
+        "default": "price_tag",
+        "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.label"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_bg_color",
+        "label": "t:settings_schema.badges.settings.sale_badge_bg_color.label",
+        "default": "#228c14"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_text_color",
+        "label": "t:settings_schema.badges.settings.sale_badge_text_color.label",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "percentage_icon",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__1.label"
+          },
+          {
+            "value": "fire",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__14.label"
+          },
+          {
+            "value": "lightning_bolt",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__20.label"
+          },
+          {
+            "value": "map_pin",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__23.label"
+          },
+          {
+            "value": "price_tag",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__31.label"
+          },
+          {
+            "value": "star",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__41.label"
+          },
+          {
+            "value": "color_fire",
+            "label": "Color fire"
+          },
+          {
+            "value": "color_lightning_bolt",
+            "label": "Color lightning bolt"
+          }
+        ],
+        "default": "lightning_bolt",
+        "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.label"
+      },
+      {
+        "type": "color",
+        "id": "percentage_badge_bg_color",
+        "label": "t:settings_schema.badges.settings.percentage_badge_bg_color.label",
+        "default": "#ff1616"
+      },
+      {
+        "type": "color",
+        "id": "percentage_badge_text_color",
+        "label": "t:settings_schema.badges.settings.percentage_badge_text_color.label",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "sold_icon",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__1.label"
+          },
+          {
+            "value": "fire",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__14.label"
+          },
+          {
+            "value": "lightning_bolt",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__20.label"
+          },
+          {
+            "value": "map_pin",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__23.label"
+          },
+          {
+            "value": "price_tag",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__31.label"
+          },
+          {
+            "value": "star",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__41.label"
+          },
+          {
+            "value": "color_fire",
+            "label": "Color fire"
+          },
+          {
+            "value": "color_lightning_bolt",
+            "label": "Color lightning bolt"
+          }
+        ],
+        "default": "star",
+        "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.label"
+      },
+      {
+        "type": "color",
+        "id": "sold-out_badge_bg_color",
+        "label": "t:settings_schema.badges.settings.sold-out_badge_bg_color.label",
+        "default": "#757575"
+      },
+      {
+        "type": "color",
+        "id": "sold-out_badge_text_color",
+        "label": "t:settings_schema.badges.settings.sold-out_badge_text_color.label",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "new_icon",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__1.label"
+          },
+          {
+            "value": "fire",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__14.label"
+          },
+          {
+            "value": "lightning_bolt",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__20.label"
+          },
+          {
+            "value": "map_pin",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__23.label"
+          },
+          {
+            "value": "price_tag",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__31.label"
+          },
+          {
+            "value": "star",
+            "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__41.label"
+          },
+          {
+            "value": "color_fire",
+            "label": "Color fire"
+          },
+          {
+            "value": "color_lightning_bolt",
+            "label": "Color lightning bolt"
+          }
+        ],
+        "default": "color_lightning_bolt",
+        "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.label"
+      },
+      {
+        "type": "color",
+        "id": "new_badge_bg_color",
+        "label": "t:settings_schema.badges.settings.new_badge_bg_color.label",
+        "default": "#2E9B3F"
+      },
+      {
+        "type": "color",
+        "id": "new_badge_text_color",
+        "label": "t:settings_schema.badges.settings.new_badge_text_color.label",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Breadcrumb",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_product",
+        "label": "Show on product page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_collection",
+        "label": "Show on collection page",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.social-media.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.social-media.settings.header.content"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
+        "info": "t:settings_schema.social-media.settings.social_facebook_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "t:settings_schema.social-media.settings.social_instagram_link.label",
+        "info": "t:settings_schema.social-media.settings.social_instagram_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "t:settings_schema.social-media.settings.social_youtube_link.label",
+        "info": "t:settings_schema.social-media.settings.social_youtube_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "t:settings_schema.social-media.settings.social_tiktok_link.label",
+        "info": "t:settings_schema.social-media.settings.social_tiktok_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "t:settings_schema.social-media.settings.social_twitter_link.label",
+        "info": "t:settings_schema.social-media.settings.social_twitter_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "t:settings_schema.social-media.settings.social_snapchat_link.label",
+        "info": "t:settings_schema.social-media.settings.social_snapchat_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "t:settings_schema.social-media.settings.social_pinterest_link.label",
+        "info": "t:settings_schema.social-media.settings.social_pinterest_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "t:settings_schema.social-media.settings.social_tumblr_link.label",
+        "info": "t:settings_schema.social-media.settings.social_tumblr_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "t:settings_schema.social-media.settings.social_vimeo_link.label",
+        "info": "t:settings_schema.social-media.settings.social_vimeo_link.info"
+      }
+    ]
+  },
+  {
+    "name": "Product card review",
+    "settings": [
+      {
+        "type": "select",
+        "id": "review_app",
+        "options": [
+          {
+            "value": "judgeme",
+            "label": "Judgeme"
+          },
+          {
+            "value": "loox",
+            "label": "Loox"
+          },
+          {
+            "value": "wisernotify",
+            "label": "Wisernotify"
+          },
+          {
+            "value": "okendo",
+            "label": "Okendo"
+          },
+          {
+            "value": "default",
+            "label": "Default"
+          }
+        ],
+        "default": "default",
+        "label": "Select review app"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.search_input.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "default": true,
+        "label": "t:settings_schema.search_input.settings.predictive_search_enabled.label"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_schemesearch",
+        "label": "Dropdown color scheme",
+        "default": "background-1"
+      },
+      {
+        "type": "select",
+        "id": "simage_ratio",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+          },
+          {
+            "value": "portrait",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+          },
+          {
+            "value": "square",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+          }
+        ],
+        "default": "square",
+        "label": "t:settings_schema.search_input.settings.product_image_ratio.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.search_input.settings.search_default.content"
+      },
+      {
+        "type": "textarea",
+        "id": "search_quick_links",
+        "label": "t:settings_schema.search_input.settings.quick_link_tags.label",
+        "default": "Men, Women, New, Sale",
+        "info": "Separate by comma"
+      },
+      {
+        "type": "blog",
+        "id": "search_blog",
+        "label": "t:settings_schema.search_input.settings.default_articles.label"
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "collection",
+        "id": "search_collection",
+        "label": "t:settings_schema.search_input.settings.default_products.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_show_vendor",
+        "default": false,
+        "label": "t:settings_schema.search_input.settings.predictive_search_show_vendor.label",
+        "info": "t:settings_schema.search_input.settings.predictive_search_show_vendor.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_show_price",
+        "default": true,
+        "label": "t:settings_schema.search_input.settings.predictive_search_show_price.label",
+        "info": "t:settings_schema.search_input.settings.predictive_search_show_price.info"
+      },
+      {
+        "type": "header",
+        "content": "Collections"
+      },
+      {
+        "type": "collection_list",
+        "id": "collection_list",
+        "label": "t:settings_schema.search_input.settings.default_collections.label",
+        "limit": 15
+      },
+      {
+        "type": "color_scheme",
+        "id": "collection_card_color_scheme",
+        "label": "t:sections.all.colors.label_card",
+        "default": "background-1"
+      },
+      {
+        "type": "select",
+        "id": "collection_card_style",
+        "options": [
+          {
+            "value": "standard",
+            "label": "t:settings_schema.collection_cards.settings.style.options__1.label"
+          },
+          {
+            "value": "card",
+            "label": "t:settings_schema.collection_cards.settings.style.options__2.label"
+          }
+        ],
+        "default": "standard",
+        "label": "t:settings_schema.collection_cards.settings.style.label"
+      },
+      {
+        "type": "select",
+        "id": "coll_name_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__1.label"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__2.label"
+          },
+          {
+            "value": "right",
+            "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__3.label"
+          }
+        ],
+        "default": "center",
+        "label": "t:settings_schema.global.settings.text_alignment.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.currency_format.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.currency_format.settings.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.currency_format.settings.paragraph"
+      },
+      {
+        "type": "checkbox",
+        "id": "currency_code_enabled",
+        "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.cart.name",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "t:settings_schema.cart.settings.cart_type.drawer.label"
+          },
+          {
+            "value": "page",
+            "label": "t:settings_schema.cart.settings.cart_type.page.label"
+          },
+          {
+            "value": "notification",
+            "label": "t:settings_schema.cart.settings.cart_type.notification.label"
+          }
+        ],
+        "default": "notification",
+        "label": "t:settings_schema.cart.settings.cart_type.label"
+      },
+      {
+        "type": "color_scheme",
+        "id": "drawer_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
+      },
+      {
+        "type": "header",
+        "content": "Header settings"
+      },
+      {
+        "type": "select",
+        "id": "wb_carticon",
+        "options": [
+          {
+            "value": "wb_shopcart",
+            "label": "Shopping cart"
+          },
+          {
+            "value": "wb_shopbag",
+            "label": "Shopping bag"
+          }
+        ],
+        "default": "wb_shopcart",
+        "label": "Cart icon"
+      },
+      {
+        "type": "select",
+        "id": "wb_cartnumber",
+        "options": [
+          {
+            "value": "wb_shoptotal",
+            "label": "Cart total"
+          },
+          {
+            "value": "wb_shopqty",
+            "label": "Quantity"
+          },
+          {
+            "value": "wb_shopqtytotal",
+            "label": "Quantity and cart total"
+          }
+        ],
+        "default": "wb_shopqtytotal",
+        "label": "Cart icon setting"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "t:settings_schema.cart.settings.show_vendor.label",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "label": "t:settings_schema.cart.settings.show_cart_note.label",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "wbenable_ship",
+        "label": "Show free shipping minimum amount",
+        "default": false,
+        "info": "Make sure that you have properly configured your [shipping rates](\/admin\/settings\/shipping)."
+      },
+      {
+        "type": "text",
+        "id": "wbmin_order",
+        "label": "Minimum order amount to free shipping",
+        "info": "Enter amount using number only. If using multiple currencies, separate each currency code with its amount, e.g. USD:70,EUR:80,INR:9000"
+      },
+      {
+        "type": "color",
+        "id": "wbprogscolor",
+        "label": "Progress bar color",
+        "default": "#428e6c"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart.settings.cart_drawer.header"
+      },
+      {
+        "type": "collection",
+        "id": "cart_drawer_collection",
+        "label": "t:settings_schema.cart.settings.cart_drawer.collection.label",
+        "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cartpayment",
+        "label": "Show payment icons",
+        "default": true,
+        "info": "Visible when cart type drawer is selected"
+      },
+      {
+        "type": "header",
+        "content": "Cart upsell products"
+      },
+      {
+        "type": "checkbox",
+        "id": "upsellp",
+        "label": "Show cart upsell products",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "wbuphead",
+        "label": "Heading",
+        "default": "You might like"
+      },
+      {
+        "type": "collection",
+        "id": "upsellcollection",
+        "label": "Collection products"
+      },
+      {
+        "type": "range",
+        "id": "upsell_to_show",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 4,
+        "label": "t:sections.featured-collection.settings.products_to_show.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.featured-collection.settings.header_1.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_count",
+        "label": "Show cart countdown",
+        "default": true
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "t:sections.multicolumn.settings.title.label",
+        "default": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "wb_enddate",
+        "label": "t:sections.featured-collection.settings.Date.enddate.label",
+        "info": "The end date must be set to a future date and include the following format: YYYY\/MM\/DD Example: 2025\/10\/05."
+      },
+      {
+        "type": "inline_richtext",
+        "id": "count_text",
+        "default": "Offer End",
+        "label": "Timer ending text"
+      }
+    ]
+  }
+]

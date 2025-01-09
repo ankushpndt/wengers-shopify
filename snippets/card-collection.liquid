@@ -1,0 +1,157 @@
+{% comment %}
+Renders a collection card
+
+Accepts:
+- card_collection: {Object} Collection Liquid object
+- media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+- columns: {Number}
+- extend_height: {Boolean} Card height extends to available container space. Default: false (optional)
+- wrapper_class: {String} Wrapper class for card (optional)
+
+Usage:
+{% render 'card-collection' %}
+{% endcomment %}
+
+{%- liquid
+  assign ratio = 1
+  if media_aspect_ratio == 'portrait'
+    assign ratio = 0.8
+  elsif media_aspect_ratio == 'adapt'
+    assign ratio = card_collection.featured_image.aspect_ratio
+  endif
+  if ratio == 0 or ratio == null
+    assign ratio = 1
+  endif
+-%}
+ 
+<div class="card-wrapper collection-card-wrapper"> 
+  {%- liquid
+      assign collection_url = card_collection.url
+      assign collection_title = card_collection.title
+  -%}
+  <div class="{% if arrow_button != true %}arrow_full_top{% endif %} {{ design_type }} clist-{{ media_aspect_ratio }} card card--{{ card_style }} card--media{% if card_style == 'card' %} color-{{ card_color_scheme }} gradient{% endif %}{% if extend_height %} card--extend-height{% endif %} {% if card_style == 'standard' and design_type == 'over' %} color-{{ card_color_scheme }} gradient{% endif %} noadapt" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+    <div class="card__inner {% if card_style == 'standard' %}color-{{ card_color_scheme }} gradient{% endif %}{% if card_style == 'card' or card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+      {% if collection_image == "product_image" %}
+        <div class="card__media">
+          {%- if collection_title -%}
+            <a {% if card_collection == blank %} role="link" aria-disabled="true"{% else %} href="{{ collection_url }}"{% endif %} class="full-unstyled-link h3 media media--transparent media--hover-effect" aria-label="{{ collection_title }}">
+              {% assign first_product = card_collection.products.first %}
+              {% if card_collection.products.size > 0 and first_product.featured_image != blank %}
+                <img srcset="{%- if first_product.featured_image.width >= 165 -%} {{ first_product.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if first_product.featured_image.width >= 330 -%} {{ first_product.featured_image | image_url: width: 200 }} 200w,{%- endif -%}
+                {{ first_product.featured_image | image_url }} {{ first_product.featured_image.width }}w"
+                src="{{ first_product.featured_image | image_url: width: 200 }}"
+                alt="{{ first_product.featured_image.alt | escape }}"
+                loading="lazy" 
+                sizes=" (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px,
+                (min-width: 768px) {% if columns > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %},
+                calc(100vw - 3rem)"
+                height="{{ first_product.featured_image.height }}"
+                width="{{ first_product.featured_image.width }}"
+                class="motion-reduce">
+              {%- else -%}
+              {%- liquid
+                assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1
+                assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index
+              -%} 
+              {%- if placeholder_image -%}
+                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- else -%}
+                {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+              {% endif %}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- elsif card_collection.featured_image -%}
+        <div class="card__media">
+          <a {% if card_collection == blank %} role="link" aria-disabled="true"{% else %} href="{{ card_collection.url }}"{% endif %} class="full-unstyled-link h3 media media--transparent media--hover-effect" aria-label="{{ card_collection.title }}">
+            <img srcset="{%- if card_collection.featured_image.width >= 165 -%} {{ card_collection.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 330 -%} {{ card_collection.featured_image | image_url: width: 200 }} 200w,{%- endif -%}
+            {{ card_collection.featured_image | image_url }} {{ card_collection.featured_image.width }}w"
+            src="{{ card_collection.featured_image | image_url: width: 200 }}"
+            sizes=" (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px,
+            (min-width: 768px) {% if columns > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %},
+            calc(100vw - 3rem)"
+            alt=""
+            height="{{ card_collection.featured_image.height }}"
+            width="{{ card_collection.featured_image.width }}"
+            loading="lazy"
+            class="motion-reduce">
+            </a> 
+        </div>
+      {%- endif -%}
+      {%- if card_collection.featured_image == blank -%}
+        <div class="card__content blank__image {{ design_type }} {{ coll_name_alignment }}{% if show_count == true %} count_top{% endif %}">
+          <div class="collection_info {% if arrow_button != true %}arrow_full{% endif %}">
+            <div class="hover_countc">
+              <h3 class="card__heading {{ coll_name_size }}">
+                <a
+                  {% if card_collection == blank %}
+                  role="link"
+                  aria-disabled="true"
+                  {% else %}
+                  href="{{ card_collection.url }}"
+                  {% endif %}
+                  class="full-unstyled-link {% if coll_name_style == 'normal' %}coll_normal{% elsif coll_name_style == 'fill_bg' %}button button--primary{% endif %}" aria-label="{{ card_collection.title }}">
+                  {%- if card_collection.title != blank -%}
+                    {{- card_collection.title | escape -}}
+                  {%- else -%}
+                    {{ 'onboarding.collection_title' | t }}
+                  {%- endif -%}
+                </a>
+              </h3>
+              {%- if show_count == true -%}
+                <p class="wp_itom_count">{{ card_collection.all_products_count }} {{ 'wbcustomlabel.wballtext.collection_item' | t }}</p>
+              {%- endif -%}
+            </div>
+            
+            {%- if arrow_button == true -%}
+              <div class="coll_arrow_smooth">
+                <a {% if card_collection == blank %}role="link" aria-disabled="true" {% else %} href="{{ card_collection.url }}" {% endif %} class="button button--primary">
+                  <span>{% render 'icon-arrow' %}</span>
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {% if card_collection.featured_image != blank %}
+      <div class="card__content{% if collection_info != blank %} content-disabled{% endif %} {{ design_type }} {{ coll_name_alignment }}{% if show_count == true %} count_top{% endif %}">
+        <div class="card__information collection_info {% if arrow_button != true %}arrow_full{% endif %}">
+          <div class="hover_countc">
+            <h3 class="card__heading {{ coll_name_size }}">
+              <a
+                {% if card_collection == blank %}
+                role="link"
+                aria-disabled="true"
+                {% else %}
+                href="{{ card_collection.url }}"
+                {% endif %}
+                class="full-unstyled-link {% if coll_name_style == 'normal' %}coll_normal{% elsif coll_name_style == 'fill_bg' %}button button--primary{% endif %}" aria-label="{{ card_collection.title }}">
+                {%- if card_collection.title != blank -%}
+                  {{- card_collection.title | escape -}}
+                {%- else -%}
+                  {{ 'onboarding.collection_title' | t }}
+                {%- endif -%}
+              </a>
+            </h3>
+            {%- if show_count == true -%}
+              <p class="wp_itom_count">{{ card_collection.all_products_count }} {{ 'wbcustomlabel.wballtext.collection_item' | t }}</p>
+            {%- endif -%}
+          </div>
+          
+          {%- if arrow_button == true -%}
+            <div class="coll_arrow_smooth">
+              <a {% if card_collection == blank %}role="link" aria-disabled="true" {% else %} href="{{ card_collection.url }}" {% endif %} class="button button--primary">
+                <span>{% render 'icon-arrow' %}</span>
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

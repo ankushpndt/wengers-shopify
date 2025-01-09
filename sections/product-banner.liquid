@@ -1,0 +1,456 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+
+  {% if section.settings.show_gap == false %}
+    #Slider-{{ section.id }} {
+      --grid-desktop-vertical-spacing: 0px;
+      --grid-desktop-horizontal-spacing: 0px;
+      --grid-mobile-vertical-spacing: 0px;
+      --grid-mobile-horizontal-spacing: 0px;
+    }
+  {% endif %}
+  .productbannermain #Slider-{{ section.id }} {
+    column-gap: var(--grid-desktop-horizontal-spacing);
+    row-gap: var(--grid-desktop-vertical-spacing);
+  }
+  @media (max-width: 767px) {
+    .productbannermain #Slider-{{ section.id }} {
+      column-gap: var(--grid-mobile-horizontal-spacing);
+      row-gap: var(--grid-mobile-vertical-spacing);
+    }
+  }
+{%- endstyle -%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<div class="section-{{ section.id }} section-{{ section.id }}-padding productbannermain wbimgbnrblock color-{{ section.settings.section_color_scheme }} gradient">
+  <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.subtitle != blank or section.settings.title != blank -%}
+        <div class="heading-top {{ section.settings.heading_position }} {% if section.settings.full_width == true %}section--full-width{% else %}page-width{% endif %}">
+          <div class="heading inline-richtext {{ section.settings.subheading_position }} {% if section.settings.title != blank %}sub_order_change{% endif %}">
+            {%- if section.settings.subtitle != blank -%}
+              <div class="heading_submain">
+                <div class="heading_subtitle {% if section.settings.subheading_style == 'link' %}head_normal{% elsif section.settings.subheading_style == 'solid' %}button{% else %}button button--secondary{% endif %}">{{ section.settings.subtitle }}</div>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.title != blank -%}
+              <h2 class="{{ section.settings.heading_size }}">
+                  {{ section.settings.title }}
+              </h2>
+            {%- endif %}
+          </div>
+        </div>
+      {%- endif %}
+      <div class="{% unless section.settings.full_width == true %} page-width {% else %}section--full-width{% endunless %}">
+        <div class="grid grid--{{ section.blocks.size }}-col" id="Slider-{{ section.id }}">
+          {%- for block in section.blocks -%}
+              {%- liquid
+                  if block.settings.image_behavior == 'ambient'
+                    assign full_width = '120vw'
+                    assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+                  else
+                    assign full_width = '100vw'
+                    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                  endif
+                -%}
+              <div id="Slide-{{ section.id }}-{{ forloop.index }}" class="banner banner--{{ section.settings.image_height }} color-{{ block.settings.color_scheme }} gradient grid__item wb_banner_cover">
+                
+                  <div class="banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }}{% endif %}">
+                    {%- if block.settings.image != blank -%}
+                      {%- liquid
+                        assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+                        assign sizes = full_width
+                      -%}
+                      {{
+                        block.settings.image
+                        | image_url: width: 3840
+                        | image_tag:
+                        loading: 'lazy',
+                        width: block.settings.image.width,
+                        height: image_height,
+                        class: "zoom_effect",
+                        sizes: sizes,
+                        widths: widths }}
+                    {% else %}
+                      {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+                      {%- if placeholder_slide == 1 -%}
+                        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- else -%}
+                        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%} 
+                    {%- endif -%}
+                    {%- if block.settings.button_label_1 == blank and block.settings.button_link_1 != blank -%}
+                      <a class="full-image-link" href="{{ block.settings.button_link_1 }}"></a>
+                    {%- endif -%}
+                  </div>
+
+                  <div class="banner__content banner__content--{{ block.settings.desktop_content_position }} {% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                    <div class="{% unless block.settings.subheading == blank and block.settings.heading == blank and block.settings.button_label_1 == blank %} banner__box{% endunless %} container-{{ block.id }} content-container color-{{ block.settings.color_scheme }} gradient">
+                      {%- if block.settings.product != blank -%}
+                        <div class="banner_product">
+                          <div class="product-tag_top">    
+                            <h3><a href="{{ block.settings.product.url }}" title="{{ block.settings.product.title | escape }}" class="full-unstyled-link">{{ block.settings.product.title }}</a></h3>
+                            <div class="wbhomevendor">
+                              {%- if block.settings.product.price -%}
+                                <span class="badge price__badge-sale">
+                                  {{ 'products.product.on_sale' | t }}
+                                </span>
+                                {% comment %} {% for tags in block.settings.product.tags %}
+                                  {% assign new_badge = tags | downcase %}
+                                  {% if new_badge == 'new' %}
+                                      <span class="badge new_product_badge">{{- 'products.product.new' | t -}}</span>
+                                  {% endif %}
+                                {% endfor %} {% endcomment %}
+                              {%- endif -%}
+                            </div>   
+                          </div>
+                        <div>
+                          <div class="product_img {% if block.settings.product.featured_media == blank %} product_blank {% endif %}">
+                            {% if block.settings.product.featured_media %}
+                              <a class="img {{ section.settings.product_corner }}" href="{{ block.settings.product.url }}" title="{{ block.settings.product.title | escape }}">
+                                <img loading="lazy"
+                                class="img-fluid mx-auto lazyload"
+                                alt="{{ block.settings.product.featured_media.alt | escape }}"
+                                srcset="{{ block.settings.product.featured_media | image_url: width: 220, height: 220 }} 220w"
+                                src="{{ block.settings.product.featured_media | image_url: width: 220 }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                width="220"
+                                height="{{ 220 | divided_by: block.settings.product.featured_media.aspect_ratio | ceil }}">
+                              </a>
+                            {% endif %}
+                          </div>
+                          {% render 'price', product: block.settings.product, price_class: '', show_compare_at_price: true %}
+                          <a {% if block.settings.product == blank %} role="link" aria-disabled="true" {% else %} href="{{ block.settings.product.url }}" {% endif %} class="link product__view-details animate-arrow">{{ 'products.product.view_full_details' | t }}</a> 
+                        </div>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                  
+                {%- style -%}
+                  .wbimgbnrblock #Slide-{{ section.id }}-{{ forloop.index }} .media::after {
+                    opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.0 }};
+                    z-index: 1;
+                  }
+                  .section-image-banner .section-{{ section.id }} .banner__box.container-{{ block.id }} {
+                    background-color: rgba(var(--color-background),{{ block.settings.container_overlay_opacity | divided_by: 100.0 }});
+                    border-radius: var(--text-boxes-radius);
+                  }
+                  .section-image-banner .section-{{ section.id }} .banner--desktop-transparent .banner__box.container-{{ block.id }}{
+                    background: transparent;
+                    border: none;
+                    border-radius: 0;
+                    box-shadow: none;
+                  }
+                  {% if section.settings.image_height == 'adapt' and block.settings.image != blank %}
+                    .wbimgbnrblock #Slide-{{ section.id }}-{{ forloop.index }}.banner--adapt::before {
+                      content: '';
+                      padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;
+                    }
+                  {% endif %}
+                  {% if section.settings.image_height == 'adapt' and block.settings.image == blank %}
+                    .wbimgbnrblock #Slide-{{ section.id }}-{{ forloop.index }}.banner--adapt::before {
+                      content: '';
+                      padding-bottom: 100%;
+                    }
+                  {% endif %}
+                {%- endstyle -%}
+              </div>
+          {%- endfor -%}
+        </div>
+      </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.product-banner.name",
+  "tag": "section",
+  "class": "section section-product-banner",
+  "max_blocks": 2,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": false,
+      "label": "t:sections.video.settings.full_width.label"
+    },
+    
+    {
+      "type": "header",
+      "content": "t:settings_schema.heading.head"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Heading",
+      "label": "t:settings_schema.heading.settings.head_text.label_3"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:settings_schema.heading.settings.head_text.label_1"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.heading.sub_head"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Sub heading",
+      "label": "t:settings_schema.heading.settings.sub_text.label_1"
+    },
+    {
+      "type": "select",
+      "id": "subheading_style",
+      "label": "t:settings_schema.heading.settings.sub_text.label_2",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.collection-list.settings.subheading_style.options__1.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.collection-list.settings.subheading_style.options__2.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.collection-list.settings.subheading_style.options__3.label"
+        }
+      ],
+      "default": "link"
+    },
+    {
+      "type": "select",
+      "id": "subheading_position",
+      "label": "t:settings_schema.heading.settings.sub_text.label_3",
+      "options": [
+        {
+          "value": "before_head",
+          "label": "t:sections.collection-list.settings.subheading_position.options__1.label"
+        },
+        {
+          "value": "after_head",
+          "label": "t:sections.collection-list.settings.subheading_position.options__2.label"
+        }
+      ],
+      "default": "after_head"
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.heading_position.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.heading_position.options__2.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:settings_schema.heading.settings.head_text.label_2"
+    },
+    
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text.settings.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.image-banner.settings.image_height.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gap",
+      "default": true,
+      "label": "t:sections.image-banner.settings.show_gap.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner_with_product",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.image-banner.settings.image.label"
+        },
+        {
+          "type": "range",
+          "id": "image_overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "unit": "%",
+          "label": "t:sections.image-banner.blocks.heading.settings.image_overlay_opacity.label",
+          "default": 0
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.lookbook.blocks.text.settings.header.content"
+        },
+        {
+          "type": "select",
+          "id": "desktop_content_position",
+          "options": [
+            {
+              "value": "top-left",
+              "label": "t:sections.image-banner.settings.desktop_content_position.options__1.label"
+            },
+            {
+              "value": "top-center",
+              "label": "t:sections.image-banner.settings.desktop_content_position.options__2.label"
+            },
+            {
+              "value": "top-right",
+              "label": "t:sections.image-banner.settings.desktop_content_position.options__3.label"
+            },
+            {
+              "value": "bottom-left",
+              "label": "t:sections.image-banner.settings.desktop_content_position.options__7.label"
+            },
+            {
+              "value": "bottom-center",
+              "label": "t:sections.image-banner.settings.desktop_content_position.options__8.label"
+            },
+            {
+              "value": "bottom-right",
+              "label": "t:sections.image-banner.settings.desktop_content_position.options__9.label"
+            }
+          ],
+          "default": "top-left",
+          "label": "t:sections.image-banner.settings.desktop_content_position.label"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "background-1"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.animation.content"
+        },
+        {
+          "type": "select",
+          "id": "image_behavior",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.animation.image_behavior.options__1.label"
+            },
+            {
+              "value": "ambient",
+              "label": "t:sections.all.animation.image_behavior.options__2.label"
+            },
+            {
+              "value": "fixed",
+              "label": "t:sections.all.animation.image_behavior.options__3.label"
+            }
+          ],
+          "default": "none",
+          "label": "t:sections.all.animation.image_behavior.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.product-banner.presets.name",
+      "blocks": [
+        {
+          "type": "banner_with_product"
+        },
+        {
+          "type": "banner_with_product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

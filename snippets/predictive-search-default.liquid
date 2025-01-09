@@ -1,0 +1,336 @@
+<div class="search_modal_tab search_modal_tab-{{ section_id }}">
+  {% if coll_products != blank or select_collection != blank or select_article != blank %}
+    <ul class="tabs">
+      {% if coll_products != blank %}
+        <li>
+          <span class="tab-button active" tabindex="0" data-id="search_modal_tab1-{{ section_id }}">{{- 'wbcustomlabel.wballtext.popular_products' | t -}}</span>
+        </li>
+      {% endif %}
+      {% if select_collection != blank %}
+        <li>
+          <span class="tab-button{% if coll_products == blank %} active{% endif %}" tabindex="0" data-id="search_modal_tab2-{{ section_id }}">{{- 'wbcustomlabel.wballtext.popular_categories' | t -}}</span>
+        </li>
+      {% endif %}
+      {% unless select_article == blank or select_article.articles.size == 0 %}
+        <li>
+          <span class="tab-button{% if coll_products == blank and select_collection == blank %} active{% endif %}" tabindex="0" data-id="search_modal_tab3-{{ section_id }}">{{- 'wbcustomlabel.wballtext.popular_blogs' | t -}}</span>
+        </li>
+      {% endunless %}
+    </ul>
+  {% endif %}
+
+  {% if coll_products != blank or select_collection != blank or select_article != blank %}
+    <div class="tab-content">
+      {% if coll_products != blank %}
+        <div id="search_modal_tab1-{{ section_id }}" class="tab-pane fade active predictive-search__result-group seachbar-left search-default_data search-left-part">
+          <ul class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %}">
+            {%- assign collection = collections[coll_products] -%}
+            {%- for product in collection.products -%}
+              <li class="product__col_wrapper">
+                {%- if product and product != empty -%}
+                {%- liquid
+                assign ratio = 1
+                if product.featured_media and settings.simage_ratio == 'portrait'
+                  assign ratio = 0.8
+                elsif product.featured_media and settings.simage_ratio == 'adapt'
+                  assign ratio = product.featured_media.aspect_ratio
+                endif
+                if ratio == 0 or ratio == null
+                  assign ratio = 1
+                endif
+              -%}
+                <div class="card-wrapper wbproduct-container product-card-wrapper">
+                  <div class="card card--{{ settings.card_style }}
+                      {%- if product.featured_media == blank and settings.card_style == 'card' -%} blank__image {% endif %}
+                      {% if product.featured_media %} card--media{% else %} card--text{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+                    <div class="card__inner wbimgblock{% if product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+                      {%- if product.featured_media -%}
+                        <div id="webipro-{{ section.id }}-{{ product.id }}" class="card__media">
+                            {%- assign media = product.selected_or_first_available_variant.featured_media -%}
+                          <div class="product__media-item" data-media-id="{{ section.id }}-{{ product.id }}-{{ media.id }}">
+                            <a href="{{ product.url | append: '?variant=' | append: product.selected_or_first_available_variant.id | default: '#' }}"
+                              title="{{ product.title | escape }}"
+                              class="media media--transparent media--{{ media_size }} media--hover-effect">
+                              <img srcset="{%- if product.featured_media.width >= 165 -%}{{ product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                              {%- if product.featured_media.width >= 360 -%}{{ product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                              {%- if product.featured_media.width >= 533 -%}{{ product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                              {%- if product.featured_media.width >= 720 -%}{{ product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                              {%- if product.featured_media.width >= 940 -%}{{ product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                              {%- if product.featured_media.width >= 1066 -%}{{ product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                              {{ product.featured_media | image_url }} {{ product.featured_media.width }}w "
+                                src="{{ product.featured_media | image_url: width: 533 }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                alt="{{ product.featured_media.alt | escape }}"
+                                class="motion-reduce"
+                                {% unless lazy_load == false %} loading="lazy"{% endunless %}
+                                width="{{ product.featured_media.width }}"
+                                height="{{ product.featured_media.height }}">
+                                {%- if product.media[1] != nil -%}
+                                  <img srcset="{%- if product.media[1].width >= 165 -%}{{ product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                                  {%- if product.media[1].width >= 360 -%}{{ product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                                  {% if product.media[1].width >= 493 %}{{ product.media[1] | image_url: width: 493 }} 493w,{% endif %}
+                                  {% if product.media[1].width >= 600 %}{{ product.media[1] | image_url: width: 600 }} 600w,{% endif %}
+                                  {% if product.media[1].width >= 713 %}{{ product.media[1] | image_url: width: 713 }} 713w,{% endif %}
+                                  {% if product.media[1].width >= 823 %}{{ product.media[1] | image_url: width: 823 }} 823w,{% endif %}
+                                  {% if product.media[1].width >= 992 %}{{ product.media[1] | image_url: width: 992 }} 992w,{% endif %}
+                                  {{ product.media[1] | image_url }} {{ product.media[1].width }}w"
+                                  src="{{ product.media[1] | image_url: width: 370 }}"
+                                  alt="{{ product.media[1].alt | escape }}"
+                                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                  class="motion-reduce img-fluid mx-auto lazyload"
+                                  loading="lazy"
+                                  width="{{ product.media[1].width }}"
+                                  height="{{ product.media[1].height }}">
+                                {%- endif -%}
+                            </a>
+                          </div>
+                          {%- liquid
+                            assign media_to_render = product.featured_media.id
+                            for variant in product.variants
+                                assign media_to_render = media_to_render | append: variant.featured_media.id | append: ' '
+                            endfor
+                          -%}
+                          {%- for media in product.media -%}
+                            {%- if media_to_render contains media.id and media.id != product.selected_or_first_available_variant.featured_media.id -%}
+                              <div class="product__media-item" data-media-id="{{ section.id }}-{{ product.id }}-{{ media.id }}">
+                                <a href="{{ product.url | append: '?variant=' | append: product.selected_or_first_available_variant.id | default: '#' }}"
+                                  title="{{ product.title | escape }}"
+                                  class="media media--transparent media--{{ media_size }} media--hover-effect">
+                                  <img class="img-fluid mx-auto lazyload"
+                                    srcset="{%- if media.preview_image.width >= 165 -%}{{ media.preview_image | image_url: width: 165 }} 165w,{%- endif -%}
+                                      {%- if media.preview_image.width >= 360 -%}{{ media.preview_image | image_url: width: 360 }} 360w,{%- endif -%}
+                                      {% if media.preview_image.width >= 493 %}{{ media.preview_image | image_url: width: 493 }} 493w,{% endif %}
+                                      {% if media.preview_image.width >= 600 %}{{ media.preview_image | image_url: width: 600 }} 600w,{% endif %}
+                                      {% if media.preview_image.width >= 713 %}{{ media.preview_image | image_url: width: 713 }} 713w,{% endif %}
+                                      {% if media.preview_image.width >= 823 %}{{ media.preview_image | image_url: width: 823 }} 823w,{% endif %}
+                                      {% if media.preview_image.width >= 992 %}{{ media.preview_image | image_url: width: 992 }} 992w,{% endif %}
+                                      {% if media.preview_image.width >= 1100 %}{{ media.preview_image | image_url: width: 1100 }} 1100w,{% endif %}
+                                      {% if media.preview_image.width >= 1206 %}{{ media.preview_image | image_url: width: 1206 }} 1206w,{% endif %}
+                                      {% if media.preview_image.width >= 1346 %}{{ media.preview_image | image_url: width: 1346 }} 1346w,{% endif %}
+                                      {% if media.preview_image.width >= 1426 %}{{ media.preview_image | image_url: width: 1426 }} 1426w,{% endif %}
+                                      {% if media.preview_image.width >= 1646 %}{{ media.preview_image | image_url: width: 1646 }} 1646w,{% endif %}
+                                      {% if media.preview_image.width >= 1946 %}{{ media.preview_image | image_url: width: 1946 }} 1946w,{% endif %}
+                                      {{ media.preview_image | image_url }} {{ media.preview_image.width }}w"
+                                    src="{{ media.preview_image | image_url: width: 370 }} 370w"
+                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                    loading="lazy"
+                                    width="{{ media.preview_image.width }}"
+                                    height="{{ media.preview_image.height }}"
+                                    alt="{{ media.preview_image.alt | escape }}">
+                                  {%- if product.media[1] != nil -%}
+                                    <img srcset="{%- if product.media[1].width >= 165 -%}{{ product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                                      {%- if product.media[1].width >= 360 -%}{{ product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                                      {% if product.media[1].width >= 493 %}{{ product.media[1] | image_url: width: 493 }} 493w,{% endif %}
+                                      {% if product.media[1].width >= 600 %}{{ product.media[1] | image_url: width: 600 }} 600w,{% endif %}
+                                      {% if product.media[1].width >= 713 %}{{ product.media[1] | image_url: width: 713 }} 713w,{% endif %}
+                                      {% if product.media[1].width >= 823 %}{{ product.media[1] | image_url: width: 823 }} 823w,{% endif %}
+                                      {% if product.media[1].width >= 992 %}{{ product.media[1] | image_url: width: 992 }} 992w,{% endif %}
+                                      {{ product.media[1] | image_url }} {{ product.media[1].width }}w"
+                                      src="{{ product.media[1] | image_url: width: 370 }}"
+                                      alt="{{ product.media[1].alt | escape }}"
+                                      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                      class="motion-reduce img-fluid mx-auto lazyload"
+                                      loading="lazy"
+                                      width="{{ product.media[1].width }}"
+                                      height="{{ product.media[1].height }}">
+                                    {%- endif -%}
+                                </a>
+                              </div>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+                      {%- liquid
+                        assign target = product.selected_or_first_available_variant
+                        assign compare_at_price = target.compare_at_price
+                        assign price = target.price | default: 40300
+                        assign available = target.available | default: false
+                        assign money_price = price | money
+                        if settings.currency_code_enabled
+                        assign money_price = price | money_with_currency
+                        endif
+
+                        if target == product and product.price_varies
+                        assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+                        endif
+                      -%}
+                      <div class="price
+                        {%- if price_class %} {{ price_class }}{% endif -%}
+                        {%- if available == false %} price--sold-out {% endif -%}
+                        {%- if compare_at_price > price and product.quantity_price_breaks_configured? != true %} price--on-sale{% endif -%}
+                        {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
+                        {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
+                        {%- if show_badges %} price--show-badge{% endif -%}">
+                        {%- if product.price -%}
+                          <div class="wbvariantbadges"> 
+                              <span class="badge price__badge-sale">
+                                {%- if settings.sale_icon != 'none' -%}
+                                  <span class="multis-svg">{% render 'icon-accordion', icon: settings.sale_icon %}</span>
+                                {%- endif -%}
+                                {{ 'products.product.on_sale' | t }}
+                              </span>
+                              <span class="badge price__badge-sold-out">
+                                {%- if settings.sold_icon != 'none' -%}
+                                  <span class="multis-svg">{% render 'icon-accordion', icon: settings.sold_icon %}</span>
+                                {%- endif -%}
+                                {{ 'products.product.sold_out' | t }}
+                              </span>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                    <div class="wbproductdes card__content">
+                      <product-info id="ProductInfo-{{ section.id }}-{{ product.id }}" data-section="{{ section.id }}-{{ product.id }}" data-layout="card" data-url="{{ product.url }}">
+                        <div class="card__information">
+                          {%- if settings.predictive_search_show_vendor == true -%}
+                            <div class="product__vendor">
+                              {{ product.vendor }}
+                            </div>
+                          {%- endif -%}
+                          <h3 class="card__heading{% if product.featured_media or settings.card_style == 'standard' %} h5{% endif %}" {% if product.featured_media or settings.card_style == 'card' %} id="title-{{ section_id }}-{{ product.id }}" {% endif %}>
+                            <a href="{{ product.url | default: '#' }}" id="CardLink-{{ section_id }}-{{ product.id }}" class="full-unstyled-link" aria-labelledby="CardLink-{{ section_id }}-{{ product.id }} Badge-{{ section_id }}-{{ product.id }}" >
+                              {{ product.title | escape | capitalize }}
+                            </a>
+                          </h3>
+                          {% if settings.predictive_search_show_price == true %}
+                            <div class="card-information">
+                              <div class="no-js-hidden wbhprice" id="price-{{ section.id }}-{{ product.id }}" {{ block.shopify_attributes }}>
+                                {%- render 'price', product: product, use_variant: false, show_badges: false -%}
+                              </div>
+                            </div>
+                          {% endif %}
+                        </div>
+                      </product-info>
+                    </div>
+                  </div>
+                </div>
+                {%- endif -%}
+              </li>
+            {% endfor %}
+          </ul> 
+        </div> 
+      {% endif %}
+      {% if select_collection != blank %}
+        <div id="search_modal_tab2-{{ section_id }}" class="tab-pane fade predictive-search__result-group seachbar-left search-default_data search-center-part {% if coll_products == blank %} active{% endif %}">
+            <div class="default-serch searchbar-right">
+              <div class="collection-list-wrapper flex-direction--column collection-card-info ">
+                <ul class="collection-list grid grid--4-col-desktop grid--3-col-tablet grid--2-col-tablet-down">
+                  {% assign collection__list = select_collection %}
+                  {%- for collection in collection__list -%}
+                    <li class="collection-list__item grid__item">
+                      {% render 'card-collection',
+                      card_collection: collection,
+                      card_color_scheme: settings.collection_card_color_scheme,
+                      card_style: settings.collection_card_style,
+                      coll_name_alignment: settings.coll_name_alignment,
+                      columns: 3
+                      %}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+        </div>
+      {% endif %}
+      {% unless select_article == blank or select_article.articles.size == 0 %}
+        <div id="search_modal_tab3-{{ section_id }}" class="tab-pane fade predictive-search__result-group seachbar-left wbsrightpart search-default_data search-right-part{% if coll_products == blank and select_collection == blank %} active{% endif %}">
+          <div class="search_blog-wrapper">
+            <ul class="blog__posts articles-wrapper contains-card contains-card--article grid product-grid contains-card{% if settings.blog_card_style == 'standard' %} contains-card--standard{% endif %}">
+              {%- for article in select_article.articles -%}
+                {%- liquid
+                assign ratio = 1
+                if ratio == 0 or ratio == null
+                  assign ratio = 1
+                endif
+              -%} 
+                <li class="blog_col_wrapper">
+                  <div class="article-card-wrapper card-wrapper">
+                    <div class="card article-card card--{{ settings.blog_card_style }} flex_direction--row article-card__image--square{% if article.image %} card--media{% else %} card--text{% endif %}">
+                      {%- if article.image -%}
+                        <div class="card__inner{% if article.image or settings.blog_card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+                          <div class="article-card__image-wrapper card__media">
+                            <a href="{{ article.url }}">
+                              <div class="article-card__image media media--hover-effect">
+                                <img srcset="
+                                {%- if article.image.src.width >= 165 -%}
+                                  {{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                                {%- if article.image.src.width >= 360 -%}
+                                  {{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                                {%- if article.image.src.width >= 533 -%}
+                                  {{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                                {%- if article.image.src.width >= 720 -%}
+                                  {{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                                {%- if article.image.src.width >= 1000 -%}
+                                  {{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                                {%- if article.image.src.width >= 1500 -%}
+                                  {{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                                src="{{ article.image.src | image_url: width: 533 }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 768px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                alt="{{ article.image.src.alt | escape }}"
+                                class="motion-reduce"
+                                {% unless lazy_load == false %}
+                                loading="lazy"
+                                {% endunless %}
+                                width="{{ article.image.width }}"
+                                height="{{ article.image.height }}">
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      {%- endif -%}
+                      <div class="card__content">
+                        <div class="card__information">
+                          <p>{{ article.published_at | date: "%b %d, %Y" }}</p>
+                          <h2 class="card__heading">
+                            <a href="{{ article.url }}" class="full-unstyled-link">
+                              {{ article.title }}
+                            </a>
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      {% endunless %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+function searchTab() {
+  const tabs = document.querySelector(".search_modal_tab-{{ section_id }}");
+  const tabButton = document.querySelectorAll(".search_modal_tab-{{ section_id }} .tabs .tab-button");
+  const contents = document.querySelectorAll(".search_modal_tab-{{ section_id }} .tab-pane");
+  tabs.onclick = e => {
+    onTabclick(e)
+  };
+  tabs.addEventListener('keydown', e=>{
+  if (e.keyCode === 13) {
+      onTabclick(e); 
+    }
+  });
+
+  function onTabclick(e){ 
+    const id = e.target.dataset.id;
+    if (id) {
+      tabButton.forEach(btn => {
+        btn.classList.remove("active");
+      });
+      e.target.classList.add("active");
+
+      contents.forEach(content => {
+        content.classList.remove("active");
+      });
+      const element = document.getElementById(id);
+      element.classList.add("active");
+    }
+  }
+};
+document.addEventListener("shopify:section:load", searchTab);
+searchTab();
+</script>

@@ -1,0 +1,601 @@
+{{ 'section-announcement-bar.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
+  {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
+{%- endif -%}
+
+{%- liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+-%}
+
+{%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
+  <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% if social_icons %}
+  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% endif %}
+{% liquid
+  assign show_home_only = true
+  if section.settings.show_home_only == true
+    if template == 'index'
+      assign show_home_only = true
+    else
+      assign show_home_only = false
+    endif
+  endif 
+%}
+{% if show_home_only %}
+  {%- if section.blocks.size > 0 or section.settings.enable_country_selector or section.settings.enable_language_selector or section.settings.contact_text != blank or section.settings.left_part_announce == 'social_media' and social_icons -%}
+    <div class="announcement--bar color-{{ section.settings.color_scheme }} gradient annoucehome {% if section.settings.mobile_bar %}mobile_announce{% endif %} {% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %} {% if section.settings.show_line_separator %} b-border {% endif %}">
+      <div class="global_headannunce {% if section.settings.header_full != true %}page-width {% else %}around_padding{% endif %}">
+        {%- if section.settings.left_part_announce != 'none' -%}
+          {%- if section.settings.left_part_announce == 'social_media' and social_icons -%}
+            <div class="announce_item announce_social">
+              {%- render 'social-icons' -%}
+            </div>
+          {%- endif -%}
+          {% if section.settings.left_part_announce == 'text_icon' and section.settings.contact_text != blank %}
+            <div class="announce_item announce_social">
+              <div class="announce_texticon small-hide medium-hide">
+                {%- if block.settings.contact_icon != 'none' -%}
+                  <span class="multis-svg">{% render 'icon-allservice', icon: section.settings.contact_icon %}</span>
+                {%- endif -%}
+                {%- if section.settings.contact_text != blank -%}
+                  <span>
+                    {% if section.settings.contact_link != blank %}<a href="{{ section.settings.contact_link }}">{% endif %}
+                      {{ section.settings.contact_text }}
+                    {% if section.settings.contact_link != blank %}</a>{% endif %}
+                  </span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <div class="announce_item announce__text">
+            <slideshow-component>
+              <div class="headannunce_inner">
+                {%- if section.blocks.size > 1 -%}
+                  <button type="button" class="focus-inset slider-button slider-button--prev" name="previous" aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+                {%- endif -%}
+              <div class="slider grid" id="Slider-{{ section.id }}" data-autoplay="{{ section.settings.auto_rotate }}" data-speed="{{ section.settings.change_slides_speed }}" aria-live="polite"
+                aria-atomic="true">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'announcement' -%}
+                  <div class="slideshow__slide slider__slide" id="Slide-{{ section.id }}-{{ forloop.index }}">
+                    <div class="announcement-bar rte" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+                      {% if block.settings.icon != 'none' %}
+                        <span class="multis-svg">
+                          {% render 'icon-accordion', icon: block.settings.icon %}
+                        </span>
+                      {% endif %}
+                      {%- if block.settings.text != blank -%}
+                        <span class="link">{{ block.settings.text }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endcase -%}
+              {%- endfor -%}
+              </div>
+              {%- if section.blocks.size > 1 -%}
+                <button type="button" class="focus-inset slider-button slider-button--next" name="next" aria-label="{{ 'sections.slideshow.next_slideshow' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+                <div class="slideshow__controls slider-buttons hidden">
+                    {%- if section.settings.auto_rotate -%}
+                      <button type="button" class="focus-inset slideshow__autoplay hidden" aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">{{ 'sections.slideshow.pause_slideshow' | t }}</button>
+                    {%- endif -%}
+                </div>
+              {%- endif -%} 
+              </div>
+            </slideshow-component>
+          </div>
+        {%- endif -%} 
+        {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
+          <div class="localization-wrapper announce_item">
+            {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+              <noscript class="small-hide medium-hide">
+                {%- form 'localization', id: 'AnnouncementCountryMobileFormNoScript', class: 'localization-form' -%}
+                  <div class="localization-form__select">
+                    <h2 class="visually-hidden" id="AnnouncementCountryMobileLabelNoScript">
+                      {{ 'localization.country_label' | t }}
+                    </h2>
+                    <select
+                      class="localization-selector link"
+                      name="country_code"
+                      aria-labelledby="AnnouncementCountryMobileLabelNoScript"
+                    >
+                      {%- for country in localization.available_countries -%}
+                        <option
+                          value="{{ country.iso_code }}"
+                          {%- if country.iso_code == localization.country.iso_code %}
+                            selected
+                          {% endif %}
+                        >
+                          {{ country.name }} ({{ country.currency.iso_code }}
+                          {{ country.currency.symbol }})
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+                  <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
+                {%- endform -%}
+              </noscript>
+
+              <localization-form class="small-hide medium-hide no-js-hidden">
+                {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
+                  <div>
+                    <P class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</P>
+                    {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+                  </div>
+                {%- endform -%}
+              </localization-form>
+            {% endif %}
+
+            {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+              <noscript class="small-hide medium-hide">
+                {%- form 'localization', id: 'AnnouncementLanguageMobileFormNoScript', class: 'localization-form' -%}
+                  <div class="localization-form__select">
+                    <h2 class="visually-hidden" id="AnnouncementLanguageMobileLabelNoScript">
+                      {{ 'localization.language_label' | t }}
+                    </h2>
+                    <select
+                      class="localization-selector link"
+                      name="locale_code"
+                      aria-labelledby="AnnouncementLanguageMobileLabelNoScript"
+                    >
+                      {%- for language in localization.available_languages -%}
+                        <option
+                          value="{{ language.iso_code }}"
+                          lang="{{ language.iso_code }}"
+                          {%- if language.iso_code == localization.language.iso_code %}
+                            selected
+                          {% endif %}
+                        >
+                          {{ language.endonym_name | capitalize }}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+                  <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
+                {%- endform -%}
+              </noscript>
+
+              <localization-form class="small-hide medium-hide no-js-hidden">
+                {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
+                  <div>
+                    <p class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</p>
+                    {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+                  </div>
+                {%- endform -%}
+              </localization-form>
+            {%- endif -%}
+            
+          </div>
+        {%- endif -%} 
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "header_full",
+      "default": true,
+      "label": "t:sections.announcement-bar.settings.header_full.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_home_only",
+      "default": true,
+      "label": "t:sections.announcement-bar.settings.show_home_only.label"
+    },
+
+    {
+      "type": "select",
+      "id": "left_part_announce",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.announcement-bar.settings.left_part_announce.options__1.label"
+        },
+        {
+          "value": "social_media",
+          "label": "t:sections.announcement-bar.settings.left_part_announce.options__2.label"
+        },
+        {
+          "value": "text_icon",
+          "label": "t:sections.announcement-bar.settings.left_part_announce.options__3.label"
+        }
+      ],
+      "default": "social_media",
+      "label": "t:sections.announcement-bar.settings.left_part_announce.label",
+      "info": "t:sections.announcement-bar.settings.left_part_announce.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__5.content"
+    },
+    {
+      "type": "select",
+      "id": "contact_icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__1.label"
+        },
+        {
+          "value": "return",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__15.label"
+        },
+        {
+          "value": "quality",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__16.label"
+        },
+        {
+          "value": "box",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__2.label"
+        },
+        {
+          "value": "shipping",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__3.label"
+        },
+        {
+          "value": "service",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__4.label"
+        },
+        {
+          "value": "offer",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__5.label"
+        },
+        {
+          "value": "pin",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__33.label"
+        },
+        {
+          "value": "support",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__6.label"
+        },
+        {
+          "value": "delivery",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__7.label"
+        },
+        {
+          "value": "moneyback",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__8.label"
+        },
+        {
+          "value": "gift",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__9.label"
+        },
+        {
+          "value": "coloruser",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__10.label"
+        },
+        {
+          "value": "colorpayment",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__11.label"
+        },
+        {
+          "value": "colorgift",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__12.label"
+        },
+        {
+          "value": "colorship",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__13.label"
+        },
+        {
+          "value": "deal",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__19.label"
+        },
+        {
+          "value": "return policy",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__20.label"
+        },
+        {
+          "value": "payment",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__21.label"
+        },
+        {
+          "value": "24/7",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__22.label"
+        },
+        {
+          "value": "headphone",
+          "label": "t:sections.text_with_icons.blocks.image.settings.icon1.options__34.label"
+        }
+      ],
+      "default": "pin",
+      "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "default": "Add text here",
+      "label": "t:sections.header.settings.contact_text.label"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 9,
+      "step": 2,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__4.content",
+      "info": "t:sections.announcement-bar.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.slideshow.settings.mobile.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_bar",
+      "label": "t:sections.announcement-bar.settings.mobile_bar.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__1.label"
+            },
+            {
+              "value": "bottle",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__4.label"
+            },
+            {
+              "value": "box",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__5.label"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__7.label"
+            },
+            {
+              "value": "check_mark",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__8.label"
+            },
+            {
+              "value": "clipboard",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__9.label"
+            },
+            {
+              "value": "dairy",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__10.label"
+            },
+            {
+              "value": "dairy_free",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__11.label"
+            },
+            {
+              "value": "dryer",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__12.label"
+            },
+            {
+              "value": "eye",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__13.label"
+            },
+            {
+              "value": "fire",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__14.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__16.label"
+            },
+            {
+              "value": "iron",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__17.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__18.label"
+            },
+            {
+              "value": "leather",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__19.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__20.label"
+            },
+            {
+              "value": "lipstick",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__21.label"
+            },
+            {
+              "value": "lock",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__22.label"
+            },
+            {
+              "value": "map_pin",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__23.label"
+            },
+            {
+              "value": "nut_free",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__24.label"
+            },
+            {
+              "value": "pants",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__25.label"
+            },
+            {
+              "value": "paw_print",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__26.label"
+            },
+            {
+              "value": "pepper",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__27.label"
+            },
+            {
+              "value": "perfume",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__28.label"
+            },
+            {
+              "value": "plane",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__29.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__30.label"
+            },
+            {
+              "value": "price_tag",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__31.label"
+            },
+            {
+              "value": "question_mark",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__32.label"
+            },
+            {
+              "value": "recycle",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__33.label"
+            },
+            {
+              "value": "return",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__34.label"
+            },
+            {
+              "value": "ruler",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__35.label"
+            },
+            {
+              "value": "serving_dish",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__36.label"
+            },
+            {
+              "value": "shirt",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__37.label"
+            },
+            {
+              "value": "shoe",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__38.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__40.label"
+            },
+            {
+              "value": "star",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__41.label"
+            },
+            {
+              "value": "stopwatch",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__42.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__43.label"
+            },
+            {
+              "value": "washing",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__44.label"
+            },
+            {
+              "value": "chat",
+              "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.options__46.label"
+            }
+          ],
+          "default": "lightning_bolt",
+          "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.icon.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Add Announcement/Promotion Here",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.presets.name",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

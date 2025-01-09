@@ -1,0 +1,36 @@
+.announcement--bar .list-social {
+  gap: 5px;
+}
+.list-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.list-social__item .icon {
+  height: 1.8rem;
+  width: 1.8rem;
+  color: rgb(var(--color-foreground));
+}
+.list-social__item a svg {
+  fill: rgb(var(--color-foreground));
+}
+.list-social__item a.social_bg svg {
+  fill: rgb(var(--color-button-text));
+  color: unset;
+}
+.list-social__link svg path {
+  transition: all var(--duration-long) ease;
+}
+.list-social__link {
+  align-items: center;
+  display: flex;
+  min-width: 30px;
+  min-height: 30px;
+  color: rgb(var(--color-foreground));
+}
+.list-social__link:hover svg path {
+  fill: rgb(var(--color-link-hover));
+}
+.list-social__link.social_bg:hover svg path {
+  fill: rgb(var(--color-button-hover-text)); 
+}

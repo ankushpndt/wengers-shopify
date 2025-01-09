@@ -1,0 +1,479 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+  }
+}
+{%- endstyle -%}
+
+{%- paginate blog.articles by 6 -%}
+
+  <div class="main-blog page-width section-{{ section.id }}-padding ">
+    <h1 class="title--primary color-{{ section.settings.headingmain_color_scheme }} content-container">{{ blog.title | escape }}</h1>
+
+    <div class="mainblogs {% if section.settings.show_sidebar == true %} mainsidebar {% endif %}">
+      {% if section.settings.show_sidebar == true %}
+      <article-toggle class="blog-sildebar {{ section.settings.sidebar_position }}">
+        <button class="toggle-button" type="button" aria-label=""><span>{% render 'icon-sidebar' %}</span></button>
+        <div class="mobile-drawer sidebar">
+          {%- render 'article-sidebar' -%}
+        </div>
+        <div class="blog_slidebar_overlay"></div>
+      </article-toggle>
+      {% endif %}
+    <div class="{% if section.settings.border_card == true %}blogcard_border{% endif %} blog-articles{% if section.settings.layout == 'collage' %} blog-articles--collage{% else %} blog-articles--grid{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop">
+      {%- for article in blog.articles -%}
+        <div class="blog-articles__article article">
+          {%- render 'article-card',
+            article: article,
+            blog_card_style: section.settings.blog_card_style,
+            media_height: section.settings.image_height,
+            media_aspect_ratio: article.image.aspect_ratio,
+            show_image: section.settings.show_image,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author,
+            show_readmore_button: section.settings.show_read_more_button,
+            show_comment: section.settings.show_comment,
+            blog_content_type: section.settings.blog_content_type,
+            blog_card_color_scheme: section.settings.blog_card_color_scheme,
+            date_position: section.settings.date_position,
+            read_more_style: section.settings.read_more_style,
+            tag_style: section.settings.tag_style,
+            show_excerpt: section.settings.show_excerpt,
+            show_tag: section.settings.show_tag,
+            blog_card_text_alignment: section.settings.blog_card_text_alignment,
+            blog_title_size: section.settings.blog_title_size
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "headingmain_color_scheme",
+      "label": "t:sections.all.heading_color_scheme.label",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sidebar",
+      "default": true,
+      "label": "t:sections.main-blog.settings.sidebar.label"
+    },
+    {
+      "type": "select",
+      "id": "sidebar_position",
+      "label": "t:sections.main-blog.settings.sidebar-position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.featured-collection.settings.banner_position.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.featured-collection.settings.banner_position.options__2.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "heading_color_scheme",
+      "label": "t:sections.all.headingmain_color_scheme.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2,
+      "label": "t:sections.featured-blog.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "select",
+      "id": "blog_card_style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "t:settings_schema.blog_cards.settings.style.options__1.label"
+        },
+        {
+          "value": "card",
+          "label": "t:settings_schema.blog_cards.settings.style.options__2.label"
+        }
+      ],
+      "default": "standard",
+      "label": "t:settings_schema.blog_cards.settings.style.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label"
+    },
+    {
+      "type": "select",
+      "id": "blog_content_type",
+      "label": "t:sections.main-blog.settings.blog_content_type.label",
+      "options": [
+        {
+          "value": "content_below",
+          "label": "t:sections.main-blog.settings.blog_content_type.options__1.label"
+        },
+        {
+          "value": "image_below",
+          "label": "t:sections.main-blog.settings.blog_content_type.options__2.label"
+        },
+        {
+          "value": "content_over",
+          "label": "t:sections.main-blog.settings.blog_content_type.options__3.label"
+        }
+      ],
+      "default": "content_below",
+      "info": "t:sections.main-blog.settings.blog_content_type.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "blog_card_color_scheme",
+      "label": "t:sections.all.colors.label_card",
+      "default": "background-1"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "border_card",
+      "default": true,
+      "label": "t:sections.main-blog.settings.border_card.label",
+      "info": "t:sections.main-blog.settings.border_card.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "date_position",
+      "default": true,
+      "label": "t:sections.main-blog.settings.date_position.label",
+      "info": "t:sections.main-blog.settings.date_position.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comment",
+      "default": true,
+      "label": "t:sections.main-blog.settings.Show_comments.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tag",
+      "default": true,
+      "label": "t:sections.main-article.blocks.title.settings.show_tag.label"
+    },
+    {
+      "type": "select",
+      "id": "tag_style",
+      "label": "t:sections.featured-blog.settings.tag_style.label",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.featured-collection.settings.view_all_style.options__4.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.featured-collection.settings.view_all_style.options__2.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.featured-collection.settings.view_all_style.options__3.label"
+        }
+      ],
+      "default": "link"
+    },
+    
+    {
+      "type": "select",
+      "id": "blog_title_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.featured-blog.settings.blog_title_size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_excerpt.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_read_more_button",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_read_more_button.label"
+    },
+    {
+      "type": "select",
+      "id": "read_more_style",
+      "label": "t:sections.featured-blog.settings.read_more_style.label",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.featured-collection.settings.view_all_style.options__1.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.featured-collection.settings.view_all_style.options__2.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.featured-collection.settings.view_all_style.options__3.label"
+        }
+      ],
+      "default": "link"
+    },
+    
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "pagination_color_scheme",
+      "label": "t:sections.main-blog.settings.pagination.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "categories",
+      "name": "t:sections.main-blog.settings.categories.label",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.multicolumn.settings.title.label",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "blog_categories",
+          "label": "t:sections.main-blog.settings.Blog-categories.label",
+          "default": "<p>news</p>"
+        }
+      ]
+    },
+    {
+      "type": "Banner",
+      "name": "t:sections.main-blog.settings.Image-banner.label",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.multicolumn.settings.title.label",
+          "default": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.logo_bar.blocks.logo_image.settings.image.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.logo_bar.blocks.logo_image.settings.link.label",
+          "info": "t:sections.logo_bar.blocks.logo_image.settings.link.info"
+        }
+      ]
+    },
+    {
+      "type": "Products",
+      "name": "t:sections.main-blog.settings.Products.label",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.multicolumn.settings.title.label",
+          "default": "Heading"
+        },
+        {
+          "type": "product_list",
+          "id": "blog_product",
+          "label": "t:sections.main-blog.settings.Products-select.label"
+        }
+      ]
+    },
+    {
+      "type": "Tag",
+      "name": "t:sections.main-blog.settings.Tag.label",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.multicolumn.settings.title.label",
+          "default": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "recentpost",
+      "name": "t:sections.main-blog.settings.recent-post.label",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.multicolumn.settings.title.label",
+          "default": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "blog_recentview",
+          "label": "t:sections.main-blog.settings.Recent-Blog.label",
+          "default": "headphone"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.main-blog.name",
+      "blocks": [
+        {
+          "type": "categories"
+        },
+        {
+          "type": "Banner"
+        },
+        {
+          "type": "Products"
+        },
+        {
+          "type": "Tag"
+        },
+        {
+          "type": "recentpost"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "blog"
+    ]
+  }
+}
+{% endschema %}

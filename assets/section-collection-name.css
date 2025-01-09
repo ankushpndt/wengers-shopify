@@ -1,0 +1,16 @@
+.coll_name_bg {
+  border-radius: 20px;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 20px;
+  word-break: break-word;
+}
+@media (max-width: 575px) {
+  .coll_name_bg {
+    gap: 3px;
+    padding: 5px 9px;
+  }
+}

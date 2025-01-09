@@ -1,0 +1,153 @@
+.collections-tabs .tab-content>.active {
+    display: block;
+    visibility: visible;
+}
+.collections-tabs .tab-content>.tab-pane:not(.active) {
+    visibility: hidden;
+    height: 0;
+    overflow-y: hidden;
+}
+.collections-tabs .fade:not(.active) { 
+    opacity: 0;
+    visibility: hidden;
+}
+.collections-tabs .fade {
+    transition: opacity .15s linear;
+}
+.collections-tabs .heading-top .tabs-collapse {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    word-break: break-word;
+}
+.collections-tabs .heading-top .tabs span {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-size: calc(var(--font-body-scale) * 16px);
+}
+.collections-tabs .heading-top .tabs span::after {
+    content: '';
+    border-bottom: 1px solid rgba(var(--color-foreground));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0px;
+    transition: all 0.4s ease-out 0s;
+}
+.collections-tabs .heading-top .tab-title .tab-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.collections-tabs .heading-top .tabs span.tab-icon{
+    display: block;
+    height: 12px;
+    width: 12px;
+    line-height: 12px;
+}
+.collections-tabs .heading-top .tab-title:hover span{
+    color: var(--color-link-hover);
+}
+.collections-tabs .heading-top .tab-title span.active:after, .collections-tabs .heading-top .tab-title span:hover:after{
+    display: none;
+}
+.collections-tabs .heading-top .tabs span.tab-icon svg{
+    transform: rotate(270deg);
+     height: 12px;
+    width: 12px;
+}
+.collections-tabs .heading-top .tabs span.active::after,.collections-tabs .heading-top .tabs span:hover::after {
+    content: '';
+    width: 100%;
+}
+.collections-tabs .tab-content.transparent{
+    background: transparent;
+}
+@media (min-width: 768px) {
+    .collections-tabs .heading-top .tabs-collapse {
+        height: auto !important;
+    }
+    .collections-tabs webi-collapse.tabs .toggle {
+        display: none;
+    }
+    .collections-tabs.side_heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    .side_heading .heading-top.next_to_prod {
+        display: block;
+        margin-bottom: 0;
+        width: calc(35% - var(--grid-desktop-horizontal-spacing) / 2);
+        max-width: calc(35% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+    .collections-tabs.side_heading .tab-content{
+        width: calc(65% - var(--grid-desktop-horizontal-spacing) / 2);
+        max-width: calc(65% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+    .collections-tabs .heading-top.next_to_prod .tabs{
+        margin-top: 30px;
+        display: block;
+        width: 90%;
+        border-top: 1px solid rgba(var(--color-foreground),0.15);
+    }
+    .collections-tabs .heading-top.next_to_prod .tabs-collapse{
+        flex-direction: column;
+        gap: 0;
+    }
+    .heading-top.next_to_prod .tabs-collapse li {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(var(--color-foreground),.15);
+    }
+}
+@media (max-width: 767px) {
+    .collections-tabs .heading-top {
+        margin-bottom: 10px;
+    }
+    .collections-tabs .heading-top {
+        position: relative;
+    }
+    .collections-tabs .heading-top .heading {
+        margin-right: 35px;
+    }
+    .collections-tabs .heading-top .tabs-collapse {
+        display: block;
+        margin-top: 10px;
+        line-height: 28px;
+    }
+    .collections-tabs .tabs-collapse {
+        overflow:hidden;
+        transition:height 0.3s ease-out;
+        height:auto;
+    }
+    .collections-tabs .toggle.collapsed {
+        min-width: 32px;
+        min-height: 32px;
+        position: absolute;
+        right: 0;
+        margin-top: -50px;
+        width: auto;
+        height: auto;
+        padding: 0;
+    }
+    .collections-tabs .toggle.collapsed::after {
+        margin: 0;
+        content: "+";
+        font-size: calc(var(--font-body-scale) * 24px);
+        font-weight: var(--font-body-weight);
+        float: right;
+        cursor: pointer;
+        color: rgb(var(--color-button-hover-text));
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2px;
+    }
+    .collections-tabs .toggle.collapsed.active::after {
+        content: "-";
+    }
+}

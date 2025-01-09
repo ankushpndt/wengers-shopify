@@ -1,0 +1,92 @@
+.collection-hero {
+  word-break: break-word;
+}
+.collection-hero .breadcrumb{
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  margin-bottom: 8px;
+}
+.collection-hero__title{
+  margin: 0;
+  font-size: calc(var(--font-body-scale) * 28px);
+}
+.chero-overlay {
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (min-width: 992px) {
+  .chero-overlay {
+    min-height: 15rem;
+  }
+}
+.chero-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.collection-hero--with-image .page-width .collection-hero__inner {
+  border-radius: calc(var(--media-radius) - var(--border-width));
+}
+.chero-overlay .collection-hero__text-wrapper {
+  z-index: 2;
+}
+.chero-overlay .collection-hero__image-wrapper {
+  position: absolute;
+  inset: 0;
+}
+.chero-overlay .collection-hero__image-container {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  margin-top: 0;
+}
+/* .collection-hero__image-container, .collection-hero__image-container img {
+  border-radius: 0;
+} */
+.collection-hero .global-media-settings{
+  overflow: hidden !important;
+}
+.collection-hero__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.collection-hero__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.collection-hero__description {
+  color: rgb(var(--color-foreground),0.9);
+}
+.collection-hero__description a{
+  font-weight: var(--font-body-weight-medium);
+}
+.collection-hero__image-wrapper {
+  position: relative;
+  overflow: visible;
+}
+.collection-hero__image-container {
+  align-self: stretch;
+  min-height: 20rem;
+  margin-top: 30px;
+}
+.chero-column .collection-hero__description{
+  max-width: unset;
+}
+.collection-hero .breadcrumb_colmun a:hover{
+  color: rgb(var(--color-link-hover));
+}
+@media screen and (min-width: 768px) {
+  .collection-hero__image-wrapper_bottom {
+    padding-bottom: 6.1rem;
+  }
+}
+@media (max-width: 991px){
+  .collection-hero__title{
+    font-size: calc(var(--font-heading-scale) * 20px);
+  }
+}

@@ -1,0 +1,165 @@
+<div class="{% if section.settings.header_full != true %}container {% else %}around_padding{% endif %}">
+  {% for block in blocks %}
+    {%- liquid 
+      assign case_title = block.settings.menuname | downcase
+      assign lower_title = title | downcase
+    -%}
+    {% if lower_title == case_title %}
+      {% case block.type %}
+        {% when 'megamenu-product' %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        {%- assign product = collections[block.settings.collection.products] -%}
+        <div class="wbmgproduct">
+          <div class="grid">
+            {%- if block.settings.collection.products != empty and block.settings.collection != blank -%}
+              {% for product in collection.products limit: block.settings.products_to_show %}
+                  
+                    <div class="grid__item">
+                      {% render 'card-product',
+                        card_product: product,
+                        media_aspect_ratio: block.settings.image_ratio,
+                        show_secondary_image: block.settings.show_secondary_image,
+                        show_vendor: block.settings.show_vendor,
+                        card_style: block.settings.card_style,
+                        card_text_alignment: block.settings.card_text_alignment,
+                        card_color_scheme: block.settings.card_color_scheme,
+                        section_id: section.id
+                      %}
+                    </div>
+              {% endfor %}
+            {% else %}
+              {%- for i in (1..5) -%}
+                <div class="grid__item">
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                  {% render 'card-product',
+                    show_vendor: block.settings.show_vendor,
+                    placeholder_image: placeholder_image
+                  %}
+                </div>
+              {%- endfor -%}
+           {% endif %}
+          </div>
+        </div>
+        {% when 'megamenu-gallery' %}
+        <div class="wbmenugallery grid{% if section.settings.menu_type_desktop == 'drawer' %} grid--2-col-desktop{% else %} grid--4-col-desktop{% endif %} grid--2-col-tablet-down">
+          {% for i in (1..4) %}
+            {% capture galleryimg %}wb{{ i }}_img{% endcapture %}
+            {% capture gallerylink %}wb{{ i }}_link{% endcapture %}
+            {% capture gallerytext %}wb{{ i }}_text{% endcapture %}
+            {% if galleryimg or block.settings[gallerylink].size > 0 %}
+              <div class="wp_menu_banner grid__item text-center">
+                {% if block.settings[gallerylink] %}
+                  <a
+                    href="{{ block.settings[gallerylink] }}"
+                    class="focus-inset"
+                    title="{{ block.settings[gallerytext] }}">
+                  {% endif %}
+                  <div class="global-media-settings"> 
+                    <div class="wbmenugllazy{% if block.settings[galleryimg] == blank %} wbimg_placeholder{% endif %} media media--transparent media--{{ block.settings.image_ratio }} media--hover-effect" {% if block.settings.image_ratio == 'adapt' and block.settings[galleryimg] != blank %} style="padding-bottom: {{ 1 | divided_by: block.settings[galleryimg].aspect_ratio | times: 100 }}%;"{% endif %}>
+                      {% if block.settings[galleryimg] %}
+
+                        {%- assign height = block.settings[galleryimg].width | divided_by: block.settings[galleryimg].aspect_ratio | round -%}
+                        {{ block.settings[galleryimg] | image_url: width: 350 | image_tag: 
+                        loading: 'lazy',
+                        height: height,
+                        sizes: "100vw",
+                        widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                      {% else %}
+
+                        {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+                        {%- if placeholder_slide == 1 -%}
+                        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- else -%}
+                        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- endif -%}
+                      {% endif %}
+                    </div>
+                  </div>
+                    
+                  {% if block.settings[gallerytext].size > 0 %}
+                    <p>{{ block.settings[gallerytext] }}</p>
+                  {% endif %}
+                  {% if block.settings[gallerylink] %}
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+
+        {% when 'megamenu-blog' %}
+        <div class="wbmgblgtop grid">
+          {%- if block.settings.blog != blank -%}
+            {% for article in blogs[block.settings.blog].articles limit: block.settings.blog_to_show %}
+              <div class="wbhblog">
+                {% if article.image %}
+                  <div class="blog_img">
+                    <a
+                      href="{{ article.url }}"
+                      title="{{ article.title | capitalize }}"
+                      class="focus-inset {% if article.image.src != blank %} global-media-settings {% endif %}">
+                      <img loading="lazy"
+                        class="lazyload img-fluid mx-auto"
+                        srcset="{%- if article.image.src.width >= 375 -%}{{ article.image.src | image_url: width: 375 }} 375w,{%- endif -%}
+                      {%- if article.image.src.width >= 550 -%}{{ article.image.src | image_url: width: 550 }} 550w,{%- endif -%}
+                      {%- if article.image.src.width >= 750 -%}{{ article.image.src | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if article.image.src.width >= 1100 -%}{{ article.image.src | image_url: width: 1100 }} 1100w,{%- endif -%}
+                      {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {%- if article.image.src.width >= 1780 -%}{{ article.image.src | image_url: width: 1780 }} 1780w,{%- endif -%}
+                      {%- if article.image.src.width >= 2000 -%}{{ article.image.src | image_url: width: 2000 }} 2000w,{%- endif -%}
+                      {%- if article.image.src.width >= 3000 -%}{{ article.image.src | image_url: width: 3000 }} 3000w,{%- endif -%}
+                      {%- if article.image.src.width >= 3840 -%}{{ article.image.src | image_url: width: 3840 }} 3840w,{%- endif -%}
+                      {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                      src="{{ article.image.src | image_url: width: 1000, crop: 'center' }}"
+                      alt="{{ article.image.alt }}"
+                      width="{{ article.image.src.width }}"
+                      height="{{ article.image.src.height }}">
+                    </a>
+                    <div class="on_img_wb_date">{{ article.published_at | date: "%b %d, %Y" }}</div>
+                  </div>
+                {% endif %}
+                <div class="blog_info">
+                  <div class="blog-comm">
+                    <div class="article-card__footer">
+                      {% if article.comments_count > 1 %}
+                        <span>{{ 'blogs.article.comments.other' | t: count: article.comments_count }}</span>
+                      {% else %}
+                          <span>{{ 'blogs.article.comments.one' | t: count: article.comments_count }}</span>
+                      {% endif %}
+                    </div>
+                    <span class="wb_author">{{ article.author }}</span>
+                  </div>
+                  <div class="blog_title h2">
+                    <a href="{{ article.url }}" class="focus-inset">{{ article.title | capitalize }}</a>
+                  </div>
+                  <div class="blog__read_more">
+                    <a href="{{ article.url }}" class="link underlined-link">{{ 'sections.featured_blog.read_more' | t }}</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {%- else -%}
+            <div class="wbmgblgtop grid">
+              {% for i in (1..4) %}
+                <div class="wbhblog">
+                  <div class="blog_img global-media-settings">
+                    {%- assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 -%}
+                    {%- assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index -%}
+                    <div class="dummysvg" style="width: 100%;">{{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                    <div class="on_img_wb_date">{{ 'onboarding.main_blog_date' | t }}</div>
+                  </div>
+                  <div class="blog_info">
+                    <div class="blog_title">
+                      <a href="#" class="focus-inset">{{ 'onboarding.main_blog_title' | t }} {{ i }}</a>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endcase %}
+    {% endif %}
+  {% endfor %}
+</div>

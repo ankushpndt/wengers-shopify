@@ -1,0 +1,252 @@
+.dummy_hotspot {
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--color-foreground), .1);
+  padding: 8px;
+  border-radius: calc(var(--media-radius) * 1 / 2);
+  font-size: 12px;
+}
+.wblookdesc .price {
+  line-height: normal;
+}
+.wblook_b .lookinner {
+  position: relative;
+  border-radius: var(--media-radius);
+}
+.wblook_b .banner--small:not(.banner--adapt) .lookinner{
+  min-height: 35rem;
+}
+.wblook_b .banner--medium:not(.banner--adapt) .lookinner{
+  min-height: 40rem;
+}
+.wblook_b .banner--large:not(.banner--adapt) .lookinner{
+  min-height: 45rem;
+} 
+.wblookbook {
+  width: auto;
+  height: auto;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  z-index: 1;
+}
+.lookbtn {
+  margin-top: 20px;
+  word-break: break-word;
+}
+.wblookbleft {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.wblookimg {
+  width: 35%;
+}
+.wblookimg img {
+  border-radius: calc(var(--media-radius) * 1 / 2);
+}
+.wblookdesc {
+  width: 65%;
+  word-break: break-word;
+}
+.wblookdesc.wblookdesc_full {
+  width: 100%;
+}
+.look_vendor {
+  line-height: normal;
+  margin-bottom: 6px;
+  font-size: calc(var(--font-body-scale) * 12px);
+}
+.wblookdesc h3 {
+  font-size: calc(var(--font-body-scale) * 14px);
+}
+.lookbookdata {
+  background: var(--gradient-background);
+  border: 1px solid rgba(var(--color-foreground),0.08);
+  padding: 6px;
+  opacity: 0;
+  width: 240px;
+  border-radius: calc(var(--text-boxes-radius) * 1 / 2);
+  position: absolute;
+  top: -50%;
+  transition: 0.3s ease;
+  margin-left: 55px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+}
+.wblookbook:hover .lookbookdata {
+    opacity: 1;
+    pointer-events: unset;
+    visibility: unset;
+    margin-left: 40px;
+}
+/* .wblookbook:before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--gradient-background);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  left: 3px;
+  top: 3px;
+}
+.wblookbook:after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(var(--color-foreground));
+  border-radius: 100%;
+  top: 34%;
+  left: 34%;
+  cursor: pointer;
+  transition: .3s ease;
+}
+.wblookbook:hover:before {
+  width: 32px;
+  height: 32px;
+  left: 0;
+  top: 0;
+}
+.wblookbook:hover:after {
+  width: 10px;
+  height: 10px;
+  top: 34%;
+  left: 32%;
+} */
+
+.collection-title .button--secondary{
+  z-index: 0;
+}
+.wblookbook:before {
+  content: "";
+  position: absolute;
+  background: rgba(var(--color-background));
+  border-radius: 100%;
+  cursor: pointer;
+  transition: .3s ease;
+  width: 12px;
+  height: 12px;
+  left: 10px;
+  top: 10px;
+  box-shadow: 0 0 4px 7px rgb(var(--color-background),.3);
+}
+.wblookbook:after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  top: 10%;
+  left: 36%;
+  cursor: pointer;
+  transition: .3s ease;
+  font-size: 22px;
+  height: auto;
+  line-height: normal;
+}
+.wblookbook:hover:before {
+  box-shadow: 0 0 2px 9px rgb(var(--color-background),.3);
+}
+.wblbright .lookbookdata {
+  left: unset;
+  right: 50%;
+  margin-right: 40px;
+  margin-left: auto;
+}
+.wblbright:hover .lookbookdata {
+  margin-right: 25px;
+  margin-left: auto;
+}
+.wblook_b .grid__item {
+  position: relative;
+}
+.look-coll-list {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  bottom: 30px;
+  top: auto;
+  left: 0;
+  flex-wrap: wrap;
+  margin: 0 30px;
+}
+.lookbook_vertical{
+  padding: 15px;
+  width: 173px;
+}
+.lookbook_vertical .wblookimg,.lookbook_vertical .wblookdesc{
+  width: 100%;
+}
+.lookbookdata .wb_vertical{
+  flex-direction: column;
+}
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .lookbookdata.lookbook_horizontal {
+    width: 180px;
+  }
+}
+@media (max-width: 1199px) {
+  .lookbookdata.lookbook_horizontal {
+    width: 120px;
+    text-align: center;
+  }
+  .wblookimg, .wblookdesc {
+    width: 100%;
+  }
+  .wblookbleft {
+    display: grid;
+  }
+}
+@media (min-width: 992px) {
+  .look-coll-list{
+      background: transparent;
+  }
+}
+@media (max-width: 991px) {
+  .lookbtn {
+    margin-top: 10px;
+  }
+  .lookbookdata {
+    width: 98px;
+    padding: 3px;
+  }
+  .lookbook_vertical {
+    width: 115px;
+    padding: 6px;
+  }
+  .wblookbleft {
+    gap: 6px;
+  }
+  .wblookdesc h3 {
+    font-size: calc(var(--font-body-scale) * 13px);
+    letter-spacing: 0;
+  }
+  .wblookdesc .product-option.price-original, .wblookdesc .price {
+    font-size: calc(var(--font-body-scale) * 14px);
+  }
+  .collection-title .button--secondary{
+    padding: 4px 1rem;
+    min-width: 10rem;
+  }
+  .look-coll-list {
+    margin: 8px 0 0;
+    gap: 10px;
+    position: relative;
+    bottom: 0;
+    z-index: 0;
+    padding: 10px;
+    border-radius: var(--text-boxes-radius);
+  }
+}
+@media (max-width: 767px) {
+  .wblook_b .grid {
+    row-gap: max(calc(var(--grid-mobile-vertical-spacing) + 15px), 0px);
+  }
+  .lookbook_vertical {
+    width: 95px;
+    padding: 4px;
+  }
+}

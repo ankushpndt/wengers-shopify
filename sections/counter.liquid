@@ -1,0 +1,226 @@
+{{ 'counter.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+  }
+}
+{%- endstyle -%}
+<c-counter class="page-width section-{{ section.id }}-padding">
+  {%- unless section.settings.heading == blank -%}
+    <div class="heading inline-richtext {{ section.settings.heading_align }}">
+        <h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+    </div>
+  {%- endunless -%}
+  <div id="section_counter" class="grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--3-col-tablet grid--2-col-tablet-down">
+    {% for block in section.blocks %} 
+      <div class="counter-item grid__item">
+        <div class="scroll_count color-{{ section.settings.color_scheme }} gradient content-container" data-target="{{ block.settings.counthead }}">0</div>
+        <p>{{ block.settings.countdesc }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</c-counter>
+
+<script>
+  class Counter extends HTMLElement {
+    constructor() {
+      super();
+      this.section_counter = this.querySelector('#section_counter');
+      this.counters = this.querySelectorAll('.counter-item .scroll_count');
+      this.CounterObserver = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some(v => v.isIntersecting)){
+            this.counters.forEach((counter, index) => {
+              const counterNumber = +counter.innerText;
+              if(counterNumber == 0) return;
+              counter.innerText = "0";
+            });
+            return;
+          };
+          let speed = 100;
+          this.counters.forEach((counter, index) => {
+            function UpdateCounter() {
+              const targetNumber = +counter.dataset.target; 
+              const initialNumber = +counter.innerText;
+              const incPerCount = targetNumber / speed;
+              if (initialNumber < targetNumber) {
+                counter.innerText = Math.ceil(initialNumber + incPerCount);
+                setTimeout(UpdateCounter, 15);
+              }
+              else {
+                counter.innerText = targetNumber;
+              }
+            }
+            UpdateCounter();
+            if (counter.parentElement.style.animation) {
+              counter.parentElement.style.animation = '';
+            } else {
+              counter.parentElement.style.animation = `slide-up 0.3s ease forwards ${
+                index / this.counters.length + 0.5
+              }s`;
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: window.innerWidth > 768 ? 0.4 : 0.3,
+        }
+      );
+      this.CounterObserver.observe(this.section_counter);
+    }
+  }
+  customElements.define('c-counter', Counter);
+</script>
+{% schema %}
+{
+  "name": "t:sections.counter.name",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:settings_schema.heading.head"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:settings_schema.heading.settings.head_text.label_3",
+      "default": "Counter"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:settings_schema.heading.settings.head_text.label_1"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:settings_schema.heading.settings.head_text.label_4"
+    },
+    
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.multicolumn.settings.columns_desktop.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "counter",
+      "name": "t:sections.counter.blocks.counter_items.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "counthead",
+          "label": "t:sections.counter.blocks.counter_items.settings.heading.label",
+          "default": "100"
+        },
+        {
+          "type": "text",
+          "id": "countdesc",
+          "label": "t:sections.counter.blocks.counter_items.settings.description.label",
+          "default": "Describe facts or numbers"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.counter.presets.name",
+      "blocks": [
+        {
+          "type": "counter"
+        },
+        {
+          "type": "counter"
+        },
+        {
+          "type": "counter"
+        },
+        {
+          "type": "counter"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

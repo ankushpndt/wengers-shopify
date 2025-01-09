@@ -1,0 +1,402 @@
+{{ 'section-lookbook.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px; 
+  }
+}
+{%- endstyle -%}
+<div class="section-{{ section.id }}-padding wblook_b">
+    <div class="{% unless section.settings.full_width %}page-width{% else %}full-width{% endunless %}">
+
+      <div class="{{ section.settings.heading_position }} heading-top {% if section.settings.full_width %}section--full-width{% endif %}">
+        <div class="heading inline-richtext {{ section.settings.subheading_position }} {% if section.settings.title != blank %}sub_order_change{% endif %}">
+          {%- if section.settings.subtitle != blank -%}
+            <div class="heading_submain">
+              <div class="heading_subtitle {% if section.settings.subheading_style == 'link' %}head_normal{% elsif section.settings.subheading_style == 'solid' %}button{% else %}button button--secondary{% endif %}">{{ section.settings.subtitle }}</div>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="{{ section.settings.heading_size }}">
+                {{ section.settings.title }}
+            </h2>
+          {%- endif %}
+        </div>
+      </div>
+
+        <div class="grid grid--1-col-tablet-down grid--{{ section.blocks.size }}-col-desktop grid--{{ section.blocks.size }}-col-tablet banner--{{ section.settings.image_height }}">
+          {% for block in section.blocks %}
+            {%- liquid
+              assign full_width = '100vw'
+              assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+            -%}
+            <div class="grid__item">
+              <div class="lookinner">
+                <div class="{% unless section.settings.image_height == 'adapt' %} banner__media{% endunless %} global-media-settings media{% if block.settings.image == blank and section.settings.image_height == 'adapt' %} wbimgblank_adapt{% endif %}" {% if section.settings.image_height == 'adapt' and block.settings.image != blank %} style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"{% endif %} {% if section.settings.image_height == 'adapt' and block.settings.image == blank %} style="padding-bottom: 100%;"{% endif %}>
+                  {%- if block.settings.image != blank -%}
+                    {%- liquid
+                      assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+                      assign sizes = full_width
+                    -%}
+                    {{
+                       block.settings.image
+                       | image_url: width: 3840
+                       | image_tag:
+                       loading: 'lazy',
+                       width: block.settings.image.width,
+                       height: image_height,
+                       class: "zoom_effect",
+                       sizes: sizes,
+                       widths: widths }}
+                  {% else %}
+                    {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+                    {%- if placeholder_slide == 1 -%}
+                      {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- else -%}
+                      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%} 
+                  {%- endif -%}
+                </div>
+
+                {%- for i in (1..2) -%}
+                  {%- liquid 
+                    assign wblooktop = 'wblooktop_' | append: i
+                    assign wblooktop = block.settings[wblooktop]
+                    assign wblookleft = 'wblookleft_' | append: i
+                    assign wblookleft = block.settings[wblookleft]
+
+                    assign wblookpd = 'product_' | append: i
+                    assign wblookpd = block.settings[wblookpd]
+                    assign wblookpd = all_products[wblookpd]
+                  -%}
+                  {%- if wblookpd != blank -%}       
+                    <div class="wblookbook {% if wblookleft > 55 %}wblbright {% endif %}" style="top: max(calc({{ wblooktop }}% - 32px), 0%); left: max(calc({{ wblookleft }}% - 32px), 0%);">
+                      <div class="lookbookdata lookbook_{{ section.settings.product_style }}">
+                          <div class="wblookbleft wb_{{ section.settings.product_style }}">
+                            {% if wblookpd.featured_media %}
+                              <div class="wblookimg">
+                                <a href="{{ wblookpd.url }}" title="{{ wblookpd.title | escape }}" class="">
+                                  <div class="wblookimglazy">
+                                    <img loading="lazy"
+                                    class="img-fluid mx-auto lazyload"
+                                    srcset="{{ wblookpd.featured_media | image_url: width: 143 }} 80w"
+                                    src="{{ wblookpd.featured_media | image_url: width: 143 }}"
+                                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 992px) calc((100vw - 130px) / 4), (min-width: 768px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                    width="143"
+                                    height="{{ 158 | divided_by: wblookpd.featured_media.aspect_ratio | ceil }}">
+                                  </div>
+                                </a>
+                              </div>
+                            {% endif %}
+                            <div class="wblookdesc {% unless wblookpd.featured_media %}wblookdesc_full{% endunless %}">
+                              {%- if wblookpd.vendor.size > 0 and section.settings.hide_vendor != true -%}<p class="look_vendor">{{ wblookpd.vendor }}</p>{%- endif -%}
+                              <h3><a href="{{ wblookpd.url }}" title="{{ wblookpd.title | escape }}" class="full-unstyled-link">{{ wblookpd.title }}</a></h3>
+                                {%- render 'price', product: wblookpd, use_variant: false, show_badges: false, from_varies: true -%}
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <div class="look-coll-list color-{{ block.settings.color_scheme }}">
+                {%- assign collections = block.settings.collection_list -%}
+                {%- if collections != blank -%}
+                  {% for collection in collections %}
+                    <div class="collection-title">
+                      <a href="{{ collection.url }}" class="button button--secondary">{{ collection.title }}</a>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.lookbook.name",
+  "tag": "section",
+  "max_blocks": 2,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.video.settings.full_width.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.heading.head"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Lookbook",
+      "label": "t:settings_schema.heading.settings.head_text.label_3"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:settings_schema.heading.settings.head_text.label_1"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.heading.sub_head"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Sub heading",
+      "label": "t:settings_schema.heading.settings.sub_text.label_1"
+    },
+    {
+      "type": "select",
+      "id": "subheading_style",
+      "label": "t:settings_schema.heading.settings.sub_text.label_2",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.collection-list.settings.subheading_style.options__1.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.collection-list.settings.subheading_style.options__2.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.collection-list.settings.subheading_style.options__3.label"
+        }
+      ],
+      "default": "link"
+    },
+    {
+      "type": "select",
+      "id": "subheading_position",
+      "label": "t:settings_schema.heading.settings.sub_text.label_3",
+      "options": [
+        {
+          "value": "before_head",
+          "label": "t:sections.collection-list.settings.subheading_position.options__1.label"
+        },
+        {
+          "value": "after_head",
+          "label": "t:sections.collection-list.settings.subheading_position.options__2.label"
+        }
+      ],
+      "default": "after_head"
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.heading_position.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.heading_position.options__2.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:settings_schema.heading.settings.head_text.label_2"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text.settings.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-banner.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.image-with-text.settings.height.label"
+    },
+    {
+      "type": "select",
+      "id": "product_style",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.lookbook.blocks.text.settings.product_style.options__1.label"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.lookbook.blocks.text.settings.product_style.options__2.label"
+        }
+      ],
+      "default": "horizontal",
+      "label": "t:sections.lookbook.blocks.text.settings.product_style.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_vendor",
+      "label": "t:sections.lookbook.blocks.text.settings.hide_vendor.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:sections.lookbook.blocks.text.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.image-banner.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.lookbook.blocks.text.settings.header.content"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.lookbook.blocks.text.settings.wblooktop_1.label",
+          "default": 23
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.lookbook.blocks.text.settings.wblookleft_1.label",
+          "default": 20
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "t:sections.lookbook.blocks.text.settings.product_1.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.lookbook.blocks.text.settings.header.content"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.lookbook.blocks.text.settings.wblooktop_1.label",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.lookbook.blocks.text.settings.wblookleft_1.label",
+          "default": 30
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "t:sections.lookbook.blocks.text.settings.product_1.label"
+        },
+        {
+          "type": "collection_list",
+          "id": "collection_list",
+          "label": "t:sections.lookbook.blocks.text.settings.collection_list.label",
+          "limit": 5
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.lookbook.blocks.text.settings.color_scheme.label",
+          "default": "background-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

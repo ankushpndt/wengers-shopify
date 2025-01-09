@@ -1,0 +1,54 @@
+  <input
+    type="{{ type | default: 'radio' }}"
+    id="{{ id }}"
+    name="{{ name }}"
+    value="{{ value }}"
+    form="{{ product_form_id }}"
+    class="swatch-input__input{% if visually_disabled %} disabled{% endif %}"
+    {% if checked %}
+      checked
+    {% endif %}
+    {% if disabled %}
+      disabled
+    {% endif %}
+  >
+  {% if swatches_source == 'custom-images' and show_colorswatch == true %}
+  <label
+    for="{{ id }}"
+    title="{{ value }}"
+    value="{{ value }}"
+    class="color-swatchimg color__swatch--{{ swatches_type }} {% if swatches_source == 'variant-images' %} show_variant_image{% endif %} color-swatch {% if option.selected_value == value %} active{% endif %}"
+  >
+    {% render 'swatch', swatch: swatch, shape: shape %}
+    {{ help_text }}
+  </label>
+  {% elsif swatches_source == 'variant-images' and show_colorswatch == true %}
+    {%- liquid
+      for variant in product.variants
+        if variant.title contains value
+          if variant.image.src
+            assign variantImgSrc = variant.image.src | image_url: width: 100, crop: 'center'
+          else
+            assign variantImgSrc = "Invaild"
+          endif
+          break
+        endif
+      endfor
+      assign colorswatchvalue = value | downcase | replace: ' ', ''
+    -%}
+    <label class="color-swatchimg color__swatch--{{ swatches_type }} {% if swatches_source == 'variant-images' %} show_variant_image{% endif %} color-swatch {% if option.selected_value == value %} active{% endif %}"
+        for="{{ id }}"
+        data-val="{{ value }}"
+        tabindex="0"
+        style="
+        {% if variantImgSrc != 'Invaild' %}background-image: url({{ variantImgSrc }});{% else %} background-color: {{ colorswatchvalue }};{% endif %}">{{ value }}</label>
+  <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+<label>
+<span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+</label>
+  {% else %}
+    <label for="{{ id }}" label="0">
+        {{ value -}}
+        <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+      </label>
+  {% endif %}
