@@ -119,7 +119,7 @@
           "enable_language_switcher": true,
           "enable_country_region_switcher": true,
           "use_currency_for_region": false,
-          "switcher_position": "header",
+          "switcher_position": "custom",
           "show_flags": true,
           "switcher_appearance": "language-name",
           "invert_switcher_icon_colors": false,
