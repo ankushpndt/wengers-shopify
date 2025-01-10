@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "",
+    "logo": "shopify://shop_images/Wengers-logo-white.png",
     "transparent_logo": "",
     "logo_width": 112,
     "favicon": "",
@@ -119,7 +119,7 @@
       },
       "8765772171712610185": {
         "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_switcher/b5b83690-efd4-434d-8c6a-a5cef4019faf",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "enable_language_switcher": true,
           "enable_country_region_switcher": true,
@@ -128,7 +128,7 @@
           "show_flags": true,
           "switcher_appearance": "language-name",
           "invert_switcher_icon_colors": false,
-          "dropdown_appearance": "language-code",
+          "dropdown_appearance": "language-name",
           "use_modal_dialog": false,
           "language_country_mapping": "",
           "countries_filter": "",
