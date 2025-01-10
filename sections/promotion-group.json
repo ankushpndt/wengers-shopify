@@ -108,48 +108,10 @@
         "show_on_all": false,
         "color_scheme": ""
       }
-    },
-    "promotional_popup_XwRdJb": {
-      "type": "promotional-popup",
-      "disabled": true,
-      "settings": {
-        "image_fit": "cover",
-        "image_position": "left",
-        "heading": "Add promotion Here",
-        "text": "",
-        "position": "center",
-        "show_button": true,
-        "button_label": "Button label",
-        "button_action": "link",
-        "button_link": "",
-        "trigger_open": "delay",
-        "open_time_delay": 1,
-        "open_scroll_type": "px",
-        "open_scroll_position": "50",
-        "trigger_close": "scroll",
-        "close_time_delay": 3,
-        "close_scroll_type": "%",
-        "close_scroll_position": "50",
-        "show_close_button": true,
-        "width": 480,
-        "open_animation": "popupOpenFade",
-        "close_animation": "popupExitFade",
-        "show_overlay": false,
-        "mobile_disable": false,
-        "disable_scrolling": false,
-        "overlay_close": false,
-        "esc_close": false,
-        "f4_close": false,
-        "show_on_homepage": true,
-        "show_on_product_category": false,
-        "show_on_all": false,
-        "color_scheme": ""
-      }
     }
   },
   "order": [
     "announcement_bar_PHtW8e",
-    "popup_Vgii7a",
-    "promotional_popup_XwRdJb"
+    "popup_Vgii7a"
   ]
 }
