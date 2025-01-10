@@ -24,8 +24,8 @@
         "announcement_3xbRPQ": {
           "type": "announcement",
           "settings": {
-            "icon": "lightning_bolt",
-            "text": "Add Announcement/Promotion Here"
+            "icon": "none",
+            "text": "Special Sale: Cream Cakes <a href=\"/product/atta-flex-seed-bread/\" target=\"_blank\" title=\"/product/atta-flex-seed-bread/\">Shop Now  </a>"
           }
         }
       },
