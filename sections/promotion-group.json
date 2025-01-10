@@ -39,13 +39,13 @@
         "show_line_separator": true,
         "show_home_only": false,
         "left_part_announce": "none",
-        "contact_icon": "pin",
+        "contact_icon": "none",
         "contact_text": "Find a store",
         "contact_link": "shopify://pages/contact",
         "auto_rotate": false,
         "change_slides_speed": 3,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
         "mobile_bar": true
       }
     },
