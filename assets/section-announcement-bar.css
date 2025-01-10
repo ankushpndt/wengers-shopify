@@ -35,7 +35,6 @@
 }
 .announcement--bar .headannunce_inner {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: row;
 }
@@ -75,8 +74,8 @@
 @media (min-width:992px){
     .announcement--bar .global_headannunce {
         display: grid;
-        grid-template-areas: "social-icons announcements language-currency";
-        grid-template-columns: 3fr 4fr 3fr;
+        grid-template-areas: " announcements language-currency social-icons";
+        grid-template-columns: 4fr 3fr auto;
         width: 100%;
         align-items: center;
     }

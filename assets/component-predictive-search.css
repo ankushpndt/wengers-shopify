@@ -444,8 +444,7 @@ button.predictive-search__item.predictive-search__item--term {
     width: 680px;
     height: auto;
     padding: 15px;
-    background-color: rgb(var(--color-background));
-    background: var(--gradient-background);
+    background-color: #e6c395;
     position: relative;
     z-index: 2;
     margin: 0;

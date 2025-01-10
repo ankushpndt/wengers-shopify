@@ -21,6 +21,9 @@
 .search__input.field__input {
   padding-right: 9.8rem;
 }
+.search__input.field__input:focus-visible {
+  background-color: rgb(var(--color-background));
+}
 main-search .field__button{
   background: transparent;
   top: 0;
@@ -28,6 +31,7 @@ main-search .field__button{
 .search__button {
   right: 1px;
   top: 1px;
+  background-color: #CA9A5C;
 }
 .search-modal__form .modal__close-button.modal__close-button.link{
   right: 0;
@@ -73,8 +77,8 @@ main-search .field__button{
   box-shadow: inherit;
 }
 .search__button .icon {
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 20px !important;
+  width: 20px !important;
 }
 .template-search__header .reset__button  {
   background: transparent;
