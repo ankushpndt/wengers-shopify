@@ -18,20 +18,20 @@
           "type": "announcement",
           "settings": {
             "icon": "none",
-            "text": "Special Offer: 20% Off!"
+            "text": "Special Offer: 20% Off! <a href=\"/products/black-forest-cake\" target=\"_blank\" title=\"/products/black-forest-cake\">Shop Now</a>"
           }
         },
-        "announcement_w3DA8V": {
+        "announcement_3xbRPQ": {
           "type": "announcement",
           "settings": {
             "icon": "lightning_bolt",
-            "text": "Special Sale: Cream Cakes                                                                <a href=\"/products/frost-and-fluff-cakes\" target=\"_blank\" title=\"/products/frost-and-fluff-cakes\">Shop Now</a>"
+            "text": "Add Announcement/Promotion Here"
           }
         }
       },
       "block_order": [
         "announcement_CAVbVV",
-        "announcement_w3DA8V"
+        "announcement_3xbRPQ"
       ],
       "settings": {
         "header_full": false,
