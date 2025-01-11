@@ -1,146 +1,143 @@
 {% schema %}
 {
-  "name": "t:sections.video-slider.name",
-  "settings": [],
-  "blocks": [
+  "name": "Video slider",
+  "settings": [
     {
-      "type": "step",
-      "name": "Step",
-      "settings": [
-        {
-          "type": "text",
-          "id": "step_title",
-          "label": "Step Title",
-          "default": "Step 1: Browse Products"
-        },
-        {
-          "type": "textarea",
-          "id": "step_description",
-          "label": "Step Description",
-          "default": "Explore our wide variety of delicious treats."
-        },
-        {
-          "type": "image_picker",
-          "id": "step_image",
-          "label": "Step Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
+      "type": "video_url",
+      "id": "video_url",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "label": "video label",
+    },
     {
-      "name": "t:sections.video-slider.presets.name",
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading_text",
+      "label": "Subheading Text",
+      "default": "Discover our exclusive collections and enjoy an amazing shopping experience."
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
     }
   ]
 }
 {% endschema %}
 
-<div class="ordering-slider-section">
-  <h2 class="section-heading">Ordering Made Simple and Easy</h2>
-  <div class="ordering-slider" id="orderingSlider">
-    {% for block in section.blocks %}
-      {% if block.type == 'step' %}
-        <div class="slide">
-          <div class="slide-content">
-            <img
-              src="{{ block.settings.step_image | file_url }}"
-              alt="{{ block.settings.step_title }}"
-              class="slide-image"
-            >
-            <h3 class="slide-title">{{ block.settings.step_title }}</h3>
-            <p class="slide-description">{{ block.settings.step_description }}</p>
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-  <div class="slider-buttons">
-    <button id="prevSlide">←</button>
-    <button id="nextSlide">→</button>
+<div class="video-background-section">
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="{{ section.settings.video_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div
+      class="overlay"
+      style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity | divided_by: 100 }}"
+    ></div>
+    <div class="content">
+      <h1 class="heading">{{ section.settings.heading_text }}</h1>
+      <p class="subheading">{{ section.settings.subheading_text }}</p>
+      <a href="{{ section.settings.button_link }}" class="cta-button">{{ section.settings.button_text }}</a>
+    </div>
   </div>
 </div>
 
 <style>
-  .ordering-slider-section {
-    text-align: center;
-    padding: 50px 20px;
-  }
-  .section-heading {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  .ordering-slider {
-    display: flex;
-    overflow: hidden;
+  .video-background-section {
     position: relative;
     width: 100%;
+    height: 500px;
+    overflow: hidden;
   }
-  .slide {
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     min-width: 100%;
-    transition: transform 0.5s ease-in-out;
+    min-height: 100%;
+    z-index: 1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    color: white;
+    z-index: 3;
   }
-  .slide-content {
-    padding: 20px;
-  }
-  .slide-image {
-    max-width: 150px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-  }
-  .slide-title {
-    font-size: 1.5em;
+
+  .heading {
+    font-size: 2.5rem;
     margin-bottom: 10px;
+    font-weight: bold;
   }
-  .slide-description {
-    font-size: 1em;
-    color: #555;
+
+  .subheading {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
   }
-  .slider-buttons {
-    margin-top: 20px;
-  }
-  .slider-buttons button {
+
+  .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: #ff6f61;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 0 10px;
-    font-size: 1em;
+    text-decoration: none;
     border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
   }
-  .slider-buttons button:hover {
+
+  .cta-button:hover {
     background-color: #ff4b3e;
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('orderingSlider');
-    const slides = slider.querySelectorAll('.slide');
-    const prevButton = document.getElementById('prevSlide');
-    const nextButton = document.getElementById('nextSlide');
-
-    let currentIndex = 0;
-
-    const updateSlider = () => {
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-    };
-
-    const nextSlide = () => {
-      currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-      updateSlider();
-    };
-
-    const prevSlide = () => {
-      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-      updateSlider();
-    };
-
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-
-    // Optional: Automatic Slide Change
-    setInterval(nextSlide, 5000);
-  });
-</script>
