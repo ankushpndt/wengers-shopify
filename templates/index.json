@@ -9,32 +9,6 @@
  */
 {
   "sections": {
-    "video_slider_V7Y9AU": {
-      "type": "video-slider",
-      "blocks": {
-        "video_YrJRKQ": {
-          "type": "video",
-          "settings": {
-            "video_heading": "test",
-            "video_url": "https://www.youtube.com/embed/FPE0BK8jkLI",
-            "video_caption": "Enter a caption for this video"
-          }
-        },
-        "video_feUXbx": {
-          "type": "video",
-          "settings": {
-            "video_heading": "Enter a heading for this video",
-            "video_url": "https://www.youtube.com/embed/FPE0BK8jkLI",
-            "video_caption": "Enter a caption for this video"
-          }
-        }
-      },
-      "block_order": [
-        "video_YrJRKQ",
-        "video_feUXbx"
-      ],
-      "settings": {}
-    },
     "5f73e217-bd46-4726-9d37-13ea48f14fb6": {
       "type": "slideshow",
       "blocks": {
@@ -1269,7 +1243,6 @@
     }
   },
   "order": [
-    "video_slider_V7Y9AU",
     "5f73e217-bd46-4726-9d37-13ea48f14fb6",
     "2a4207a2-4c08-4352-a5fa-50972d5bca9f",
     "image_with_text_q8c9YN",
