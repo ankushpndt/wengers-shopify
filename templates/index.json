@@ -15,11 +15,11 @@
         "heading_MYycrg": {
           "type": "heading",
           "settings": {
-            "heading": "Don’t Miss Today’s Featured DealsOrdering Made Simple& Easier",
+            "heading": "Ordering Made Simple& Easier",
             "heading_size": "h0",
-            "subtitle": "test",
-            "subtitle_size": "h0",
-            "show_close_btn": true
+            "subtitle": "Don’t Miss Today’s Featured Deals",
+            "subtitle_size": "h2",
+            "show_close_btn": false
           }
         }
       },
