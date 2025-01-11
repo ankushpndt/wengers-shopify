@@ -415,6 +415,10 @@
     padding-top: 42px !important;
     text-align: center;
   }
+  .text-with-icons svg {
+    width: 60px;
+    height: 60px;
+  }
 } 
 @media (min-width: 576px) and (max-width: 767px){
   .deliveryinfo .grid__item {

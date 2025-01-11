@@ -64,7 +64,7 @@
           {%- for block in section.blocks -%}
           <ul id="Slide-{{ section.id }}-{{ forloop.index }}" class="slider__slide list-unstyled grid__item four-grid-layout flex_direction--{{ section.settings.flex_direction }} {{ section.settings.column_alignment }}" {{ block.shopify_attributes }}>
               {%- if block.settings.icon1 != 'none' -%}
-                <li><span class="multis-svg">{% render 'icon-allservice', icon: block.settings.icon1 %}</span></li>
+                <li><span class="text-with-icons">{% render 'icon-allservice', icon: block.settings.icon1 %}</span></li>
               {%- endif -%}
               <li>
                 <div class="text-with-icon_card__info">
