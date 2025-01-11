@@ -1,35 +1,28 @@
 {% schema %}
 {
   "name": "Video Slider",
-  "settings": [
-    {
-      "type": "number",
-      "id": "slide_interval",
-      "label": "Slide Interval (seconds)",
-      "default": 5,
-    }
-  ],
+  "settings": [],
   "blocks": [
     {
-      "type": "video",
-      "name": "Video",
+      "type": "step",
+      "name": "Step",
       "settings": [
         {
           "type": "text",
-          "id": "video_heading",
-          "label": "Heading",
-          "default": "Enter a heading for this video"
+          "id": "step_title",
+          "label": "Step Title",
+          "default": "Step 1: Browse Products"
         },
         {
-          "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
+          "type": "textarea",
+          "id": "step_description",
+          "label": "Step Description",
+          "default": "Explore our wide variety of delicious treats."
         },
         {
-          "type": "text",
-          "id": "video_caption",
-          "label": "Caption",
-          "default": "Enter a caption for this video"
+          "type": "image_picker",
+          "id": "step_image",
+          "label": "Step Image"
         }
       ]
     }
@@ -37,123 +30,101 @@
   "presets": [
     {
       "name": "Video Slider",
-      "category": "Custom"
     }
   ]
 }
 {% endschema %}
 
-<div class="video-slider-section">
-  <div class="video-slider" id="videoSlider">
+<div class="ordering-slider-section">
+  <h2 class="section-heading">Ordering Made Simple and Easy</h2>
+  <div class="ordering-slider" id="orderingSlider">
     {% for block in section.blocks %}
-      {% if block.type == 'video' %}
-        <div class="video-slide">
-          <div class="video-overlay">
-            <h2 class="video-heading">{{ block.settings.video_heading }}</h2>
+      {% if block.type == 'step' %}
+        <div class="slide">
+          <div class="slide-content">
+            <img
+              src="{{ block.settings.step_image | file_url }}"
+              alt="{{ block.settings.step_title }}"
+              class="slide-image"
+            >
+            <h3 class="slide-title">{{ block.settings.step_title }}</h3>
+            <p class="slide-description">{{ block.settings.step_description }}</p>
           </div>
-          <video muted autoplay playsinline loop>
-            <source src="{{ block.settings.video_url }}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <p class="video-caption">{{ block.settings.video_caption }}</p>
         </div>
       {% endif %}
     {% endfor %}
   </div>
+  <div class="slider-buttons">
+    <button id="prevSlide">←</button>
+    <button id="nextSlide">→</button>
+  </div>
 </div>
 
 <style>
-  .video-slider-section {
-    position: relative;
+  .ordering-slider-section {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  .section-heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  .ordering-slider {
+    display: flex;
     overflow: hidden;
+    position: relative;
     width: 100%;
   }
-  .video-slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  .video-slide {
-    position: relative;
+  .slide {
     min-width: 100%;
-    text-align: center;
-    overflow: hidden;
-  }
-  .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    z-index: 2;
-    pointer-events: none;
+    transition: transform 0.5s ease-in-out;
     text-align: center;
   }
-  .video-heading {
-    font-size: 24px;
-    font-weight: bold;
-    padding: 10px;
+  .slide-content {
+    padding: 20px;
   }
-  .video-caption {
-    margin-top: 10px;
-    font-size: 14px;
+  .slide-image {
+    max-width: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+  }
+  .slide-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  .slide-description {
+    font-size: 1em;
     color: #555;
   }
-  video {
-    width: 100%;
-    height: auto;
-    display: block;
-    z-index: 1;
-    pointer-events: none;
-  }
   .slider-buttons {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 3;
+    margin-top: 20px;
   }
   .slider-buttons button {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #ff6f61;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    margin: 0 10px;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+  .slider-buttons button:hover {
+    background-color: #ff4b3e;
   }
 </style>
 
-<div class="slider-buttons">
-  <button id="prevSlide">Previous</button>
-  <button id="nextSlide">Next</button>
-</div>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('videoSlider');
-    const slides = slider.querySelectorAll('.video-slide');
+    const slider = document.getElementById('orderingSlider');
+    const slides = slider.querySelectorAll('.slide');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
-    const slideInterval = {{ section.settings.slide_interval }} * 1000;
 
     let currentIndex = 0;
-    let autoplayInterval;
 
     const updateSlider = () => {
       slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-      slides.forEach((slide, index) => {
-        const video = slide.querySelector('video');
-        if (index === currentIndex) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
     };
 
     const nextSlide = () => {
@@ -166,28 +137,10 @@
       updateSlider();
     };
 
-    const startAutoplay = () => {
-      autoplayInterval = setInterval(nextSlide, slideInterval);
-    };
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
 
-    const stopAutoplay = () => {
-      clearInterval(autoplayInterval);
-    };
-
-    prevButton.addEventListener('click', () => {
-      stopAutoplay();
-      prevSlide();
-      startAutoplay();
-    });
-
-    nextButton.addEventListener('click', () => {
-      stopAutoplay();
-      nextSlide();
-      startAutoplay();
-    });
-
-    // Initialize the slider
-    updateSlider();
-    startAutoplay();
+    // Optional: Automatic Slide Change
+    setInterval(nextSlide, 5000);
   });
 </script>
