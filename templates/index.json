@@ -59,7 +59,7 @@
         "image_GeUTD9": {
           "type": "image",
           "settings": {
-            "icon1": "shipping",
+            "icon1": "free_delivery",
             "title": "Free Delivery",
             "demotext": "For all order over $100"
           }
@@ -67,7 +67,7 @@
         "image_ydkKPw": {
           "type": "image",
           "settings": {
-            "icon1": "bag",
+            "icon1": "safe_payment",
             "title": "Safe Payment",
             "demotext": "Pay with multiple credit cards"
           }
@@ -75,7 +75,7 @@
         "image_4Kt3A7": {
           "type": "image",
           "settings": {
-            "icon1": "return",
+            "icon1": "14_day_return",
             "title": "14 Day Returns",
             "demotext": "Within 30 days for an exchange"
           }
@@ -83,7 +83,7 @@
         "image_GkyMCK": {
           "type": "image",
           "settings": {
-            "icon1": "service",
+            "icon1": "24by7",
             "title": "24/7 Help Center",
             "demotext": "Dedicated 24/7 support"
           }
@@ -104,7 +104,7 @@
         "heading_position": "left",
         "beside_block": false,
         "title_padding_top": 0,
-        "iconwidth": 42,
+        "iconwidth": 65,
         "column_alignment": "left",
         "flex_direction": "row",
         "show_seprator": false,
