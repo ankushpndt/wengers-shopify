@@ -886,6 +886,10 @@ h3 .icon-arrow,
 .content-container {
     --border-radius: var(--text-boxes-radius);
 }
+@font-face {
+    font-family: "Playball-Regular";
+    src: url("./Playball-Regular.woff2") format("woff2");
+}
 /* base */
 /* Direction */
 .flex_direction--row, .flex_direction--column{
