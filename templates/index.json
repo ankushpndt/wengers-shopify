@@ -174,44 +174,44 @@
             "collection": "frontpage"
           }
         },
-        "featured_collection_7P7p8Q": {
+        "featured_collection_4UH4QX": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "frontpage"
           }
         },
-        "featured_collection_9APtJz": {
+        "featured_collection_BXkmhd": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "frontpage"
           }
         },
-        "featured_collection_agd6XC": {
+        "featured_collection_MNPiTW": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "frontpage"
           }
         },
-        "featured_collection_cGCxHN": {
+        "featured_collection_T3hkHd": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "frontpage"
           }
         },
-        "featured_collection_jXHmcw": {
+        "featured_collection_mGi3Jq": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "frontpage"
           }
         }
       },
       "block_order": [
         "featured_collection_wKzNb4",
-        "featured_collection_7P7p8Q",
-        "featured_collection_9APtJz",
-        "featured_collection_agd6XC",
-        "featured_collection_cGCxHN",
-        "featured_collection_jXHmcw"
+        "featured_collection_4UH4QX",
+        "featured_collection_BXkmhd",
+        "featured_collection_MNPiTW",
+        "featured_collection_T3hkHd",
+        "featured_collection_mGi3Jq"
       ],
       "settings": {
         "color_scheme": "",
