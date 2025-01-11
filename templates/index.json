@@ -203,12 +203,6 @@
           "settings": {
             "collection": ""
           }
-        },
-        "featured_collection_aXHqfw": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
         }
       },
       "block_order": [
@@ -217,8 +211,7 @@
         "featured_collection_9APtJz",
         "featured_collection_agd6XC",
         "featured_collection_cGCxHN",
-        "featured_collection_jXHmcw",
-        "featured_collection_aXHqfw"
+        "featured_collection_jXHmcw"
       ],
       "settings": {
         "color_scheme": "",
