@@ -530,48 +530,48 @@
             "card_color_scheme": ""
           }
         },
-        "column_t3GbNF": {
+        "column_qWyccp": {
           "type": "column",
           "settings": {
-            "multi_icon": "check_mark",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "multi_icon": "none",
+            "title": "",
+            "text": "",
             "link_label": "",
             "link": "",
             "button_style": "solid",
             "card_color_scheme": ""
           }
         },
-        "column_3E9wq8": {
+        "column_ETbdbq": {
           "type": "column",
           "settings": {
-            "multi_icon": "check_mark",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "multi_icon": "none",
+            "title": "",
+            "text": "",
             "link_label": "",
             "link": "",
             "button_style": "solid",
             "card_color_scheme": ""
           }
         },
-        "column_pYBfW9": {
+        "column_pfyGJg": {
           "type": "column",
           "settings": {
-            "multi_icon": "check_mark",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "multi_icon": "none",
+            "title": "",
+            "text": "",
             "link_label": "",
             "link": "",
             "button_style": "solid",
-            "card_color_scheme": "background-2"
+            "card_color_scheme": ""
           }
         },
-        "column_yJnybg": {
+        "column_L9FxMw": {
           "type": "column",
           "settings": {
-            "multi_icon": "check_mark",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "multi_icon": "none",
+            "title": "",
+            "text": "",
             "link_label": "",
             "link": "",
             "button_style": "solid",
@@ -581,10 +581,10 @@
       },
       "block_order": [
         "column_Y36Q4e",
-        "column_t3GbNF",
-        "column_3E9wq8",
-        "column_pYBfW9",
-        "column_yJnybg"
+        "column_qWyccp",
+        "column_ETbdbq",
+        "column_pfyGJg",
+        "column_L9FxMw"
       ],
       "settings": {
         "color_scheme": "",
