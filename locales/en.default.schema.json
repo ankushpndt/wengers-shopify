@@ -1388,6 +1388,18 @@
               },
               "options__34": {
                 "label": "Headphone"
+              },
+              "options__35": {
+                "label": "24by7"
+              },
+              "options__36": {
+                "label": "free_delivery"
+              },
+              "options__37": {
+                "label": "safe_payment"
+              },
+              "options__38": {
+                "label": "14_day_return"
               }
             }
           }

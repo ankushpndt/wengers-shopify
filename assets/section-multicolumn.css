@@ -327,6 +327,14 @@
     font-size: calc(var(--font-body-scale) * 12px);
     letter-spacing: 0;
   }
+  .gap-zero{
+    gap: 0;
+  }
+  .four-grid-layout{
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50% !important;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .deliveryinfo .grid--2-col-desktop .grid__item {
@@ -401,6 +409,11 @@
   }
   .deliveryinfo.multicolumn-list .grid {
     row-gap: 0;
+  }
+  .four-grid-layout{
+    flex-direction: column !important;
+    padding-top: 42px !important;
+    text-align: center;
   }
 } 
 @media (min-width: 576px) and (max-width: 767px){
