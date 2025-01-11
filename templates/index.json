@@ -16,7 +16,8 @@
           "type": "heading",
           "settings": {
             "heading": "Don’t Miss Today’s Featured DealsOrdering Made Simple& Easier",
-            "heading_size": "h0"
+            "heading_size": "h0",
+            "show_close_btn": false
           }
         }
       },
@@ -37,7 +38,6 @@
         "vid_heading": "",
         "color_video_text": "#000000",
         "show_play_btn": false,
-        "show_close_btn": false,
         "video": "shopify://files/videos/videoplayback.mp4",
         "video_url": "",
         "description": "",
@@ -279,7 +279,6 @@
         "vid_heading": "Video text",
         "color_video_text": "#000000",
         "show_play_btn": true,
-        "show_close_btn": true,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "desktop_content_position": "bottom-left",
