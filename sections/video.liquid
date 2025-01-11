@@ -698,14 +698,13 @@
           "label": "t:sections.all.heading_size.label"
         },
         {
-          "type": "checkbox",
-          "id": "show_close_btn",
-          "label": "t:sections.video.settings.show_close_btn.label",
-          "default": true
+          "type": "header",
+          "content": "t:settings_schema.heading.sub_head"
         },
         {
           "type": "text",
           "id": "subtitle",
+          "default": "Sub heading",
           "label": "t:settings_schema.heading.settings.sub_text.label_1"
         },
         {
@@ -729,36 +728,10 @@
           "label": "t:sections.all.heading_size.label"
         },
         {
-          "type": "select",
-          "id": "subheading_position",
-          "label": "t:settings_schema.heading.settings.sub_text.label_3",
-          "options": [
-            {
-              "value": "before_head",
-              "label": "t:sections.collection-list.settings.subheading_position.options__1.label"
-            },
-            {
-              "value": "after_head",
-              "label": "t:sections.collection-list.settings.subheading_position.options__2.label"
-            }
-          ],
-          "default": "after_head"
-        },
-        {
-          "type": "select",
-          "id": "heading_position",
-          "options": [
-            {
-              "value": "left",
-              "label": "t:sections.all.heading_position.options__1.label"
-            },
-            {
-              "value": "center",
-              "label": "t:sections.all.heading_position.options__2.label"
-            }
-          ],
-          "default": "left",
-          "label": "t:settings_schema.heading.settings.head_text.label_2"
+          "type": "checkbox",
+          "id": "show_close_btn",
+          "label": "t:sections.video.settings.show_close_btn.label",
+          "default": true
         }
       ]
     },
