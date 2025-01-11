@@ -959,40 +959,32 @@
           "type": "image",
           "settings": {
             "icon1": "shipping",
-            "title": "Heading",
-            "demotext": "Add subheading here"
+            "title": "Free Delivery",
+            "demotext": "For all order over $100"
           }
         },
         "image_ydkKPw": {
           "type": "image",
           "settings": {
-            "icon1": "shipping",
-            "title": "Heading",
-            "demotext": "Add subheading here"
+            "icon1": "bag",
+            "title": "Safe Payment",
+            "demotext": "Pay with multiple credit cards"
           }
         },
         "image_4Kt3A7": {
           "type": "image",
           "settings": {
-            "icon1": "shipping",
-            "title": "Heading",
-            "demotext": "Add subheading here"
+            "icon1": "return",
+            "title": "14 Day Returns",
+            "demotext": "Within 30 days for an exchange"
           }
         },
         "image_GkyMCK": {
           "type": "image",
           "settings": {
-            "icon1": "shipping",
-            "title": "Heading",
-            "demotext": "Add subheading here"
-          }
-        },
-        "image_nxKFJR": {
-          "type": "image",
-          "settings": {
-            "icon1": "shipping",
-            "title": "Heading",
-            "demotext": "Add subheading here"
+            "icon1": "service",
+            "title": "24/7 Help Center",
+            "demotext": "Dedicated 24/7 support"
           }
         }
       },
@@ -1000,8 +992,7 @@
         "image_GeUTD9",
         "image_ydkKPw",
         "image_4Kt3A7",
-        "image_GkyMCK",
-        "image_nxKFJR"
+        "image_GkyMCK"
       ],
       "settings": {
         "title": "",
