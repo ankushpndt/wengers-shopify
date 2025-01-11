@@ -156,7 +156,7 @@
         "height": "adapt",
         "img_position": "left",
         "desktop_image_width": "medium",
-        "desktop_content_position": "middle",
+        "desktop_content_position": "bottom",
         "desktop_content_alignment": "center",
         "color_scheme": "background-1",
         "image_behavior": "none",
