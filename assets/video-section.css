@@ -161,17 +161,17 @@
   font-weight: var(--font-body-weight-medium);
 }
 .videotext .banner__heading.h0 {
-  font-size: calc(var(--font-heading-scale) * 34px);
+  font-size: calc(var(--font-heading-scale) * 70px);
 }
 .videotext .banner__heading.h1 {
-  font-size: calc(var(--font-heading-scale) * 30px);
+  font-size: calc(var(--font-heading-scale) * 24px);
 }
 .videotext .banner__heading.h2 {
-  font-size: calc(var(--font-heading-scale) * 26px);
+  font-size: calc(var(--font-heading-scale) * 18px);
 }
 @media screen and (min-width: 1200px){
   .video-section .banner__box {
-    max-width: 51rem;
+    max-width: 947px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -187,13 +187,13 @@
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .videotext .banner__heading.h0 {
-    font-size: calc(var(--font-heading-scale) * 20px);
+    font-size: calc(var(--font-heading-scale) * 44px);
   }
   .videotext .banner__heading.h1 {
     font-size: calc(var(--font-heading-scale) * 18px);
   }
   .videotext .banner__heading.h2 {
-    font-size: calc(var(--font-heading-scale) * 16px);
+    font-size: calc(var(--font-heading-scale) * 15px);
   }
 }
 @media screen and (max-width: 767px){
@@ -207,13 +207,13 @@
     padding: 15px;
   }
   .videotext .banner__heading.h0 {
-    font-size: calc(var(--font-heading-scale) * 70px);
+    font-size: calc(var(--font-heading-scale) * 44px);
   }
   .videotext .banner__heading.h1 {
     font-size: calc(var(--font-heading-scale) * 24px);
   }
   .videotext .banner__heading.h2 {
-    font-size: calc(var(--font-heading-scale) * 18px);
+    font-size: calc(var(--font-heading-scale) * 15px);
   }
   .banner__content.mobile-text-below .banner__box {
     padding: 0;
@@ -253,23 +253,18 @@
 }
 @media (min-width: 992px) and (max-width: 1199px){
   .video-section .banner__box {
-    max-width: 42rem;
     min-width: auto;
     padding: 30px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px){
   .video-section .banner__box {
-    max-width: 32rem;
     min-width: auto;
     padding: 15px;
   }
   .video-section h3.banner__heading{
     font-size: calc(var(--font-heading-scale) * 24px);
     margin-top: 8px;
-  }
-  .video-section .banner__box .banner__heading+*{
-    font-size: calc(var(--font-body-scale) * 14px);
   }
   .wbvideo_content h3 {
     font-size: calc(var(--font-body-scale) * 24px);
@@ -307,20 +302,15 @@
 }
 @media (min-width: 576px) and (max-width: 767px){
   .video-section .banner__content.content-container--full-width-mobile {
-    max-width: 24rem;
     padding: 15px;
   }
   .video-section h3.banner__heading{
     font-size: calc(var(--font-heading-scale) * 16px);
     margin-top: 6px;
   }
-  .video-section .banner__box .banner__heading+*{
-    font-size: calc(var(--font-body-scale) * 12px);
-  }
 }
 @media (max-width: 575px){
   .video-section .banner__content.content-container--full-width-mobile {
-    max-width: 15rem;
     padding: 0;
     padding-left: 5px;
   }
@@ -339,5 +329,16 @@
   }
   .video-section .banner__box{
     padding: 8px;
+  }
+}
+@media (max-width: 425px){
+  .video-section__media.video-ratio-medium {
+    aspect-ratio: 3/7;
+  }
+  .video-section__media.video-ratio-small {
+    aspect-ratio: 3/7;
+  }
+  .video-section__media.video-ratio-large {
+    aspect-ratio: 3/7;
   }
 }
