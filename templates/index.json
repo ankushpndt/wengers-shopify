@@ -17,6 +17,8 @@
           "settings": {
             "heading": "Don’t Miss Today’s Featured DealsOrdering Made Simple& Easier",
             "heading_size": "h0",
+            "subtitle": "test",
+            "subtitle_size": "h0",
             "show_close_btn": false
           }
         }
