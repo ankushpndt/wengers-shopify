@@ -1,30 +1,113 @@
-{{ 'video-slider-section.css' | asset_url | stylesheet_tag }}
-
-<section class="video-slider-area">
-  <div class="video-slider">
-    <video
-      src="https://cdn.shopify.com/s/files/1/0549/1510/4943/files/Pexels_Videos_2716.mp4?v=1615646507"
-      autoplay
-      muted
-      loop
-      playsinline
-    ></video>
-    <div class="video-text">
-      <h1>For Your Loved One ❤️</h1>
-    </div>
-  </div>
-</section>
-
 {% schema %}
 {
-  "name": "t:sections.video-slider.name",
-  "tag": "section",
-  "class": "section",
-"settings": [],
+  "name": "Video Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "video_caption",
+          "label": "Caption",
+          "default": "Enter a caption for this video"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "t:sections.video-slider.presets.name"
+      "name": "Video Slider",
+      "category": "Custom"
     }
   ]
 }
 {% endschema %}
+
+<div class="video-slider-section">
+  <div class="video-slider" id="videoSlider">
+    {% for block in section.blocks %}
+      {% if block.type == 'video' %}
+        <div class="video-slide">
+          <video controls>
+            <source src="{{ block.settings.video_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="video-caption">{{ block.settings.video_caption }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.video-slider-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.video-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.video-slide {
+  min-width: 100%;
+  text-align: center;
+}
+.video-caption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+.slider-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+.slider-buttons button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+</style>
+
+<div class="slider-buttons">
+  <button id="prevSlide">Previous</button>
+  <button id="nextSlide">Next</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('videoSlider');
+    const slides = slider.querySelectorAll('.video-slide');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+
+    let currentIndex = 0;
+
+    const updateSlider = () => {
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    };
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+      updateSlider();
+    });
+
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+      updateSlider();
+    });
+  });
+</script>
