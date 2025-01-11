@@ -15,6 +15,7 @@
         "video_YrJRKQ": {
           "type": "video",
           "settings": {
+            "video_heading": "test",
             "video_url": "https://www.youtube.com/embed/FPE0BK8jkLI",
             "video_caption": "Enter a caption for this video"
           }
@@ -22,6 +23,7 @@
         "video_feUXbx": {
           "type": "video",
           "settings": {
+            "video_heading": "Enter a heading for this video",
             "video_url": "https://www.youtube.com/embed/FPE0BK8jkLI",
             "video_caption": "Enter a caption for this video"
           }
