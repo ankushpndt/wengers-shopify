@@ -388,8 +388,33 @@
         "padding_bottom": 0
       }
     },
-    "video_ktwEGY": {
+    "video_KDHzfP": {
       "type": "video",
+      "blocks": {
+        "heading_BMpbBg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ordering Made Simple& Easier",
+            "heading_size": "h0",
+            "subtitle": "Don’t Miss Today’s Featured Deals",
+            "subtitle_size": "h2",
+            "show_close_btn": false
+          }
+        },
+        "buttons_JybYPG": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Watch Video",
+            "button_link_1": "",
+            "link_window": true,
+            "view_all_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BMpbBg",
+        "buttons_JybYPG"
+      ],
       "settings": {
         "heading": "",
         "heading_size": "h2",
@@ -397,22 +422,23 @@
         "subheading_style": "link",
         "subheading_position": "after_head",
         "heading_position": "left",
-        "enable_video_looping": false,
-        "auto_play_video": false,
-        "enable_control": true,
+        "enable_video_looping": true,
+        "auto_play_video": true,
+        "enable_control": false,
         "enable_mute": true,
-        "vid_heading": "Video text",
+        "vid_heading": "",
         "color_video_text": "#000000",
-        "show_play_btn": true,
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "show_play_btn": false,
+        "video": "shopify://files/videos/videoplayback.mp4",
+        "video_url": "",
         "description": "",
-        "desktop_content_position": "bottom-left",
+        "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
-        "block_color_scheme": "",
-        "full_width": false,
+        "block_color_scheme": "scheme-ea9ec5d4-4eea-4bba-a3a3-89b2b26abf5a",
+        "full_width": true,
         "video_ratio": "medium",
-        "padding_top": 60,
+        "padding_top": 36,
         "padding_bottom": 0
       }
     },
@@ -1290,7 +1316,7 @@
     "collection_list_YeFDhz",
     "2688e762-762a-4aee-a82c-9d2bac46d642",
     "featured_collection_4cjMxa",
-    "video_ktwEGY",
+    "video_KDHzfP",
     "featured_collection_zMW7UH",
     "09e26d58-5b47-4605-8eaa-c1910392c7bb",
     "multicolumn_bbhAhk",
