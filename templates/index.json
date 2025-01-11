@@ -11,6 +11,18 @@
   "sections": {
     "video_ip743f": {
       "type": "video",
+      "blocks": {
+        "heading_MYycrg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Don’t Miss Today’s Featured DealsOrdering Made Simple& Easier",
+            "heading_size": "h0"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MYycrg"
+      ],
       "settings": {
         "heading": "",
         "heading_size": "h2",
@@ -41,34 +53,33 @@
     "5f73e217-bd46-4726-9d37-13ea48f14fb6": {
       "type": "slideshow",
       "blocks": {
-        "288f9a82-856b-416d-a602-be8b82ca9587": {
+        "slide_W7WjDN": {
           "type": "slide",
           "settings": {
-            "enable_video_looping": true,
-            "auto_play_video": true,
-            "video": "shopify://files/videos/videoplayback.mp4",
-            "video_url": "",
+            "enable_video_looping": false,
+            "auto_play_video": false,
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "image_overlay_opacity": 0,
             "collection": "",
-            "icon_sub": "none",
+            "icon_sub": "chat",
             "subheading": "Banner subheading here",
             "blur_bg": false,
             "heading": "Image slide",
-            "heading_size": "h0",
+            "heading_size": "h1",
             "head_upper": false,
-            "description": "<p>Tell your brand's story through images</p>",
+            "description": "<p>Tell your brand's story through images<p>",
             "desc_size": "large",
             "button_label": "Button label",
             "link": "",
             "link_window": true,
-            "view_all_style": "outline",
-            "box_align": "bottom-left",
-            "show_text_box": false,
+            "view_all_style": "solid",
+            "box_align": "middle-left",
+            "show_text_box": true,
             "text_alignment": "left",
             "clickable_image": false,
-            "color_scheme": "scheme-abe3bc68-5409-41dd-abcf-8f9ac474947a",
-            "text_alignment_mobile": "left",
-            "text_content_mobile": "bottom"
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center",
+            "text_content_mobile": "middle"
           }
         },
         "slide_RPKdgH": {
@@ -131,7 +142,7 @@
         }
       },
       "block_order": [
-        "288f9a82-856b-416d-a602-be8b82ca9587",
+        "slide_W7WjDN",
         "slide_RPKdgH",
         "slide_iaFVW8"
       ],
