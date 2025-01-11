@@ -122,7 +122,7 @@
         "text_CwgQ97": {
           "type": "text",
           "settings": {
-            "text": "<p>“It seems that every country that can get its hands on butter has its opinion of what butter cream frosting should be. Some are made with eggs and butter.”</p>",
+            "text": "<p>“Wengers was established in the year 1924 as a catering outfit for the British troops stationed in Delhi.”</p>",
             "text_style": "body"
           }
         },
@@ -130,25 +130,22 @@
           "type": "caption",
           "settings": {
             "icon": "none",
-            "caption": "Sunshine - CEO Bakery",
+            "caption": "Wengers - CEO Bakery",
             "uppar_text": false,
             "caption_style": "link"
           }
         },
-        "author_text_mA3Pdt": {
-          "type": "author-text",
+        "sign_image_ktTUNr": {
+          "type": "sign_image",
           "settings": {
-            "authorimage": "shopify://shop_images/signature-2_grande_34eb7b45-0f03-4d64-9fad-796907894867.png",
-            "image_corners": "original",
-            "authorname": "",
-            "authorpos": ""
+            "sign_image": "shopify://shop_images/Wengers-Logo-Final-Color-600x304.png"
           }
         }
       },
       "block_order": [
         "text_CwgQ97",
         "caption_L6grBK",
-        "author_text_mA3Pdt"
+        "sign_image_ktTUNr"
       ],
       "settings": {
         "full_w": true,
@@ -222,14 +219,14 @@
         "subheading_position": "after_head",
         "heading_position": "left",
         "button_label": "View all",
-        "view_all_style": "link",
+        "view_all_style": "solid",
         "view_button_pos": "top",
         "show_view_all": false,
         "arrow_position": "inline",
         "columns_desktop": 6,
         "auto_rotate": false,
         "change_slides_speed": 3,
-        "collection_card_color_scheme": "scheme-abe3bc68-5409-41dd-abcf-8f9ac474947a",
+        "collection_card_color_scheme": "background-2",
         "collection_card_style": "standard",
         "coll_name_alignment": "center",
         "image_ratio": "small",
