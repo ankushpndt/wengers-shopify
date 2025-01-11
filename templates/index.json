@@ -119,34 +119,45 @@
     "image_with_text_q8c9YN": {
       "type": "image-with-text",
       "blocks": {
-        "heading_hf8GqG": {
-          "type": "heading",
-          "settings": {
-            "heading": "Rendezvous With Ovenly Taste",
-            "heading_size": "h2"
-          }
-        },
         "text_CwgQ97": {
           "type": "text",
           "settings": {
-            "text": "<p>Wengers was established in the year 1924 as a catering outfit for the British troops stationed in Delhi. In 1926 the tea room and Confectionery were inaugurated in Exchange stores in Kashmere gate. Sometime in the late 20’s early ’30s, Wengers shifted base from Kashmere Gate to Connaught Place and has been on this prominent location. Having successfully run a Bakery and Confectionery, both in Delhi and Simla, three restaurants in CP, pioneering Ice Cream Manufacture in Delhi, a Café in the Delhi University, Catering for all the Embassies, the High court, the Supreme Courts, and the Govt of India.</p><p>Over the years Wengers has attained legendary status amongst the food outlets in Delhi with people coming from far and wide to sample the food on offer. It is now the oldest surviving establishment in Connaught Place.</p><p>Generations from families have been coming to the shop regularly and speak fondly of the old times. In the year 2011, we started a new outlet by the name of Wengers Deli, serving deli-style food to the public. The New outlet has been received very well by the customers and has become very popular.</p>",
+            "text": "<p>“It seems that every country that can get its hands on butter has its opinion of what butter cream frosting should be. Some are made with eggs and butter.”</p>",
             "text_style": "body"
+          }
+        },
+        "caption_L6grBK": {
+          "type": "caption",
+          "settings": {
+            "icon": "none",
+            "caption": "Sunshine - CEO Bakery",
+            "uppar_text": false,
+            "caption_style": "link"
+          }
+        },
+        "author_text_mA3Pdt": {
+          "type": "author-text",
+          "settings": {
+            "authorimage": "shopify://shop_images/signature-2_grande_34eb7b45-0f03-4d64-9fad-796907894867.png",
+            "image_corners": "original",
+            "authorname": "",
+            "authorpos": ""
           }
         }
       },
       "block_order": [
-        "heading_hf8GqG",
-        "text_CwgQ97"
+        "text_CwgQ97",
+        "caption_L6grBK",
+        "author_text_mA3Pdt"
       ],
       "settings": {
         "full_w": true,
-        "image": "shopify://shop_images/wengers-bakeman.png",
+        "image": "shopify://shop_images/signature_grande_b41b8407-1c9a-40ed-81b5-955ec6b668d3.webp",
         "height": "adapt",
         "img_position": "left",
         "desktop_image_width": "medium",
         "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "imgtxt_bg": "shopify://shop_images/wood-bg.jpg",
+        "desktop_content_alignment": "center",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
