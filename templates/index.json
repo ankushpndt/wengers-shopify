@@ -19,7 +19,7 @@
             "heading_size": "h0",
             "subtitle": "test",
             "subtitle_size": "h0",
-            "show_close_btn": false
+            "show_close_btn": true
           }
         }
       },
