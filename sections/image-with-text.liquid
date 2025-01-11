@@ -2,31 +2,34 @@
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-.section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
-}
-@media screen and (max-width: 991px) {
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   }
-}
+  @media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+  }
 {%- endstyle -%}
-<div {% if section.settings.imgtxt_bg != blank %}style="background-image: url('{{ section.settings.imgtxt_bg | image_url: width: 2000 }}');" {% endif %} class="txt-{{ section.settings.height }} imgtxtboth color-{{ section.settings.color_scheme }} gradient {% if section.settings.full_w == true %}wbimgw_full{% endif %}">
-<div class="{{ section.settings.img_position }} wbimgw_txt image-with-text {% if section.settings.full_w == false %}page-width{% endif %} isolate{% unless section.settings.color_scheme == 'background-1' %} collapse-corners{% endunless %} section-{{ section.id }}-padding {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-
-  <div class="{% if section.settings.desktop_image_width == 'small' %}space_manage {% endif %}{% if section.settings.imgtxt_bg == blank %} gradient color-{{ section.settings.color_scheme }} {% endif %} image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}">
-
-    <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
-      {%- if section.settings.image != blank -%}
-        <div class="wbimgw_txt1{% if section.settings.image != blank and section.settings.image2 != blank %} wbimg_width{% endif %}">
-          <div
-            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings media {% if section.settings.image == blank %} wbimgblank_adapt{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
-            {% if section.settings.height == 'adapt' and section.settings.image != blank %}
-              style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
-            {% endif %}>
-            
+<div
+  {% if section.settings.imgtxt_bg != blank %}
+    style="background-image: url('{{ section.settings.imgtxt_bg | image_url: width: 2000 }}');"
+  {% endif %}
+  class="txt-{{ section.settings.height }} imgtxtboth color-{{ section.settings.color_scheme }} gradient {% if section.settings.full_w == true %}wbimgw_full{% endif %}"
+>
+  <div class="{{ section.settings.img_position }} margin-auto wbimgw_txt image-with-text {% if section.settings.full_w == false %}page-width{% endif %} isolate{% unless section.settings.color_scheme == 'background-1' %} collapse-corners{% endunless %} section-{{ section.id }}-padding {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="{% if section.settings.desktop_image_width == 'small' %}space_manage {% endif %}{% if section.settings.imgtxt_bg == blank %} gradient color-{{ section.settings.color_scheme }} {% endif %} image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}">
+      <div class="image-with-text__media-item mt-9 image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
+        {%- if section.settings.image != blank -%}
+          <div class="wbimgw_txt1{% if section.settings.image != blank and section.settings.image2 != blank %} wbimg_width{% endif %}">
+            <div
+              class="image-with-text__media image-with-text__media--{{ section.settings.height }} media {% if section.settings.image == blank %} wbimgblank_adapt{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+              {% if section.settings.height == 'adapt' and section.settings.image != blank %}
+                style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+              {% endif %}
+            >
               {%- if section.settings.image_behavior == 'ambient' -%}
                 {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
                 {%- capture sizes -%}
@@ -45,151 +48,186 @@
                 | image_url: width: 1500
                 | image_tag: loading: 'lazy', sizes: sizes, widths: widths
               }}
-            
+            </div>
           </div>
-        </div>
-      {%- endif -%}
+        {%- endif -%}
 
-      {%- if section.settings.image2 != blank -%}
-        <div class="wbimgw_txt2{% if section.settings.image != blank and section.settings.image2 != blank %} wbimg_wright{% endif %}">
-          <div
-            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings media {% if section.settings.image2 == blank %} wbimgblank_adapt{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
-            {% if section.settings.height == 'adapt' and section.settings.image2 != blank %}
-              style="padding-bottom: {{ 1 | divided_by: section.settings.image2.aspect_ratio | times: 100 }}%;"
-            {% endif %}>
-            
-            {%- if section.settings.image_behavior == 'ambient' -%}
-              {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-              {%- capture sizes -%}
+        {%- if section.settings.image2 != blank -%}
+          <div class="wbimgw_txt2{% if section.settings.image != blank and section.settings.image2 != blank %} wbimg_wright{% endif %}">
+            <div
+              class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings media {% if section.settings.image2 == blank %} wbimgblank_adapt{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+              {% if section.settings.height == 'adapt' and section.settings.image2 != blank %}
+                style="padding-bottom: {{ 1 | divided_by: section.settings.image2.aspect_ratio | times: 100 }}%;"
+              {% endif %}
+            >
+              {%- if section.settings.image_behavior == 'ambient' -%}
+                {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                {%- capture sizes -%}
                 (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
                 (min-width: 768px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
               {%- endcapture -%}
-            {%- else -%}
-              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-              {%- capture sizes -%}
+              {%- else -%}
+                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                {%- capture sizes -%}
                 (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                 (min-width: 768px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
               {%- endcapture -%}
-            {%- endif -%}
-            {{
-              section.settings.image2
-              | image_url: width: 1500
-              | image_tag: loading: 'lazy', sizes: sizes, widths: widths
-            }}
-            
+              {%- endif -%}
+              {{
+                section.settings.image2
+                | image_url: width: 1500
+                | image_tag: loading: 'lazy', sizes: sizes, widths: widths
+              }}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.image == blank and section.settings.image2 == blank -%}
+          <div
+            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings media {% if section.settings.image2 == blank %} wbimgblank_adapt{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+          >
+            <div class="dummysvg">{{ 'collection-apparel-4' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="image-with-text__text-item grid__item">
+          <div
+            id="ImageWithText--{{ section.id }}"
+            class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} content-container"
+          >
+            {%- for block in section.blocks -%}
+              {% case block.type %}
+                {%- when 'subheading' -%}
+                  {% if block.settings.subheading != blank %}
+                    <div class="imgbnr_txt_inner rte">{{ block.settings.subheading }}</div>
+                  {% endif %}
+                {%- when 'heading' -%}
+                  <h2
+                    class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.heading }}
+                  </h2>
+                {%- when 'caption' -%}
+                  <p
+                    class="imgcaption image-with-text__text image-with-text__text--caption {% if block.settings.uppar_text == true %}uppercase{% endif %} {% if block.settings.caption_style == 'link' %}cap_normal{% elsif block.settings.caption_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {% if block.settings.icon != 'none' -%}
+                      {%- render 'icon-accordion', icon: block.settings.icon -%}
+                    {%- endif %}
+                    {{ block.settings.caption | escape }}
+                  </p>
+
+                {%- when 'text' -%}
+                  <div class="imgbnr_txt">
+                    {% if block.settings.text != blank %}
+                      <div
+                        class="image-with-text__text rte {{ block.settings.text_style }}"
+                        {{ block.shopify_attributes }}
+                      >
+                        {{ block.settings.text }}
+                      </div>
+                    {% endif %}
+                  </div>
+
+                {%- when 'sign_image' -%}
+                  <div class="sign_image">
+                    {% if block.settings.sign_image != blank %}
+                      <img
+                        class="img-fluid lazyload"
+                        srcset="{{ block.settings.sign_image | image_url: width: 140, height: 50 }} 140w"
+                        src="{{ block.settings.sign_image | image_url: width: 140 }}"
+                        width="140"
+                        height="50"
+                        alt="{{ block.settings.sign_image.alt | escape }}"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      <div class="dummysvg">{{ 'collection-apparel-3' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                    {% endif %}
+                  </div>
+
+                {%- when 'author-text' -%}
+                  <ul class="imgwauthor">
+                    <li class="{{ block.settings.image_corners }}">
+                      {% if block.settings.authorimage != blank %}
+                        <img
+                          class="img-fluid lazyload"
+                          srcset="{{ block.settings.authorimage | image_url: width: 70, height: 70 }} 70w"
+                          src="{{ block.settings.authorimage | image_url: width: 70 }}"
+                          width="70"
+                          height="70"
+                          alt="{{ block.settings.authorimage.alt | escape }}"
+                          loading="lazy"
+                        >
+                      {% else %}
+                        <div class="dummysvg">
+                          {{ 'collection-apparel-4' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
+                      {% endif %}
+                    </li>
+                    <li>
+                      <h3 class="h4">{{ block.settings.authorname | escape }}</h3>
+                      <p>{{ block.settings.authorpos | escape }}</p>
+                    </li>
+                  </ul>
+
+                {%- when 'collapsible_tab' -%}
+                  <webi-collapse
+                    class="imgtext_collapse product__accordion accordion quick-add-hidden"
+                    {{ block.shopify_attributes }}
+                  >
+                    <div id="Detailswebi-{{ block.id }}-{{ section.id }}">
+                      <summary
+                        tabindex="0"
+                        data-toggle="collapse"
+                        aria-expanded="false"
+                        class="toggle collapsed {% if block.settings.default_open == true %} active {% endif %}"
+                      >
+                        <div class="summary__title">
+                          {% render 'icon-accordion', icon: block.settings.icon %}
+                          <h2 class="h4 accordion__title inline-richtext {{ block.settings.collapse_size }}">
+                            {{ block.settings.heading | default: block.settings.page.title }}
+                          </h2>
+                        </div>
+                        {% render 'icon-caret' %}
+                      </summary>
+                      <div class="collapse wbcollapse_cont">
+                        <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                          {{ block.settings.content }}
+                          {{ block.settings.page.content }}
+                        </div>
+                      </div>
+                    </div>
+                  </webi-collapse>
+
+                {%- when 'button' -%}
+                  {%- if block.settings.button_label != blank -%}
+                    <a
+                      {% if block.settings.button_link == blank %}
+                        role="link" aria-disabled="true"
+                      {% else %}
+                        href="{{ block.settings.button_link }}"
+                      {% endif %}
+                      class="imgtxtbtn {% if block.settings.view_all_style == 'link' %}link underlined-link{% elsif block.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                      {{ block.shopify_attributes }}
+                      {% if block.settings.link_window %}
+                        target="_blank"
+                      {% endif %}
+                    >
+                      {{ block.settings.button_label | escape }}
+                    </a>
+                  {%- endif -%}
+              {%- endcase -%}
+            {%- endfor -%}
           </div>
         </div>
       {%- endif -%}
-
-      {%- if section.settings.image == blank and section.settings.image2 == blank -%}
-        <div
-          class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings media {% if section.settings.image2 == blank %} wbimgblank_adapt{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-            <div class="dummysvg">{{ 'collection-apparel-4' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-        </div>
-      {%- endif -%}
     </div>
-
-    {%- if section.blocks.size > 0 -%}
-      <div class="image-with-text__text-item grid__item">
-        <div
-          id="ImageWithText--{{ section.id }}"
-          class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} content-container"
-        >
-          {%- for block in section.blocks -%}
-            {% case block.type %}
-              {%- when 'subheading' -%}
-                {% if block.settings.subheading != blank %}
-                  <div class="imgbnr_txt_inner rte">{{ block.settings.subheading }}</div>
-                {% endif %}
-              {%- when 'heading' -%}
-                <h2 class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}" {{ block.shopify_attributes }} >
-                  {{ block.settings.heading }}
-                </h2>
-              {%- when 'caption' -%}
-                <p class="imgcaption image-with-text__text image-with-text__text--caption {% if block.settings.uppar_text == true %}uppercase{% endif %} {% if block.settings.caption_style == 'link' %}cap_normal{% elsif block.settings.caption_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-                  {{ block.shopify_attributes }}>
-                  {% if block.settings.icon != 'none' %}{% render 'icon-accordion', icon: block.settings.icon %}{% endif %}
-                  {{ block.settings.caption | escape }}
-                </p>
-
-              {%- when 'text' -%}
-                <div class="imgbnr_txt"> 
-                  {% if block.settings.text != blank %}
-                    <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-                      {{ block.settings.text }}
-                    </div>
-                  {% endif %}
-                </div>
-
-              {%- when 'sign_image' -%}
-                <div class="sign_image"> 
-                  {% if block.settings.sign_image != blank %}
-                    <img class="img-fluid lazyload"
-                    srcset="{{ block.settings.sign_image | image_url: width: 140, height: 50 }} 140w"
-                    src="{{ block.settings.sign_image | image_url: width: 140 }}"
-                    width="140" height="50"
-                    alt="{{ block.settings.sign_image.alt | escape }}" loading="lazy"/>
-                  {% else %}
-                    <div class="dummysvg">{{ 'collection-apparel-3' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-                  {% endif %}
-                </div>
-
-              {%- when 'author-text' -%}
-                <ul class="imgwauthor">
-                  <li class="{{ block.settings.image_corners }}">
-                    {% if block.settings.authorimage != blank %}
-                        <img class="img-fluid lazyload"
-                        srcset="{{ block.settings.authorimage | image_url: width: 70, height: 70 }} 70w"
-                        src="{{ block.settings.authorimage | image_url: width: 70 }}"
-                        width="70" height="70"
-                        alt="{{ block.settings.authorimage.alt | escape }}" loading="lazy"/>
-                    {% else %}
-                        <div class="dummysvg">{{ 'collection-apparel-4' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-                    {% endif %}
-                  </li>
-                  <li>
-                    <h3 class="h4">{{ block.settings.authorname | escape }}</h3>
-                    <p>{{ block.settings.authorpos | escape }}</p>
-                  </li>
-                </ul>
-
-              {%- when 'collapsible_tab' -%}
-                <webi-collapse class="imgtext_collapse product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                  <div id="Detailswebi-{{ block.id }}-{{ section.id }}">
-                    <summary tabindex="0" data-toggle="collapse" aria-expanded="false" class="toggle collapsed {% if block.settings.default_open == true %} active {% endif %}" >
-                      <div class="summary__title">
-                        {% render 'icon-accordion', icon: block.settings.icon %}
-                        <h2 class="h4 accordion__title inline-richtext {{ block.settings.collapse_size }}">
-                          {{ block.settings.heading | default: block.settings.page.title }}
-                        </h2>
-                      </div>
-                      {% render 'icon-caret' %}
-                    </summary>
-                    <div class="collapse wbcollapse_cont">
-                      <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                        {{ block.settings.content }}
-                        {{ block.settings.page.content }}
-                      </div>
-                    </div>
-                  </div>
-                </webi-collapse>
-
-              {%- when 'button' -%}
-                {%- if block.settings.button_label != blank -%}
-                  <a {% if block.settings.button_link == blank %} role="link" aria-disabled="true" {% else %} href="{{ block.settings.button_link }}" {% endif %}
-                    class="imgtxtbtn {% if block.settings.view_all_style == 'link' %}link underlined-link{% elsif block.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-                    {{ block.shopify_attributes }} {% if block.settings.link_window %} target="_blank" {% endif %}
-                  >
-                    {{ block.settings.button_label | escape }}
-                  </a>
-                {%- endif -%}
-            {%- endcase -%}
-          {%- endfor -%}
-        </div>
-      </div>
-    {%- endif -%}
   </div>
-</div>
 </div>
 
 {% schema %}
@@ -197,11 +235,7 @@
   "name": "t:sections.image-with-text.name",
   "class": "section",
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   },
   "settings": [
     {
