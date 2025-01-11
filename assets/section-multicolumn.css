@@ -20,6 +20,17 @@
   background-size: cover;
   border-radius: var(--text-boxes-radius);
 }
+.deliveryinfo .text-with-icon_card__info h1 {
+  font-size: calc(var(--font-heading-scale)* 24px);
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight-bold);
+  color: #121212;
+}
+.deliveryinfo .text-with-icon_card__info .subtext{
+  font-size: 16px;
+  color: #121212;
+}
 .deliveryinfo .text-with-icon_card__info h2 {
   font-size: calc(var(--font-heading-scale)* 18px);
   font-family: var(--font-body-family);
