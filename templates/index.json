@@ -22,7 +22,7 @@
         "step_CaDNGc": {
           "type": "step",
           "settings": {
-            "step_title": "Step 1: Browse Products",
+            "step_title": "Step 3: Browse Products",
             "step_description": "Explore our wide variety of delicious treats."
           }
         }
