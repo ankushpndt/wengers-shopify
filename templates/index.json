@@ -515,78 +515,98 @@
         "padding_bottom": 0
       }
     },
-    "featured_collection_PhXYLQ": {
-      "type": "featured-collection",
+    "multicolumn_PbTbTH": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_Y36Q4e": {
+          "type": "column",
+          "settings": {
+            "multi_icon": "none",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "button_style": "solid",
+            "card_color_scheme": ""
+          }
+        },
+        "column_t3GbNF": {
+          "type": "column",
+          "settings": {
+            "multi_icon": "check_mark",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": "",
+            "button_style": "solid",
+            "card_color_scheme": ""
+          }
+        },
+        "column_3E9wq8": {
+          "type": "column",
+          "settings": {
+            "multi_icon": "check_mark",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": "",
+            "button_style": "solid",
+            "card_color_scheme": ""
+          }
+        },
+        "column_pYBfW9": {
+          "type": "column",
+          "settings": {
+            "multi_icon": "check_mark",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": "",
+            "button_style": "solid",
+            "card_color_scheme": "background-2"
+          }
+        },
+        "column_yJnybg": {
+          "type": "column",
+          "settings": {
+            "multi_icon": "check_mark",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": "",
+            "button_style": "solid",
+            "card_color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_Y36Q4e",
+        "column_t3GbNF",
+        "column_3E9wq8",
+        "column_pYBfW9",
+        "column_yJnybg"
+      ],
       "settings": {
         "color_scheme": "",
-        "title": "Wenger's",
-        "heading_size": "h0",
-        "subtitle": "Trending now",
+        "full_width": true,
+        "title": "",
+        "heading_size": "h2",
+        "subtitle": "",
         "subheading_style": "link",
         "subheading_position": "after_head",
         "heading_position": "left",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "show_section_count": false,
-        "section_count_border": false,
-        "wb_enddate": "2024/12/06",
-        "section_count_text": "",
-        "collection": "frontpage",
-        "products_to_show": 6,
-        "columns_desktop": 4,
-        "full_width": false,
-        "vbutton_label": "View all",
-        "view_all_style": "link",
-        "view_button_pos": "top",
-        "show_view_all": false,
-        "enable_desktop_slider": true,
-        "arrow_position": "inline",
-        "card_style": "standard",
-        "card_text_alignment": "left",
-        "card_color_scheme": "",
+        "image_width": "full",
         "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_quantity": false,
-        "show_vendor": true,
-        "show_rating": false,
-        "enable_quick_add": true,
-        "quick_position": "bottom-left",
-        "show_count_timer": false,
-        "count_text": "",
-        "show_variants": false,
-        "variant_border": false,
-        "variant_label": false,
-        "variant_position": "top",
-        "picker_type": "button",
-        "show_colorswatch": true,
-        "cardstock_bar": false,
-        "max_stock": 150,
-        "limited_stock_cut_off": 16,
-        "limited_stock_message": "Only {stock_number} units left",
-        "instock_message": "{stock_number} in stock",
-        "continue_selling_message": "Re-stocking soon",
-        "limited_stock_color": "#ff1616",
-        "in_stock_color": "#228c14",
-        "continue_selling_color": "#ff0000",
-        "image": "shopify://shop_images/Confectionery.jpg",
-        "banner_position": "left",
-        "heading": "Cakes",
-        "banner_heading_size": "h1",
-        "sub_heading": "Wenger's",
-        "button_label": "Buy Now",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "column_alignment": "left",
+        "button_label": "View all",
         "button_link": "",
-        "link_window": true,
-        "button_style_secondary": "solid",
-        "content_position": "middle",
-        "content_alignment": "center",
-        "show_text_box": false,
-        "container_overlay_opacity": 40,
-        "banner_color_scheme": "",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 0
+        "view_all_style": "link",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 60
       }
     },
     "featured_product_ARrUck": {
@@ -1230,7 +1250,7 @@
     "featured_collection_4cjMxa",
     "video_KDHzfP",
     "featured_collection_zMW7UH",
-    "featured_collection_PhXYLQ",
+    "multicolumn_PbTbTH",
     "featured_product_ARrUck",
     "image_banner_iMznrt",
     "ed3e81a3-c428-492d-8564-402036860123",
