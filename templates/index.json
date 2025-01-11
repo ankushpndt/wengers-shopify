@@ -119,54 +119,39 @@
     "image_with_text_q8c9YN": {
       "type": "image-with-text",
       "blocks": {
-        "caption_QaT8az": {
-          "type": "caption",
-          "settings": {
-            "icon": "lamp",
-            "caption": "Add a tagline",
-            "uppar_text": false,
-            "caption_style": "link"
-          }
-        },
         "heading_hf8GqG": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "subheading_tghD6H": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Sub heading"
+            "heading": "Rendezvous With Ovenly Taste",
+            "heading_size": "h2"
           }
         },
         "text_CwgQ97": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Wengers was established in the year 1924 as a catering outfit for the British troops stationed in Delhi. In 1926 the tea room and Confectionery were inaugurated in Exchange stores in Kashmere gate. Sometime in the late 20’s early ’30s, Wengers shifted base from Kashmere Gate to Connaught Place and has been on this prominent location. Having successfully run a Bakery and Confectionery, both in Delhi and Simla, three restaurants in CP, pioneering Ice Cream Manufacture in Delhi, a Café in the Delhi University, Catering for all the Embassies, the High court, the Supreme Courts, and the Govt of India.</p><p>Over the years Wengers has attained legendary status amongst the food outlets in Delhi with people coming from far and wide to sample the food on offer. It is now the oldest surviving establishment in Connaught Place.</p><p>Generations from families have been coming to the shop regularly and speak fondly of the old times. In the year 2011, we started a new outlet by the name of Wengers Deli, serving deli-style food to the public. The New outlet has been received very well by the customers and has become very popular.</p>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "caption_QaT8az",
         "heading_hf8GqG",
-        "subheading_tghD6H",
         "text_CwgQ97"
       ],
       "settings": {
         "full_w": true,
+        "image": "shopify://shop_images/wengers-bakeman.png",
         "height": "adapt",
         "img_position": "left",
         "desktop_image_width": "medium",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "color_scheme": "background-2",
+        "imgtxt_bg": "shopify://shop_images/wood-bg.jpg",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
-        "padding_top": 0,
-        "padding_bottom": 60
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "2688e762-762a-4aee-a82c-9d2bac46d642": {
