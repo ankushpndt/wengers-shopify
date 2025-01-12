@@ -32,7 +32,7 @@
         "megamenu_gallery_FWwgwY": {
           "type": "megamenu-gallery",
           "settings": {
-            "menuname": "Items",
+            "menuname": "Collection",
             "showsubmenu": true,
             "image_ratio": "adapt",
             "wb1_img": "shopify://shop_images/Cookie.jpg",
@@ -63,7 +63,7 @@
         "trans_header_bg": false,
         "border_bottom": false,
         "iconwidth_header": 20,
-        "menu": "",
+        "menu": "main-menu",
         "color__drop_menu": "background-1",
         "sticky_header_type": "always",
         "head_shadow": "head_shadow_home",
