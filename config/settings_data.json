@@ -59,7 +59,9 @@
     "search_collection": "",
     "predictive_search_show_vendor": true,
     "predictive_search_show_price": true,
-    "collection_list": [],
+    "collection_list": [
+      "frontpage"
+    ],
     "collection_card_color_scheme": "background-1",
     "collection_card_style": "standard",
     "coll_name_alignment": "center",
