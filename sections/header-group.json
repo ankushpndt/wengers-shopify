@@ -35,11 +35,27 @@
             "secmenu": "main-menu",
             "first_color": "#ff0000"
           }
+        },
+        "megamenu_product_QhkAXL": {
+          "type": "megamenu-product",
+          "settings": {
+            "menuname": "test1",
+            "showsubmenu": true,
+            "collection": "frontpage",
+            "card_style": "standard",
+            "card_text_alignment": "left",
+            "image_ratio": "adapt",
+            "show_secondary_image": true,
+            "show_vendor": true,
+            "products_to_show": 5,
+            "card_color_scheme": "scheme-abe3bc68-5409-41dd-abcf-8f9ac474947a"
+          }
         }
       },
       "block_order": [
         "megamenu_product_XGR9qP",
-        "second_menu_GAVhec"
+        "second_menu_GAVhec",
+        "megamenu_product_QhkAXL"
       ],
       "settings": {
         "header_full": true,
