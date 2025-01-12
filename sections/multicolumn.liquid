@@ -148,9 +148,10 @@
                     | video_tag:
                       image_size: '300x',
                       autoplay: true,
-                      controls: true,
-                      muted: false,
-                      style: 'height:100%;width:100%;max-width:100%'
+                      controls: false,
+                      muted: true,
+                      loop: true,
+                      style: 'height:100%;width:100%;max-width:100%;border-radius:10px;object-fit:cover'
                   }}
                 {%- endif -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
@@ -269,9 +270,10 @@
                     | video_tag:
                       image_size: '300x',
                       autoplay: true,
-                      controls: true,
-                      muted: false,
-                      style: 'height:100%;width:100%;max-width:100%'
+                      controls: false,
+                      muted: true,
+                      loop: true,
+                      style: 'height:100%;width:100%;max-width:100%;border-radius:10px;object-fit:cover'
                   }}
                 {%- endif -%}
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
@@ -491,9 +493,9 @@
       "type": "range",
       "id": "columns_desktop",
       "min": 2,
-      "max": 4,
+      "max": 6,
       "step": 1,
-      "default": 4,
+      "default": 5,
       "label": "t:sections.multicolumn.settings.columns_desktop.label"
     },
     {
