@@ -21,10 +21,20 @@
             "subtitle_size": "h2",
             "show_close_btn": false
           }
+        },
+        "buttons_EdPijg": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Order Now",
+            "button_link_1": "shopify://products/confectionery",
+            "link_window": true,
+            "view_all_style": "solid"
+          }
         }
       },
       "block_order": [
-        "heading_MYycrg"
+        "heading_MYycrg",
+        "buttons_EdPijg"
       ],
       "settings": {
         "heading": "",
