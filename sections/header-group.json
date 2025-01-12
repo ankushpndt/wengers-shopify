@@ -14,24 +14,16 @@
     "header": {
       "type": "header",
       "blocks": {
-        "megamenu_product_cfYKQw": {
-          "type": "megamenu-product",
+        "second_menu_4nkUm9": {
+          "type": "second-menu",
           "settings": {
-            "menuname": "Collection",
-            "showsubmenu": true,
-            "collection": "frontpage",
-            "card_style": "standard",
-            "card_text_alignment": "left",
-            "image_ratio": "adapt",
-            "show_secondary_image": true,
-            "show_vendor": true,
-            "products_to_show": 5,
-            "card_color_scheme": "inverse"
+            "secmenu": "main-menu",
+            "first_color": "#ff0000"
           }
         }
       },
       "block_order": [
-        "megamenu_product_cfYKQw"
+        "second_menu_4nkUm9"
       ],
       "settings": {
         "header_full": true,
