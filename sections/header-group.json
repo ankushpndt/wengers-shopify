@@ -19,7 +19,7 @@
           "settings": {
             "menuname": "Collection",
             "showsubmenu": true,
-            "collection": "",
+            "collection": "frontpage",
             "card_style": "standard",
             "card_text_alignment": "left",
             "image_ratio": "adapt",
