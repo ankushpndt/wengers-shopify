@@ -106,9 +106,10 @@
         "text_6EbKwG": {
           "type": "text",
           "settings": {
+            "footer_logo": "shopify://shop_images/Wengers-logo-white.png",
             "footer-logo_width": 200,
             "heading": "Heading",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>",
+            "subtext": "<p>+91-8384047514<br/>+91-9354134477<br/><br/>support@wengers.in<br/><br/>Shop No: A/16 Near Inner Circle Road, Rajiv Chowk, Connaught Place, New Delhi, Delhi 110001<br/><br/>10:45 AM to 7:30 PM</p>",
             "des_style": "body",
             "show_social": true,
             "social_heading": "",
