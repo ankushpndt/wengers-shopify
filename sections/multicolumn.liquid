@@ -139,6 +139,18 @@
                     </a>
                   {%- endif -%}
                 </div>
+                {% comment %} video  {% endcomment %}
+                {%- if block.settings.video != null -%}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      image_size: '300x',
+                      autoplay: true,
+                      controls: true,
+                      muted: false,
+                      style: 'height:100%;width:100%;max-width:100%'
+                  }}
+                {%- endif -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
                 {% endif %}
@@ -262,6 +274,18 @@
                     {% endif %}
                   </div>
                 </div>
+                {% comment %} video  {% endcomment %}
+                {%- if block.settings.video != null -%}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      image_size: '300x',
+                      autoplay: true,
+                      controls: true,
+                      muted: false,
+                      style: 'height:100%;width:100%;max-width:100%'
+                  }}
+                {%- endif -%}
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
                   <a class="full-image-link" href="{{ block.settings.link }}"></a>
                 {%- endif -%}
@@ -603,6 +627,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:sections.multicolumn.blocks.column.settings.video.label"
         },
         {
           "type": "select",
