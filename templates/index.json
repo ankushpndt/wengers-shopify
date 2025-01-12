@@ -628,6 +628,120 @@
         "padding_bottom": 60
       }
     },
+    "testimonial_VQDxVJ": {
+      "type": "testimonial",
+      "blocks": {
+        "quote_zCck8d": {
+          "type": "quote",
+          "settings": {
+            "rev_title": "",
+            "star_rating": 5,
+            "author_image_det": true,
+            "image": "shopify://shop_images/3_2cf40d68-6f8f-42a7-94c0-1ff6dafcd7c7.webp",
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "John Smith",
+            "authorsub": "Product Manager",
+            "color_scheme": "",
+            "product": "bread",
+            "color_scheme1": ""
+          }
+        },
+        "quote_kiGpJE": {
+          "type": "quote",
+          "settings": {
+            "rev_title": "Heading",
+            "star_rating": 5,
+            "author_image_det": true,
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author name",
+            "authorsub": "Author position",
+            "color_scheme": "",
+            "product": "",
+            "color_scheme1": ""
+          }
+        },
+        "quote_RkhG4U": {
+          "type": "quote",
+          "settings": {
+            "rev_title": "Heading",
+            "star_rating": 5,
+            "author_image_det": true,
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author name",
+            "authorsub": "Author position",
+            "color_scheme": "",
+            "product": "",
+            "color_scheme1": ""
+          }
+        },
+        "quote_AK8YNK": {
+          "type": "quote",
+          "settings": {
+            "rev_title": "Heading",
+            "star_rating": 5,
+            "author_image_det": true,
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author name",
+            "authorsub": "Author position",
+            "color_scheme": "",
+            "product": "",
+            "color_scheme1": ""
+          }
+        },
+        "quote_9U88LF": {
+          "type": "quote",
+          "settings": {
+            "rev_title": "Heading",
+            "star_rating": 5,
+            "author_image_det": true,
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author name",
+            "authorsub": "Author position",
+            "color_scheme": "",
+            "product": "",
+            "color_scheme1": ""
+          }
+        }
+      },
+      "block_order": [
+        "quote_zCck8d",
+        "quote_kiGpJE",
+        "quote_RkhG4U",
+        "quote_AK8YNK",
+        "quote_9U88LF"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "title": "Our Community Of Users",
+        "heading_size": "h1",
+        "subtitle": "Testimonial",
+        "subheading_style": "link",
+        "subheading_position": "after_head",
+        "heading_position": "left",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "arrow_position": "inline",
+        "column_alignment": "left",
+        "border_around": false,
+        "text_size": "h2",
+        "image_corners": "circle",
+        "hide_auth_img": false,
+        "icon_quote": false,
+        "quote_color": "#000000",
+        "display_review": false,
+        "display_review_text": false,
+        "star_ratingclr": "#000000",
+        "border_around_product": false,
+        "border_productimg": false,
+        "productimg_color": "#dcdcdc",
+        "product_corner": "circle",
+        "border_sep": false,
+        "product_position": "bottom",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
     "featured_product_ARrUck": {
       "type": "featured-product",
       "blocks": {
@@ -1012,119 +1126,6 @@
         "padding_bottom": 0
       }
     },
-    "testimonial_VQDxVJ": {
-      "type": "testimonial",
-      "blocks": {
-        "quote_zCck8d": {
-          "type": "quote",
-          "settings": {
-            "rev_title": "Heading",
-            "star_rating": 5,
-            "author_image_det": true,
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
-            "color_scheme": "",
-            "product": "bread",
-            "color_scheme1": ""
-          }
-        },
-        "quote_kiGpJE": {
-          "type": "quote",
-          "settings": {
-            "rev_title": "Heading",
-            "star_rating": 5,
-            "author_image_det": true,
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
-            "color_scheme": "",
-            "product": "",
-            "color_scheme1": ""
-          }
-        },
-        "quote_RkhG4U": {
-          "type": "quote",
-          "settings": {
-            "rev_title": "Heading",
-            "star_rating": 5,
-            "author_image_det": true,
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
-            "color_scheme": "",
-            "product": "",
-            "color_scheme1": ""
-          }
-        },
-        "quote_AK8YNK": {
-          "type": "quote",
-          "settings": {
-            "rev_title": "Heading",
-            "star_rating": 5,
-            "author_image_det": true,
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
-            "color_scheme": "",
-            "product": "",
-            "color_scheme1": ""
-          }
-        },
-        "quote_9U88LF": {
-          "type": "quote",
-          "settings": {
-            "rev_title": "Heading",
-            "star_rating": 5,
-            "author_image_det": true,
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
-            "color_scheme": "",
-            "product": "",
-            "color_scheme1": ""
-          }
-        }
-      },
-      "block_order": [
-        "quote_zCck8d",
-        "quote_kiGpJE",
-        "quote_RkhG4U",
-        "quote_AK8YNK",
-        "quote_9U88LF"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "title": "Testimonial",
-        "heading_size": "h2",
-        "subtitle": "Sub heading",
-        "subheading_style": "link",
-        "subheading_position": "after_head",
-        "heading_position": "left",
-        "columns_desktop": 3,
-        "enable_desktop_slider": true,
-        "arrow_position": "inline",
-        "column_alignment": "left",
-        "border_around": true,
-        "text_size": "h2",
-        "image_corners": "circle",
-        "hide_auth_img": false,
-        "icon_quote": true,
-        "quote_color": "#000000",
-        "display_review": false,
-        "display_review_text": false,
-        "star_ratingclr": "#ffbb40",
-        "border_around_product": false,
-        "border_productimg": false,
-        "productimg_color": "#dcdcdc",
-        "product_corner": "rounded",
-        "border_sep": false,
-        "product_position": "bottom",
-        "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 0
-      }
-    },
     "featured_blog_8itwWV": {
       "type": "featured-blog",
       "settings": {
@@ -1270,12 +1271,12 @@
     "video_KDHzfP",
     "featured_collection_zMW7UH",
     "multicolumn_PbTbTH",
+    "testimonial_VQDxVJ",
     "featured_product_ARrUck",
     "image_banner_iMznrt",
     "ed3e81a3-c428-492d-8564-402036860123",
     "43335f47-de16-4ed6-98bc-f6360e1b3c08",
     "product_banner_gqBDij",
-    "testimonial_VQDxVJ",
     "featured_blog_8itwWV",
     "social_gallery_EdDM3x"
   ]
