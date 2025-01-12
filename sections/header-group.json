@@ -17,7 +17,7 @@
         "megamenu_product_bdinXy": {
           "type": "megamenu-product",
           "settings": {
-            "menuname": "mega menu products",
+            "menuname": "Contact",
             "showsubmenu": true,
             "collection": "frontpage",
             "card_style": "standard",
