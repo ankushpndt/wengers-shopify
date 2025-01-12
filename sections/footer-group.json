@@ -142,9 +142,9 @@
           "settings": {
             "icon": true,
             "footer_contact_heading": "Contact info",
-            "footer_address": "Address: Write your store's address details.",
-            "footer_contact_no": "<a href=\"tel:0123-456-789\" title=\"tel:0123-456-789\">0123-456-789</a>",
-            "footer_contact_id": "<a href=\"mailto:demo@demo.com\" title=\"mailto:demo@demo.com\">demo@demo.com</a>",
+            "footer_address": "Shop No: A/16 Near Inner Circle Road",
+            "footer_contact_no": "<a href=\"tel:+91-8384047514\" title=\"tel:+91-8384047514\">+91-8384047514</a>",
+            "footer_contact_id": "<a href=\"mailto:support@wengers.in\" title=\"mailto:support@wengers.in\">support@wengers.in</a>",
             "contsubtext": "",
             "description_style": "body"
           }
