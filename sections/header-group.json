@@ -63,7 +63,7 @@
         "trans_header_bg": false,
         "border_bottom": false,
         "iconwidth_header": 20,
-        "menu": "main-menu",
+        "menu": "",
         "color__drop_menu": "background-1",
         "sticky_header_type": "always",
         "head_shadow": "head_shadow_home",
