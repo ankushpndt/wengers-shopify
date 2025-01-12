@@ -56,7 +56,7 @@
     "simage_ratio": "square",
     "search_quick_links": "Science, Biography, Literary",
     "search_blog": "news",
-    "search_collection": "",
+    "search_collection": "frontpage",
     "predictive_search_show_vendor": true,
     "predictive_search_show_price": true,
     "collection_list": [
