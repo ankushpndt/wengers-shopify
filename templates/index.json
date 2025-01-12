@@ -157,7 +157,7 @@
         "desktop_content_alignment": "center",
         "color_scheme": "background-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "left",
+        "mobile_content_alignment": "center",
         "padding_top": 0,
         "padding_bottom": 100
       }
