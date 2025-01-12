@@ -19,16 +19,22 @@
   display: flex;
   transition: box-shadow var(--duration-short) ease;
   gap: 15px;
+  border: 1px solid #d2ceca;
+  border-radius: 2px;
+  align-items: center;
+  padding: 0.25rem;
+  @media (max-width: 992px) {
+    margin: 10px;
+  }
 }
-.field_newsflex .field input{
-  background: rgba(var(--color-foreground),0.06);
-  backdrop-filter: blur(5px);
+.field_newsflex .field input {
+  border: 1px solid transparent;
 }
-.wbhome_news .email-signup-banner__box .email-signup-banner__heading{
+.wbhome_news .email-signup-banner__box .email-signup-banner__heading {
   font-weight: var(--font-body-weight-medium);
 }
-.footer .newsletter-form__field-wrapper .field__input{
-  border: 1px solid rgba(var(--color-foreground),.9);
+.footer .newsletter-form__field-wrapper .field__input {
+  border: 1px solid rgba(var(--color-foreground), 0.9);
 }
 .newsletter-form__field-wrapper .field {
   z-index: 0;
@@ -41,7 +47,8 @@
 .newsletter-form__message--success {
   margin-top: 2rem;
 }
-.newsletter .newsletter-form, .newsletter .newsletter-form__field-wrapper {
+.newsletter .newsletter-form,
+.newsletter .newsletter-form__field-wrapper {
   display: inline-block;
 }
 .newsletter-form__button {
@@ -52,39 +59,51 @@
   height: 100%;
   z-index: 2;
   position: relative;
+  border-radius: 2px;
+  @media (max-width: 992px) {
+    width: 100%;
+    height: 4.3rem;
+  }
 }
-.footer .newsletter-form__field-wrapper .field:after{
+.footer .newsletter-form__field-wrapper .field:after {
   display: none;
 }
-.email-signup-banner__box .newsletter-form__button{
+.email-signup-banner__box .newsletter-form__button {
   z-index: 0;
   height: 4.3rem;
 }
-.banner:not(.banner--mobile-bottom) .email-signup-banner__box .newsletter-form__button{
+.banner:not(.banner--mobile-bottom)
+  .email-signup-banner__box
+  .newsletter-form__button {
   height: 4.3rem;
   min-height: 4.3rem;
 }
 .newsletter-form__button .icon {
   width: 1.5rem;
 }
-.wbhome_news .newsletter .newsletter-form, .wbhome_news .newsletter .newsletter-form__field-wrapper {
+.wbhome_news .newsletter .newsletter-form,
+.wbhome_news .newsletter .newsletter-form__field-wrapper {
   display: block;
   max-width: 100%;
 }
-@media screen and (min-width:1025px) {
-    .wbhome_news .banner__content {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
+@media screen and (min-width: 1025px) {
+  .wbhome_news .banner__content {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }
 @media screen and (max-width: 767px) {
-  .newsletter .banner__box, .newsletter .banner__content {
+  .newsletter .banner__box,
+  .newsletter .banner__content {
     padding: 10px;
   }
-  .newsletter:not(.banner--mobile-bottom) .banner__box:not(.email-signup-banner__box--no-image){
+  .newsletter:not(.banner--mobile-bottom)
+    .banner__box:not(.email-signup-banner__box--no-image) {
     background-color: transparent;
   }
-  .section:not(.section-image-banner) .newsletter.banner:not(.banner--mobile-bottom):not(.email-signup-banner) .banner__box.content-box {
+  .section:not(.section-image-banner)
+    .newsletter.banner:not(.banner--mobile-bottom):not(.email-signup-banner)
+    .banner__box.content-box {
     --color-foreground: unset;
     --color-button: unset;
     --color-button-text: unset;
@@ -108,7 +127,40 @@
     margin: 0 auto;
     max-width: 36rem;
   }
-  .newsletter.banner--transparent .banner__box{
+  .newsletter.banner--transparent .banner__box {
     background: transparent;
+  }
+}
+.banner {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1152px;
+  }
+}
+.banner__content {
+  align-items: center !important;
+  justify-content: space-between !important;
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
+}
+.banner__content > div {
+  width: 100%;
+  max-width: 50% !important;
+  @media (max-width: 992px) {
+    max-width: 100% !important;
   }
 }

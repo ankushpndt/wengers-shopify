@@ -111,6 +111,7 @@
         <div class="email-signup-banner__box banner__box newsletter newsletter__wrapper isolate {% if section.settings.show_text_box %} content-container {% endif %} color-{{ section.settings.color_scheme }} gradient content-container--full-width-mobile{% if section.settings.image == blank %} content-box{% endif %}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
+              <div>
               {%- when 'icon' -%}
                 <div class="nl_icon">
                   {% render 'icon-accordion', icon: block.settings.icon %}
@@ -124,6 +125,7 @@
                   {% comment %} <input type="radio" id="subscribe_text" value="{{ block.settings.text }}"> {% endcomment %}
                     <label for="subscribe_text">{{ block.settings.text }}</label>
                 </div>
+              </div>
               {%- when 'email_form' -%}
                 <div {{ block.shopify_attributes }}>
                   {% form 'customer', class: 'newsletter-form' %}
