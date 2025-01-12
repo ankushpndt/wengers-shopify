@@ -74,8 +74,8 @@
 @media (min-width:992px){
     .announcement--bar .global_headannunce {
         display: grid;
-        grid-template-areas: " announcements language-currency social-icons";
-        grid-template-columns: 4fr 3fr auto;
+        grid-template-areas: "language-currency announcements social-icons";
+        grid-template-columns: 2fr 4fr auto;
         width: 100%;
         align-items: center;
     }

@@ -26,10 +26,16 @@
     else
       assign show_home_only = false
     endif
-  endif 
+  endif
 %}
 {% if show_home_only %}
-  {%- if section.blocks.size > 0 or section.settings.enable_country_selector or section.settings.enable_language_selector or section.settings.contact_text != blank or section.settings.left_part_announce == 'social_media' and social_icons -%}
+  {%- if section.blocks.size > 0
+    or section.settings.enable_country_selector
+    or section.settings.enable_language_selector
+    or section.settings.contact_text != blank
+    or section.settings.left_part_announce == 'social_media'
+    and social_icons
+  -%}
     <div class="announcement--bar color-{{ section.settings.color_scheme }} gradient annoucehome {% if section.settings.mobile_bar %}mobile_announce{% endif %} {% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %} {% if section.settings.show_line_separator %} b-border {% endif %}">
       <div class="global_headannunce {% if section.settings.header_full != true %}page-width {% else %}around_padding{% endif %}">
         {%- if section.settings.left_part_announce != 'none' -%}
@@ -38,21 +44,25 @@
               {%- render 'social-icons' -%}
             </div>
           {%- endif -%}
-          {% if section.settings.left_part_announce == 'text_icon' and section.settings.contact_text != blank %}
-            <div class="announce_item announce_social">
+        {%- endif -%}
+        {%- if section.settings.left_part_announce != 'none' -%}
+          {% if section.settings.contact_text != blank %}
+            {% comment %} <div class="announce_item announce_social"> {% endcomment %}
               <div class="announce_texticon small-hide medium-hide">
                 {%- if block.settings.contact_icon != 'none' -%}
                   <span class="multis-svg">{% render 'icon-allservice', icon: section.settings.contact_icon %}</span>
                 {%- endif -%}
                 {%- if section.settings.contact_text != blank -%}
                   <span>
-                    {% if section.settings.contact_link != blank %}<a href="{{ section.settings.contact_link }}">{% endif %}
-                      {{ section.settings.contact_text }}
+                    {% if section.settings.contact_link != blank -%}
+                      <a href="{{ section.settings.contact_link }}">
+                    {%- endif %}
+                    {{ section.settings.contact_text }}
                     {% if section.settings.contact_link != blank %}</a>{% endif %}
                   </span>
                 {%- endif -%}
               </div>
-            </div>
+            {% comment %} </div> {% endcomment %}
           {%- endif -%}
         {%- endif -%}
         {%- if section.blocks.size > 0 -%}
@@ -60,40 +70,73 @@
             <slideshow-component>
               <div class="headannunce_inner">
                 {%- if section.blocks.size > 1 -%}
-                  <button type="button" class="focus-inset slider-button slider-button--prev" name="previous" aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+                  <button
+                    type="button"
+                    class="focus-inset slider-button slider-button--prev"
+                    name="previous"
+                    aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
+                    aria-controls="Slider-{{ section.id }}"
+                  >
+                    {% render 'icon-caret' %}
+                  </button>
                 {%- endif -%}
-              <div class="slider grid" id="Slider-{{ section.id }}" data-autoplay="{{ section.settings.auto_rotate }}" data-speed="{{ section.settings.change_slides_speed }}" aria-live="polite"
-                aria-atomic="true">
-              {%- for block in section.blocks -%}
-                {%- case block.type -%}
-                  {%- when 'announcement' -%}
-                  <div class="slideshow__slide slider__slide" id="Slide-{{ section.id }}-{{ forloop.index }}">
-                    <div class="announcement-bar rte" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
-                      {% if block.settings.icon != 'none' %}
-                        <span class="multis-svg">
-                          {% render 'icon-accordion', icon: block.settings.icon %}
-                        </span>
-                      {% endif %}
-                      {%- if block.settings.text != blank -%}
-                        <span class="link">{{ block.settings.text }}</span>
-                      {%- endif -%}
-                    </div>
-                  </div>
-                {%- endcase -%}
-              {%- endfor -%}
-              </div>
-              {%- if section.blocks.size > 1 -%}
-                <button type="button" class="focus-inset slider-button slider-button--next" name="next" aria-label="{{ 'sections.slideshow.next_slideshow' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
-                <div class="slideshow__controls slider-buttons hidden">
-                    {%- if section.settings.auto_rotate -%}
-                      <button type="button" class="focus-inset slideshow__autoplay hidden" aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">{{ 'sections.slideshow.pause_slideshow' | t }}</button>
-                    {%- endif -%}
+                <div
+                  class="slider grid"
+                  id="Slider-{{ section.id }}"
+                  data-autoplay="{{ section.settings.auto_rotate }}"
+                  data-speed="{{ section.settings.change_slides_speed }}"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  {%- for block in section.blocks -%}
+                    {%- case block.type -%}
+                      {%- when 'announcement' -%}
+                        <div class="slideshow__slide slider__slide" id="Slide-{{ section.id }}-{{ forloop.index }}">
+                          <div
+                            class="announcement-bar rte"
+                            role="region"
+                            aria-label="{{ 'sections.header.announcement' | t }}"
+                            {{ block.shopify_attributes }}
+                          >
+                            {% if block.settings.icon != 'none' %}
+                              <span class="multis-svg">
+                                {% render 'icon-accordion', icon: block.settings.icon %}
+                              </span>
+                            {% endif %}
+                            {%- if block.settings.text != blank -%}
+                              <span class="link">{{ block.settings.text }}</span>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                    {%- endcase -%}
+                  {%- endfor -%}
                 </div>
-              {%- endif -%} 
+                {%- if section.blocks.size > 1 -%}
+                  <button
+                    type="button"
+                    class="focus-inset slider-button slider-button--next"
+                    name="next"
+                    aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
+                    aria-controls="Slider-{{ section.id }}"
+                  >
+                    {% render 'icon-caret' %}
+                  </button>
+                  <div class="slideshow__controls slider-buttons hidden">
+                    {%- if section.settings.auto_rotate -%}
+                      <button
+                        type="button"
+                        class="focus-inset slideshow__autoplay hidden"
+                        aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
+                      >
+                        {{ 'sections.slideshow.pause_slideshow' | t }}
+                      </button>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
               </div>
             </slideshow-component>
           </div>
-        {%- endif -%} 
+        {%- endif -%}
         {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
           <div class="localization-wrapper announce_item">
             {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -169,15 +212,17 @@
               <localization-form class="small-hide medium-hide no-js-hidden">
                 {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
                   <div>
-                    <p class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</p>
+                    <p class="visually-hidden" id="AnnouncementLanguageLabel">
+                      {{ 'localization.language_label' | t }}
+                    </p>
                     {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
                   </div>
                 {%- endform -%}
               </localization-form>
             {%- endif -%}
-            
           </div>
-        {%- endif -%} 
+        {%- endif -%}
+        
       </div>
     </div>
   {%- endif -%}
@@ -189,9 +234,7 @@
   "max_blocks": 12,
   "class": "announcement-bar-section",
   "enabled_on": {
-    "groups": [
-      "aside"
-    ]
+    "groups": ["aside"]
   },
   "settings": [
     {
