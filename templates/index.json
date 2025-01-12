@@ -622,8 +622,8 @@
         "button_label": "View all",
         "button_link": "",
         "view_all_style": "link",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "padding_top": 0,
         "padding_bottom": 60
       }
