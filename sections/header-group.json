@@ -14,7 +14,22 @@
     "header": {
       "type": "header",
       "blocks": {
-        "second_menu_4nkUm9": {
+        "megamenu_product_XGR9qP": {
+          "type": "megamenu-product",
+          "settings": {
+            "menuname": "test",
+            "showsubmenu": true,
+            "collection": "frontpage",
+            "card_style": "standard",
+            "card_text_alignment": "left",
+            "image_ratio": "adapt",
+            "show_secondary_image": true,
+            "show_vendor": true,
+            "products_to_show": 5,
+            "card_color_scheme": "inverse"
+          }
+        },
+        "second_menu_GAVhec": {
           "type": "second-menu",
           "settings": {
             "secmenu": "main-menu",
@@ -23,7 +38,8 @@
         }
       },
       "block_order": [
-        "second_menu_4nkUm9"
+        "megamenu_product_XGR9qP",
+        "second_menu_GAVhec"
       ],
       "settings": {
         "header_full": true,
