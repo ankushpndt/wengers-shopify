@@ -13,53 +13,9 @@
   "sections": {
     "header": {
       "type": "header",
-      "blocks": {
-        "megamenu_product_XGR9qP": {
-          "type": "megamenu-product",
-          "settings": {
-            "menuname": "test",
-            "showsubmenu": true,
-            "collection": "frontpage",
-            "card_style": "standard",
-            "card_text_alignment": "left",
-            "image_ratio": "adapt",
-            "show_secondary_image": true,
-            "show_vendor": true,
-            "products_to_show": 5,
-            "card_color_scheme": "inverse"
-          }
-        },
-        "second_menu_GAVhec": {
-          "type": "second-menu",
-          "settings": {
-            "secmenu": "main-menu",
-            "first_color": "#ff0000"
-          }
-        },
-        "megamenu_product_QhkAXL": {
-          "type": "megamenu-product",
-          "settings": {
-            "menuname": "test1",
-            "showsubmenu": true,
-            "collection": "frontpage",
-            "card_style": "standard",
-            "card_text_alignment": "left",
-            "image_ratio": "adapt",
-            "show_secondary_image": true,
-            "show_vendor": true,
-            "products_to_show": 5,
-            "card_color_scheme": "scheme-abe3bc68-5409-41dd-abcf-8f9ac474947a"
-          }
-        }
-      },
-      "block_order": [
-        "megamenu_product_XGR9qP",
-        "second_menu_GAVhec",
-        "megamenu_product_QhkAXL"
-      ],
       "settings": {
         "header_full": true,
-        "logo_position": "top-center",
+        "logo_position": "middle-left",
         "color_schemehead": "scheme-abe3bc68-5409-41dd-abcf-8f9ac474947a",
         "transparent_header": true,
         "trans_text": "#ffffff",
