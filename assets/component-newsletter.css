@@ -150,14 +150,14 @@
     max-width: 1152px;
   }
 }
-.banner__content {
+.newsletter-banner__content {
   align-items: center !important;
   justify-content: space-between !important;
   @media (max-width: 992px) {
     flex-direction: column;
   }
 }
-.banner__content > div {
+.newsletter-banner__content > div {
   width: 100%;
   max-width: 50% !important;
   @media (max-width: 992px) {
