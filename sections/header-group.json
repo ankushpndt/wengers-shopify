@@ -14,6 +14,21 @@
     "header": {
       "type": "header",
       "blocks": {
+        "megamenu_product_bdinXy": {
+          "type": "megamenu-product",
+          "settings": {
+            "menuname": "mega menu products",
+            "showsubmenu": true,
+            "collection": "frontpage",
+            "card_style": "standard",
+            "card_text_alignment": "left",
+            "image_ratio": "adapt",
+            "show_secondary_image": true,
+            "show_vendor": true,
+            "products_to_show": 5,
+            "card_color_scheme": "inverse"
+          }
+        },
         "megamenu_product_b6HMEg": {
           "type": "megamenu-product",
           "settings": {
@@ -31,6 +46,7 @@
         }
       },
       "block_order": [
+        "megamenu_product_bdinXy",
         "megamenu_product_b6HMEg"
       ],
       "settings": {
