@@ -111,34 +111,36 @@
               {{ block.shopify_attributes }}
             >
               <div class="multicolumn-card content-container">
-                <div
-                  class="multicolumn-card__info {{ section.settings.column_alignment }} color-{{ block.settings.card_color_scheme }} gradient"
-                  {% if block.settings.imgtxt_bg != blank %}
-                    style="background-image: url('{{ block.settings.imgtxt_bg | image_url: width: 700 }}');"
-                  {% endif %}
-                >
-                  {% render 'icon-accordion', icon: block.settings.multi_icon %}
+                {%- if block.settings.title != blank and block.settings.text != blank -%}
+                  <div
+                    class="multicolumn-card__info {{ section.settings.column_alignment }} color-{{ block.settings.card_color_scheme }} gradient"
+                    {% if block.settings.imgtxt_bg != blank %}
+                      style="background-image: url('{{ block.settings.imgtxt_bg | image_url: width: 700 }}');"
+                    {% endif %}
+                  >
+                    {% render 'icon-accordion', icon: block.settings.multi_icon %}
 
-                  {%- if block.settings.title != blank -%}
-                    <h3 class="inline-richtext head_col">{{ block.settings.title }}</h3>
-                  {%- endif -%}
-                  {%- if block.settings.text != blank -%}
-                    <div class="rte">{{ block.settings.text }}</div>
-                  {%- endif -%}
-                  {%- if block.settings.link_label != blank -%}
-                    <a
-                      class="{% if block.settings.button_style == 'link' %}link underlined-link{% elsif block.settings.button_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-                      {% if block.settings.link == blank %}
-                        role="link" aria-disabled="true"
-                        aria-disabled="true"
-                      {% else %}
-                        href="{{ block.settings.link }}"
-                      {% endif %}
-                    >
-                      {{- block.settings.link_label | escape -}}
-                    </a>
-                  {%- endif -%}
-                </div>
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="inline-richtext head_col">{{ block.settings.title }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte">{{ block.settings.text }}</div>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank -%}
+                      <a
+                        class="{% if block.settings.button_style == 'link' %}link underlined-link{% elsif block.settings.button_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                        {% if block.settings.link == blank %}
+                          role="link" aria-disabled="true"
+                          aria-disabled="true"
+                        {% else %}
+                          href="{{ block.settings.link }}"
+                        {% endif %}
+                      >
+                        {{- block.settings.link_label | escape -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
                 {% comment %} video  {% endcomment %}
                 {%- if block.settings.video != null -%}
                   {{
@@ -194,13 +196,6 @@
                             class: 'multicolumn-card__image'
                         }}
                       </div>
-                    {% else %}
-                      {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
-                      {%- if placeholder_slide == 1 -%}
-                        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                      {%- else -%}
-                        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
-                      {%- endif -%}
                     {% endif %}
                   </div>
                 </div>
@@ -264,13 +259,6 @@
                             class: 'multicolumn-card__image'
                         }}
                       </div>
-                    {% else %}
-                      {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
-                      {%- if placeholder_slide == 1 -%}
-                        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                      {%- else -%}
-                        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
-                      {%- endif -%}
                     {% endif %}
                   </div>
                 </div>
@@ -289,34 +277,36 @@
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
                   <a class="full-image-link" href="{{ block.settings.link }}"></a>
                 {%- endif -%}
-                <div
-                  class="multicolumn-card__info {{ section.settings.column_alignment }} color-{{ block.settings.card_color_scheme }} gradient"
-                  {% if block.settings.imgtxt_bg != blank %}
-                    style="background-image: url('{{ block.settings.imgtxt_bg | image_url: width: 700 }}');"
-                  {% endif %}
-                >
-                  {% render 'icon-accordion', icon: block.settings.multi_icon %}
+                {%- if block.settings.title != blank and block.settings.text != blank -%}
+                  <div
+                    class="multicolumn-card__info {{ section.settings.column_alignment }} color-{{ block.settings.card_color_scheme }} gradient"
+                    {% if block.settings.imgtxt_bg != blank %}
+                      style="background-image: url('{{ block.settings.imgtxt_bg | image_url: width: 700 }}');"
+                    {% endif %}
+                  >
+                    {% render 'icon-accordion', icon: block.settings.multi_icon %}
 
-                  {%- if block.settings.title != blank -%}
-                    <h3 class="inline-richtext head_col">{{ block.settings.title }}</h3>
-                  {%- endif -%}
-                  {%- if block.settings.text != blank -%}
-                    <div class="rte">{{ block.settings.text }}</div>
-                  {%- endif -%}
-                  {%- if block.settings.link_label != blank -%}
-                    <a
-                      class="{% if block.settings.button_style == 'link' %}link underlined-link{% elsif block.settings.button_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-                      {% if block.settings.link == blank %}
-                        role="link" aria-disabled="true"
-                        aria-disabled="true"
-                      {% else %}
-                        href="{{ block.settings.link }}"
-                      {% endif %}
-                    >
-                      {{- block.settings.link_label | escape -}}
-                    </a>
-                  {%- endif -%}
-                </div>
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="inline-richtext head_col">{{ block.settings.title }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte">{{ block.settings.text }}</div>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank -%}
+                      <a
+                        class="{% if block.settings.button_style == 'link' %}link underlined-link{% elsif block.settings.button_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                        {% if block.settings.link == blank %}
+                          role="link" aria-disabled="true"
+                          aria-disabled="true"
+                        {% else %}
+                          href="{{ block.settings.link }}"
+                        {% endif %}
+                      >
+                        {{- block.settings.link_label | escape -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
               </div>
             </li>
           {% endif %}

@@ -4477,6 +4477,9 @@
             "image": {
               "label": "Image"
             },
+            "video": {
+              "label": "Video"
+            },
             "img_title": {
               "label": "Image heading"
             },
