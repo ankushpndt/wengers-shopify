@@ -95,7 +95,7 @@
           {%- liquid
             assign mod = forloop.index | modulo: 2
             assign empty_column = ''
-            if block.settings.image == blank and block.settings.multi_icon == 'none' and block.settings.title == blank and block.settings.text == blank and block.settings.link_label == blank
+            if block.settings.image == blank and block.settings.multi_icon == 'none' and block.settings.title == blank and block.settings.text == blank and block.settings.link_label == blank and block.settings.video == blank
               assign empty_column = ' multicolumn-list__item--empty'
             endif
           -%}
@@ -190,6 +190,20 @@
                         {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
                       {%- endif -%}
                     {% endif %}
+                    {% if block.settings.show_close_btn == true %}
+                      <div class="banner-content-remove">{% render 'icon-close' %}</div>
+                    {% endif %}
+                    {%- if block.settings.video != null -%}
+                      {{
+                        block.settings.video
+                        | video_tag:
+                          image_size: '300x',
+                          autoplay: true,
+                          controls: true,
+                          muted: false,
+                          style: 'height:100%;width:100%;max-width:100%'
+                      }}
+                    {%- endif -%}
                   </div>
                 </div>
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
@@ -605,9 +619,54 @@
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
         },
         {
+          "type": "checkbox",
+          "id": "enable_video_looping",
+          "label": "t:sections.video.settings.enable_video_looping.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "auto_play_video",
+          "label": "t:sections.video.settings.auto_play_video.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_control",
+          "label": "t:sections.video.settings.enable_control.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_mute",
+          "label": "t:sections.video.settings.enable_mute.label",
+          "info": "t:sections.video.settings.enable_mute.info",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "t:sections.video.settings.header__1.content"
+        },
+        {
           "type": "video",
           "id": "video",
-          "label": "A Shopify-hosted video"
+          "label": "t:sections.video.settings.video.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.video.settings.header__2.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.video.settings.paragraph.content"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "t:sections.video.settings.video_url.label",
+          "info": "t:sections.video.settings.video_url.info"
         },
         {
           "type": "select",
