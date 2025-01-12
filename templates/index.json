@@ -641,12 +641,12 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "",
+            "color_scheme": "background-2",
             "product": "bread",
             "color_scheme1": ""
           }
         },
-        "quote_hYziN7": {
+        "quote_9VJQwW": {
           "type": "quote",
           "settings": {
             "rev_title": "",
@@ -656,12 +656,12 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "",
+            "color_scheme": "background-2",
             "product": "bread",
             "color_scheme1": ""
           }
         },
-        "quote_WHDbmM": {
+        "quote_XD9EH6": {
           "type": "quote",
           "settings": {
             "rev_title": "",
@@ -671,12 +671,12 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "",
+            "color_scheme": "background-2",
             "product": "bread",
             "color_scheme1": ""
           }
         },
-        "quote_rHBRMa": {
+        "quote_rDqac9": {
           "type": "quote",
           "settings": {
             "rev_title": "",
@@ -686,7 +686,7 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "",
+            "color_scheme": "background-2",
             "product": "bread",
             "color_scheme1": ""
           }
@@ -694,9 +694,9 @@
       },
       "block_order": [
         "quote_zCck8d",
-        "quote_hYziN7",
-        "quote_WHDbmM",
-        "quote_rHBRMa"
+        "quote_9VJQwW",
+        "quote_XD9EH6",
+        "quote_rDqac9"
       ],
       "settings": {
         "color_scheme": "",
@@ -716,14 +716,14 @@
         "hide_auth_img": false,
         "icon_quote": false,
         "quote_color": "#000000",
-        "display_review": false,
+        "display_review": true,
         "display_review_text": false,
         "star_ratingclr": "#000000",
         "border_around_product": false,
         "border_productimg": false,
         "productimg_color": "#dcdcdc",
         "product_corner": "circle",
-        "border_sep": false,
+        "border_sep": true,
         "product_position": "bottom",
         "swipe_on_mobile": true,
         "padding_top": 60,
