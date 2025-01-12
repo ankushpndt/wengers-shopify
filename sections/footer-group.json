@@ -40,12 +40,12 @@
       ],
       "settings": {
         "full_width": true,
-        "image_overlay_opacity": 20,
+        "image_overlay_opacity": 0,
         "image_height": "adapt-image",
         "desktop_content_position": "bottom-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
-        "color_scheme": "scheme-abe3bc68-5409-41dd-abcf-8f9ac474947a",
+        "color_scheme": "inverse",
         "mobile_content_alignment": "left",
         "padding_top": 56,
         "padding_bottom": 0
