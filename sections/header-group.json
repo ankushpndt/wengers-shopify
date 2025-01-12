@@ -29,6 +29,26 @@
             "card_color_scheme": "inverse"
           }
         },
+        "megamenu_gallery_FWwgwY": {
+          "type": "megamenu-gallery",
+          "settings": {
+            "menuname": "Items",
+            "showsubmenu": true,
+            "image_ratio": "adapt",
+            "wb1_img": "shopify://shop_images/Cookie.jpg",
+            "wb1_text": "cookie",
+            "wb1_link": "shopify://products/cookie",
+            "wb2_img": "shopify://shop_images/Confectionery.jpg",
+            "wb2_text": "Confectionary",
+            "wb2_link": "shopify://products/confectionery",
+            "wb3_img": "shopify://shop_images/christmas.jpg",
+            "wb3_text": "Christmas",
+            "wb3_link": "shopify://products/christmas",
+            "wb4_img": "shopify://shop_images/chocolate.jpg",
+            "wb4_text": "Chocolate",
+            "wb4_link": "shopify://products/chocolate"
+          }
+        },
         "megamenu_product_b6HMEg": {
           "type": "megamenu-product",
           "settings": {
@@ -47,6 +67,7 @@
       },
       "block_order": [
         "megamenu_product_bdinXy",
+        "megamenu_gallery_FWwgwY",
         "megamenu_product_b6HMEg"
       ],
       "settings": {
