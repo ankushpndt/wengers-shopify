@@ -374,7 +374,7 @@
         "banner_heading_size": "h1",
         "sub_heading": "Wenger's",
         "button_label": "Buy Now",
-        "button_link": "",
+        "button_link": "shopify://products/cake",
         "link_window": true,
         "button_style_secondary": "solid",
         "content_position": "middle",
@@ -405,7 +405,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Watch Video",
-            "button_link_1": "",
+            "button_link_1": "https://www.youtube.com/watch?v=FPE0BK8jkLI",
             "link_window": true,
             "view_all_style": "solid"
           }
