@@ -646,69 +646,57 @@
             "color_scheme1": ""
           }
         },
-        "quote_kiGpJE": {
+        "quote_hYziN7": {
           "type": "quote",
           "settings": {
-            "rev_title": "Heading",
+            "rev_title": "",
             "star_rating": 5,
             "author_image_det": true,
+            "image": "shopify://shop_images/3_2cf40d68-6f8f-42a7-94c0-1ff6dafcd7c7.webp",
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
+            "author": "John Smith",
+            "authorsub": "Product Manager",
             "color_scheme": "",
-            "product": "",
+            "product": "bread",
             "color_scheme1": ""
           }
         },
-        "quote_RkhG4U": {
+        "quote_WHDbmM": {
           "type": "quote",
           "settings": {
-            "rev_title": "Heading",
+            "rev_title": "",
             "star_rating": 5,
             "author_image_det": true,
+            "image": "shopify://shop_images/3_2cf40d68-6f8f-42a7-94c0-1ff6dafcd7c7.webp",
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
+            "author": "John Smith",
+            "authorsub": "Product Manager",
             "color_scheme": "",
-            "product": "",
+            "product": "bread",
             "color_scheme1": ""
           }
         },
-        "quote_AK8YNK": {
+        "quote_rHBRMa": {
           "type": "quote",
           "settings": {
-            "rev_title": "Heading",
+            "rev_title": "",
             "star_rating": 5,
             "author_image_det": true,
+            "image": "shopify://shop_images/3_2cf40d68-6f8f-42a7-94c0-1ff6dafcd7c7.webp",
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
+            "author": "John Smith",
+            "authorsub": "Product Manager",
             "color_scheme": "",
-            "product": "",
-            "color_scheme1": ""
-          }
-        },
-        "quote_9U88LF": {
-          "type": "quote",
-          "settings": {
-            "rev_title": "Heading",
-            "star_rating": 5,
-            "author_image_det": true,
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author name",
-            "authorsub": "Author position",
-            "color_scheme": "",
-            "product": "",
+            "product": "bread",
             "color_scheme1": ""
           }
         }
       },
       "block_order": [
         "quote_zCck8d",
-        "quote_kiGpJE",
-        "quote_RkhG4U",
-        "quote_AK8YNK",
-        "quote_9U88LF"
+        "quote_hYziN7",
+        "quote_WHDbmM",
+        "quote_rHBRMa"
       ],
       "settings": {
         "color_scheme": "",
