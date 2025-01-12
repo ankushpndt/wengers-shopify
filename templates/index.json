@@ -616,7 +616,7 @@
         "heading_position": "left",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 4,
+        "columns_desktop": 5,
         "enable_desktop_slider": true,
         "column_alignment": "left",
         "button_label": "View all",
