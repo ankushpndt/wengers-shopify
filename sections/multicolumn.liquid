@@ -1,6 +1,61 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
+{% comment %} video {% endcomment %}
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .wbvideo_content.content-{{ section.id }} h3, .wbvideo_content.content-{{ section.id }} h3 a{
+      color: {{ section.settings.color_video_text }};
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign video_id = section.settings.video.id | default: section.settings.video_url.id
+  assign video_alt = section.settings.video.alt | default: section.settings.description
+  assign alt = 'sections.video.load_video' | t: description: video_alt | escape
+  assign poster = section.settings.video.preview_image | default: section.settings.cover_image
+
+  if section.settings.video != null
+    assign ratio_diff = section.settings.video.aspect_ratio | minus: poster.aspect_ratio | abs
+    if ratio_diff < 0.01 and ratio_diff > 0
+      assign fix_ratio = true
+    endif
+  endif
+
+  assign controls = 0
+  if section.settings.enable_control == true
+    assign controls = 1
+  endif
+
+  assign muted = 0
+  if section.settings.enable_mute == true
+    assign muted = 1
+  endif
+-%}
+
+{%- capture sizes -%}
+    {% if section.settings.full_width -%}
+        100vw
+    {%- else -%}
+        (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 768px)
+        calc(100vw - 10rem), 100vw
+    {%- endif %}
+{%- endcapture -%}
+{% comment %} videoend {% endcomment %}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
@@ -152,6 +207,255 @@
                       muted: false,
                       style: 'height:100%;width:100%;max-width:100%'
                   }}
+                  <div class="video-section-wrapper">
+                    {% if section.settings.auto_play_video != true %}
+                      <deferred-media
+                        class="video-section__media video-ratio-{{ section.settings.video_ratio }} deferred-media no-js-hidden global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover {% endif %}"
+                        data-media-id="{{ video_id }}"
+                        {% if poster != null %}
+                          style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+                        {% endif %}
+                      >
+                        <button
+                          id="Deferred-Poster-Modal-{{ video_id }}"
+                          class="video-section__poster media deferred-media__poster media--landscape"
+                          type="button"
+                        >
+                          {%- if poster != null -%}
+                            {{
+                              poster
+                              | image_url: width: 3840
+                              | image_tag:
+                                loading: 'lazy',
+                                sizes: sizes,
+                                widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                                alt: alt
+                            }}
+                          {%- else -%}
+                            {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                          {%- endif -%}
+                
+                          <div class="wbvideo_content content-{{ section.id }}">
+                            <div>
+                              {% if section.settings.vid_heading != blank %}
+                                <h3>{{ section.settings.vid_heading }}</h3>
+                              {% endif %}
+                              {% if section.settings.show_play_btn == true %}
+                                <span class="deferred-media__poster-button motion-reduce {% if section.settings.play_image != blank %}video_icon_img{% endif %}">
+                                  {% if section.settings.play_image != blank %}
+                                    <img
+                                      srcset=" {{ section.settings.play_image | image_url: width: 120 }} 120w"
+                                      src="{{ section.settings.play_image | image_url: width: 120 }}"
+                                      sizes="
+                                        (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px,
+                                        (min-width: 768px) calc(100vw - 10rem),
+                                        calc(100vw - 3rem)
+                                      "
+                                      alt="{{ section.settings.play_image.alt }}"
+                                      width="{{ section.settings.play_image.width }}"
+                                      height="{{ section.settings.play_image.height | divided_by: section.settings.play_image.aspect_ratio | ceil }}"
+                                      loading="lazy"
+                                      class="motion-reduce"
+                                    >
+                                  {% else %}
+                                    {%- render 'icon-play' -%}
+                                  {% endif %}
+                                </span>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </button>
+                        <template>
+                          {%- if section.settings.video == null and section.settings.video_url != null -%}
+                            {%- liquid
+                              assign loop = ''
+                              if section.settings.enable_video_looping
+                                assign loop = '&loop=1&playlist=' | append: video_id
+                              endif
+                            -%}
+                
+                            {%- if section.settings.video_url.type == 'youtube' -%}
+                              <iframe
+                                src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute={{ muted }}&controls={{ controls }}&modestbranding=1&playsinline=1&rel=0&enablejsapi=1{{ loop }}"
+                                class="js-youtube"
+                                title="{{ section.settings.description | escape }}"
+                                frameborder="0"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen
+                              ></iframe>
+                            {%- else -%}
+                              <iframe
+                                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                                class="js-vimeo"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen
+                                title="{{ section.settings.description | escape }}"
+                              ></iframe>
+                            {%- endif -%}
+                          {%- else -%}
+                            {{
+                              section.settings.video
+                              | video_tag:
+                                image_size: '1100x',
+                                autoplay: true,
+                                loop: section.settings.enable_video_looping,
+                                muted: section.settings.enable_mute,
+                                controls: section.settings.enable_control
+                            }}
+                          {%- endif -%}
+                        </template>
+                      </deferred-media>
+                    {% else %}
+                      <deferred-media
+                        class="video-section__media video-ratio-{{ section.settings.video_ratio }} deferred-media no-js-hidden gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %} {% if fix_ratio %} media-fit-cover {% endif %}"
+                        data-media-id="{{ video_id }}"
+                        {% if poster != null %}
+                          style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+                        {% endif %}
+                      >
+                        {%- if section.settings.video_url == null -%}
+                          <button
+                            id="Deferred-Poster-Modal-{{ video_id }}"
+                            class="video-section__poster media deferred-media__poster media--landscape"
+                            type="button"
+                            aria-label="{{ alt }}"
+                          >
+                            {%- if poster != null -%}
+                              {{
+                                poster
+                                | image_url: width: 3840
+                                | image_tag:
+                                  loading: 'lazy',
+                                  sizes: sizes,
+                                  widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                                  alt: alt
+                              }}
+                            {%- else -%}
+                              {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                            {%- endif -%}
+                          </button>
+                        {% endif %}
+                        {%- if section.settings.video == null and section.settings.video_url != null -%}
+                          {%- liquid
+                            assign loop = ''
+                            if section.settings.enable_video_looping
+                              assign loop = '&loop=1&playlist=' | append: video_id
+                            endif
+                          -%}
+                
+                          {%- if section.settings.video_url.type == 'youtube' -%}
+                            <iframe
+                              src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&color=white&controls={{ controls }}&modestbranding=1&playsinline=1&rel=0&enablejsapi=1{{ loop }}"
+                              title="YouTube video player"
+                              frameborder="0"
+                              class="js-youtube"
+                              allow="autoplay;"
+                              width="100vw"
+                              height="100vh"
+                              title="{{ section.settings.description | escape }}"
+                            ></iframe>
+                          {%- else -%}
+                            <iframe
+                              src="https://player.vimeo.com/video/{{ video_id }}?muted={{ muted }}&title=0&byline=0&portrait=0&transparent=0&autoplay=1"
+                              frameborder="0"
+                              webkitallowfullscreen=""
+                              mozallowfullscreen=""
+                              allowfullscreen=""
+                              width="100vw"
+                              height="100vh"
+                              data-ready="true"
+                              title="{{ section.settings.description | escape }}"
+                            ></iframe>
+                          {%- endif -%}
+                        {%- else -%}
+                          {{
+                            section.settings.video
+                            | video_tag:
+                              image_size: '1100x',
+                              autoplay: true,
+                              loop: section.settings.enable_video_looping,
+                              muted: section.settings.enable_mute,
+                              controls: section.settings.enable_control
+                          }}
+                        {%- endif -%}
+                
+                        {% comment %} comment for autoplay console {% endcomment %}
+                        {% comment %}
+                          <script>
+                          document.addEventListener("DOMContentLoaded", function() {
+                            const videoSection = document.querySelector(".video-section");
+                            const video = videoSection.querySelector("iframe");
+                            const observer = new IntersectionObserver(entries => {
+                              entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                  video.src = video.src + "&autoplay=1";
+                                } else {
+                                  video.src = video.src.replace("&autoplay=1", "");
+                                }
+                              });
+                            });
+                            observer.observe(videoSection);
+                          });
+                          </script>
+                        {% endcomment %}
+                      </deferred-media>
+                    {% endif %}
+                
+                    {% if section.blocks.size > 0 %}
+                      <div class="videotext banner__content video_banner_box banner__content--{{ section.settings.desktop_content_position }} banner--content-align-{{ section.settings.desktop_content_alignment }} content-container--full-width-mobile">
+                        <div class="banner__box{% if section.settings.show_text_box == true %} content-container{% endif %} color-{{ section.settings.block_color_scheme }} {% if section.settings.show_text_box == false %}banner--desktop-transparent{% endif %}">
+                          <div class="content__wrapper">
+                            {%- for block in section.blocks -%}
+                              {% if block.settings.show_close_btn == true %}
+                                <div class="banner-content-remove">{% render 'icon-close' %}</div>
+                              {% endif %}
+                              {%- case block.type -%}
+                                {%- when 'heading' -%}
+                                  {% if block.settings.subtitle != blank %}
+                                    <h3
+                                      class="banner__heading inline-richtext {{ block.settings.subtitle_size }}"
+                                      {{ block.shopify_attributes }}
+                                    >
+                                      {{ block.settings.subtitle }}
+                                    </h3>
+                                  {% endif %}
+                                  {% if block.settings.heading != blank %}
+                                    <h3
+                                      class="banner__heading inline-richtext {{ block.settings.heading_size }}"
+                                      {{ block.shopify_attributes }}
+                                    >
+                                      {{ block.settings.heading }}
+                                    </h3>
+                                  {% endif %}
+                                {%- when 'buttons' -%}
+                                  {% if block.settings.button_label_1 != blank %}
+                                    <div
+                                      class="banner__buttons{% if block.settings.button_label_1 != blank %} banner__buttons--multiple{% endif %}"
+                                      {{ block.shopify_attributes }}
+                                    >
+                                      {%- if block.settings.button_label_1 != blank -%}
+                                        <a
+                                          {% if block.settings.button_link_1 == blank %}
+                                            role="link" aria-disabled="true"
+                                          {% else %}
+                                            href="{{ block.settings.button_link_1 }}"
+                                          {% endif %}
+                                          {% if block.settings.link_window %}
+                                            target="_blank"
+                                          {% endif %}
+                                          class="{% if block.settings.view_all_style == 'link' %} link underlined-link{% elsif block.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                                          ><span>{{ block.settings.button_label_1 | escape }}</span></a
+                                        >
+                                      {%- endif -%}
+                                    </div>
+                                  {% endif %}
+                              {%- endcase -%}
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
                 {%- endif -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -273,6 +577,255 @@
                       muted: false,
                       style: 'height:100%;width:100%;max-width:100%'
                   }}
+                  <div class="video-section-wrapper">
+                    {% if section.settings.auto_play_video != true %}
+                      <deferred-media
+                        class="video-section__media video-ratio-{{ section.settings.video_ratio }} deferred-media no-js-hidden global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover {% endif %}"
+                        data-media-id="{{ video_id }}"
+                        {% if poster != null %}
+                          style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+                        {% endif %}
+                      >
+                        <button
+                          id="Deferred-Poster-Modal-{{ video_id }}"
+                          class="video-section__poster media deferred-media__poster media--landscape"
+                          type="button"
+                        >
+                          {%- if poster != null -%}
+                            {{
+                              poster
+                              | image_url: width: 3840
+                              | image_tag:
+                                loading: 'lazy',
+                                sizes: sizes,
+                                widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                                alt: alt
+                            }}
+                          {%- else -%}
+                            {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                          {%- endif -%}
+                
+                          <div class="wbvideo_content content-{{ section.id }}">
+                            <div>
+                              {% if section.settings.vid_heading != blank %}
+                                <h3>{{ section.settings.vid_heading }}</h3>
+                              {% endif %}
+                              {% if section.settings.show_play_btn == true %}
+                                <span class="deferred-media__poster-button motion-reduce {% if section.settings.play_image != blank %}video_icon_img{% endif %}">
+                                  {% if section.settings.play_image != blank %}
+                                    <img
+                                      srcset=" {{ section.settings.play_image | image_url: width: 120 }} 120w"
+                                      src="{{ section.settings.play_image | image_url: width: 120 }}"
+                                      sizes="
+                                        (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px,
+                                        (min-width: 768px) calc(100vw - 10rem),
+                                        calc(100vw - 3rem)
+                                      "
+                                      alt="{{ section.settings.play_image.alt }}"
+                                      width="{{ section.settings.play_image.width }}"
+                                      height="{{ section.settings.play_image.height | divided_by: section.settings.play_image.aspect_ratio | ceil }}"
+                                      loading="lazy"
+                                      class="motion-reduce"
+                                    >
+                                  {% else %}
+                                    {%- render 'icon-play' -%}
+                                  {% endif %}
+                                </span>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </button>
+                        <template>
+                          {%- if section.settings.video == null and section.settings.video_url != null -%}
+                            {%- liquid
+                              assign loop = ''
+                              if section.settings.enable_video_looping
+                                assign loop = '&loop=1&playlist=' | append: video_id
+                              endif
+                            -%}
+                
+                            {%- if section.settings.video_url.type == 'youtube' -%}
+                              <iframe
+                                src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute={{ muted }}&controls={{ controls }}&modestbranding=1&playsinline=1&rel=0&enablejsapi=1{{ loop }}"
+                                class="js-youtube"
+                                title="{{ section.settings.description | escape }}"
+                                frameborder="0"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen
+                              ></iframe>
+                            {%- else -%}
+                              <iframe
+                                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                                class="js-vimeo"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen
+                                title="{{ section.settings.description | escape }}"
+                              ></iframe>
+                            {%- endif -%}
+                          {%- else -%}
+                            {{
+                              section.settings.video
+                              | video_tag:
+                                image_size: '1100x',
+                                autoplay: true,
+                                loop: section.settings.enable_video_looping,
+                                muted: section.settings.enable_mute,
+                                controls: section.settings.enable_control
+                            }}
+                          {%- endif -%}
+                        </template>
+                      </deferred-media>
+                    {% else %}
+                      <deferred-media
+                        class="video-section__media video-ratio-{{ section.settings.video_ratio }} deferred-media no-js-hidden gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %} {% if fix_ratio %} media-fit-cover {% endif %}"
+                        data-media-id="{{ video_id }}"
+                        {% if poster != null %}
+                          style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+                        {% endif %}
+                      >
+                        {%- if section.settings.video_url == null -%}
+                          <button
+                            id="Deferred-Poster-Modal-{{ video_id }}"
+                            class="video-section__poster media deferred-media__poster media--landscape"
+                            type="button"
+                            aria-label="{{ alt }}"
+                          >
+                            {%- if poster != null -%}
+                              {{
+                                poster
+                                | image_url: width: 3840
+                                | image_tag:
+                                  loading: 'lazy',
+                                  sizes: sizes,
+                                  widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                                  alt: alt
+                              }}
+                            {%- else -%}
+                              {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                            {%- endif -%}
+                          </button>
+                        {% endif %}
+                        {%- if section.settings.video == null and section.settings.video_url != null -%}
+                          {%- liquid
+                            assign loop = ''
+                            if section.settings.enable_video_looping
+                              assign loop = '&loop=1&playlist=' | append: video_id
+                            endif
+                          -%}
+                
+                          {%- if section.settings.video_url.type == 'youtube' -%}
+                            <iframe
+                              src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&color=white&controls={{ controls }}&modestbranding=1&playsinline=1&rel=0&enablejsapi=1{{ loop }}"
+                              title="YouTube video player"
+                              frameborder="0"
+                              class="js-youtube"
+                              allow="autoplay;"
+                              width="100vw"
+                              height="100vh"
+                              title="{{ section.settings.description | escape }}"
+                            ></iframe>
+                          {%- else -%}
+                            <iframe
+                              src="https://player.vimeo.com/video/{{ video_id }}?muted={{ muted }}&title=0&byline=0&portrait=0&transparent=0&autoplay=1"
+                              frameborder="0"
+                              webkitallowfullscreen=""
+                              mozallowfullscreen=""
+                              allowfullscreen=""
+                              width="100vw"
+                              height="100vh"
+                              data-ready="true"
+                              title="{{ section.settings.description | escape }}"
+                            ></iframe>
+                          {%- endif -%}
+                        {%- else -%}
+                          {{
+                            section.settings.video
+                            | video_tag:
+                              image_size: '1100x',
+                              autoplay: true,
+                              loop: section.settings.enable_video_looping,
+                              muted: section.settings.enable_mute,
+                              controls: section.settings.enable_control
+                          }}
+                        {%- endif -%}
+                
+                        {% comment %} comment for autoplay console {% endcomment %}
+                        {% comment %}
+                          <script>
+                          document.addEventListener("DOMContentLoaded", function() {
+                            const videoSection = document.querySelector(".video-section");
+                            const video = videoSection.querySelector("iframe");
+                            const observer = new IntersectionObserver(entries => {
+                              entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                  video.src = video.src + "&autoplay=1";
+                                } else {
+                                  video.src = video.src.replace("&autoplay=1", "");
+                                }
+                              });
+                            });
+                            observer.observe(videoSection);
+                          });
+                          </script>
+                        {% endcomment %}
+                      </deferred-media>
+                    {% endif %}
+                
+                    {% if section.blocks.size > 0 %}
+                      <div class="videotext banner__content video_banner_box banner__content--{{ section.settings.desktop_content_position }} banner--content-align-{{ section.settings.desktop_content_alignment }} content-container--full-width-mobile">
+                        <div class="banner__box{% if section.settings.show_text_box == true %} content-container{% endif %} color-{{ section.settings.block_color_scheme }} {% if section.settings.show_text_box == false %}banner--desktop-transparent{% endif %}">
+                          <div class="content__wrapper">
+                            {%- for block in section.blocks -%}
+                              {% if block.settings.show_close_btn == true %}
+                                <div class="banner-content-remove">{% render 'icon-close' %}</div>
+                              {% endif %}
+                              {%- case block.type -%}
+                                {%- when 'heading' -%}
+                                  {% if block.settings.subtitle != blank %}
+                                    <h3
+                                      class="banner__heading inline-richtext {{ block.settings.subtitle_size }}"
+                                      {{ block.shopify_attributes }}
+                                    >
+                                      {{ block.settings.subtitle }}
+                                    </h3>
+                                  {% endif %}
+                                  {% if block.settings.heading != blank %}
+                                    <h3
+                                      class="banner__heading inline-richtext {{ block.settings.heading_size }}"
+                                      {{ block.shopify_attributes }}
+                                    >
+                                      {{ block.settings.heading }}
+                                    </h3>
+                                  {% endif %}
+                                {%- when 'buttons' -%}
+                                  {% if block.settings.button_label_1 != blank %}
+                                    <div
+                                      class="banner__buttons{% if block.settings.button_label_1 != blank %} banner__buttons--multiple{% endif %}"
+                                      {{ block.shopify_attributes }}
+                                    >
+                                      {%- if block.settings.button_label_1 != blank -%}
+                                        <a
+                                          {% if block.settings.button_link_1 == blank %}
+                                            role="link" aria-disabled="true"
+                                          {% else %}
+                                            href="{{ block.settings.button_link_1 }}"
+                                          {% endif %}
+                                          {% if block.settings.link_window %}
+                                            target="_blank"
+                                          {% endif %}
+                                          class="{% if block.settings.view_all_style == 'link' %} link underlined-link{% elsif block.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                                          ><span>{{ block.settings.button_label_1 | escape }}</span></a
+                                        >
+                                      {%- endif -%}
+                                    </div>
+                                  {% endif %}
+                              {%- endcase -%}
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
                 {%- endif -%}
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
                   <a class="full-image-link" href="{{ block.settings.link }}"></a>
@@ -622,6 +1175,14 @@
           "type": "video",
           "id": "video",
           "label": "t:sections.multicolumn.blocks.column.settings.video.label"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "t:sections.video.settings.video_url.label",
+          "info": "t:sections.video.settings.video_url.info"
         },
         {
           "type": "select",
