@@ -48,27 +48,11 @@
             "wb4_text": "Chocolate",
             "wb4_link": "shopify://products/chocolate"
           }
-        },
-        "megamenu_product_b6HMEg": {
-          "type": "megamenu-product",
-          "settings": {
-            "menuname": "test",
-            "showsubmenu": true,
-            "collection": "frontpage",
-            "card_style": "standard",
-            "card_text_alignment": "left",
-            "image_ratio": "adapt",
-            "show_secondary_image": true,
-            "show_vendor": true,
-            "products_to_show": 5,
-            "card_color_scheme": "inverse"
-          }
         }
       },
       "block_order": [
         "megamenu_product_bdinXy",
-        "megamenu_gallery_FWwgwY",
-        "megamenu_product_b6HMEg"
+        "megamenu_gallery_FWwgwY"
       ],
       "settings": {
         "header_full": true,
