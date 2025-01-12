@@ -75,7 +75,7 @@
     .announcement--bar .global_headannunce {
         display: grid;
         grid-template-areas: "language-currency announcements social-icons";
-        grid-template-columns: 2fr 4fr auto;
+        grid-template-columns: 2fr 5fr auto;
         width: 100%;
         align-items: center;
     }
