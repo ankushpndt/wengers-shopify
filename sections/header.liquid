@@ -122,11 +122,11 @@
       width: 75%;
     }
   {%- endif -%}
-  /* @media screen and (min-width: 992px) {
+  @media screen and (min-width: 992px) {
     header-drawer.mobile-drawer {
       display: none;
     }
-  } */
+  }
 
   {%- if section.settings.menu == blank -%}
     @media screen and (min-width: 992px) {
@@ -140,12 +140,6 @@
   .header{
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
-  }
-
-  .header__leftpart{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
   }
 
   @media screen and (max-width: 991px) {
@@ -221,8 +215,7 @@
 <{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %}  class="{% if section.settings.transparent_header == true %} tranhead transparent_header{% endif %}  header-wrapper color-{{ section.settings.color_schemehead }} gradient dropm-menu {% if section.settings.border_bottom == true %} header-wrapper--border-bottom{% endif %} {% if section.settings.transparent_header == true and section.settings.trans_header_bg == true %} trans_head_bg{% endif %}" data-trans="{{  section.settings.transparent_header }}" data-trans_header_bg="{{  section.settings.trans_header_bg }}">
 <div  class="htop--{{ section.settings.logo_position }} {% if section.settings.header_full != true %}page-width {% else %}around_padding {% endif %}">
   <header class="header header--{{ section.settings.logo_position }} {% if section.settings.logo_position == 'middle-center' and section.settings.menu == blank %} search-full-width{% endif %} header--mobile-left{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if settings.wb_cartnumber == 'wb_shoptotal' or settings.wb_cartnumber == 'wb_shopqtytotal' %} wbcartbth{% endif %}">
-    <div class="header__leftpart">  
-    <header-drawer data-breakpoint="tablet" class="mobile-drawer">
+      <header-drawer data-breakpoint="tablet" class="mobile-drawer">
         <details id="Details-menu-drawer-container" class="menu-drawer-container">
           <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
             <span>
@@ -234,6 +227,7 @@
               <div class="mobile_menu_tab menu-drawer__inner-container">
                 <div class="menu-drawer__navigation-container">
                   <nav class="menu-drawer__navigation">
+
                     <div class="sticky-menu-drawer_links">
                       {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
                         <div class="menu-drawer__localization header__localization">
@@ -515,59 +509,7 @@
             </div>
         </details>
       </header-drawer>
-      {%- if section.settings.logo_position == 'top-center' -%}
-        <div class="leftpart_contact">
-        {%- for block in section.blocks -%}
-          {%- if block.settings.secmenu != blank -%}
-            <nav class="sec_mleft wbsecmenu header-bottom secondary-menu-{{ block.id }}{% if section.settings.menu == blank %} wbsecmenupad{% endif %}">
-              <ul class="list-menu list-menu--inline">
-              {%- for link in block.settings.secmenu.links -%}
-                  <li>
-                    <a href="{{ link.url }}" class="underline-remove">
-                      <span>{{ link.title | escape }}</span>
-                    </a>
-                  </li>
-              {%- endfor -%}
-              </ul>
-            </nav>
-          {%- endif -%}
-          {%- style -%}
-            .secondary-menu-{{ block.id }} ul li:first-child a{
-              color: {{ block.settings.first_color }};
-            }
-            @media (min-width: 992px) {
-              .page-index .transparent_header .wbsecmenu ul li a { 
-                color: rgba(var(--color-trans-text));
-              }
-              .page-index .transparent_header .wbsecmenu.secondary-menu-{{ block.id }} ul li:first-child a{
-                color: {{ block.settings.first_color }}; 
-              }
-            }
-          {%- endstyle -%}
-        {% endfor %}
-        
-        {%- if section.settings.display_contact == true -%}
-          <div class="cont_mleft">
-            <ul class="wbheader_cont">
-              <li><span class="multis-svg">{% render 'icon-allservice', icon: section.settings.contact_icon %}</span></li>
-              <li>
-                {%- if section.settings.contact_title != blank -%}
-                  <h2>{{ section.settings.contact_title }}</h2>
-                {%- endif -%}
-                {%- if section.settings.contact_text != blank -%}
-                  <p>
-                    {%- if section.settings.contact_link != blank -%}<a href="{{ section.settings.contact_link }}">{%- endif -%}
-                    {{ section.settings.contact_text }}
-                    {%- if section.settings.contact_link != blank -%}</a>{%- endif -%}
-                  </p>
-                {%- endif -%}
-              </li>
-            </ul>
-          </div>
-          {%- endif -%}
-          </div>
-        {%- endif -%}
-    </div>
+
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if section.settings.menu != blank -%}
         <desktop-webi-menu class="wbsimplemenuxs header-bottom" data-drop="mouseover">
@@ -695,6 +637,61 @@
         </desktop-webi-menu>
       {%- endif -%}
     {%- endif -%}
+
+
+    {%- if section.settings.logo_position == 'top-center' -%}
+      <div class="leftpart_contact">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.secmenu != blank -%}
+          <nav class="sec_mleft wbsecmenu header-bottom secondary-menu-{{ block.id }}{% if section.settings.menu == blank %} wbsecmenupad{% endif %}">
+            <ul class="list-menu list-menu--inline">
+            {%- for link in block.settings.secmenu.links -%}
+                <li>
+                  <a href="{{ link.url }}" class="underline-remove">
+                    <span>{{ link.title | escape }}</span>
+                  </a>
+                </li>
+            {%- endfor -%}
+            </ul>
+          </nav>
+        {%- endif -%}
+        {%- style -%}
+          .secondary-menu-{{ block.id }} ul li:first-child a{
+            color: {{ block.settings.first_color }};
+          }
+          @media (min-width: 992px) {
+            .page-index .transparent_header .wbsecmenu ul li a { 
+              color: rgba(var(--color-trans-text));
+            }
+            .page-index .transparent_header .wbsecmenu.secondary-menu-{{ block.id }} ul li:first-child a{
+              color: {{ block.settings.first_color }}; 
+            }
+          }
+        {%- endstyle -%}
+      {% endfor %}
+      
+      {%- if section.settings.display_contact == true -%}
+        <div class="cont_mleft">
+          <ul class="wbheader_cont">
+            <li><span class="multis-svg">{% render 'icon-allservice', icon: section.settings.contact_icon %}</span></li>
+            <li>
+              {%- if section.settings.contact_title != blank -%}
+                <h2>{{ section.settings.contact_title }}</h2>
+              {%- endif -%}
+              {%- if section.settings.contact_text != blank -%}
+                <p>
+                  {%- if section.settings.contact_link != blank -%}<a href="{{ section.settings.contact_link }}">{%- endif -%}
+                  {{ section.settings.contact_text }}
+                  {%- if section.settings.contact_link != blank -%}</a>{%- endif -%}
+                </p>
+              {%- endif -%}
+            </li>
+          </ul>
+        </div>
+        {%- endif -%}
+        </div>
+      {%- endif -%}
+
     
     {%- if request.page_type == 'index' -%}
       <h1 class="header__heading">
@@ -1226,6 +1223,162 @@
 
   </header>
 </div>
+
+{%- if section.settings.logo_position == 'top-left' or section.settings.logo_position == 'top-center' -%}
+  {% if section.settings.menu != blank or secondary__menu != blank %}
+    <div class="wbmenuup header__inline-menu" data-drop="mouseover"> 
+      <div class="wbmenubtm {% if section.settings.header_full != true %}page-width {% else %}around_padding{% endif %}">
+      
+        {%- if section.settings.menu != blank -%}
+          <desktop-webi-menu class="wbsimplemenuxs header-bottom badge_position" data-drop="mouseover">
+            <ul class="list-menu list-menu--inline wbmenu_js">
+            {%- for link in section.settings.menu.links -%}
+              {%- liquid 
+                assign assignsubmenu = true
+                assign displaymegamenu = false
+                assign blank_link = false
+                assign onlymenulink = false
+                for block in section.blocks
+                  assign case_title = block.settings.menuname | downcase
+                  assign lower_title = link.title | downcase
+                  if lower_title == case_title
+                      assign displaymegamenu = true
+                      if block.settings.showsubmenu == false
+                          assign assignsubmenu = false
+                          assign onlymenulink = true
+                      endif
+                      if link.links == blank
+                          assign blank_link = lower_title
+                      endif
+                  endif
+                endfor
+              -%}
+                <li class="menu_space">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'menu-badge' %}
+                  {% liquid
+                  assign badge_case_title = block.settings.badgemenuname | downcase
+                  %}
+                    {% if lower_title == badge_case_title %}
+                      {% if block.settings.badge.size > 0 %}<span class="menu_badge_center"><span class="menu_badge menu_badge--{{ block.id }}" style="background-color: {{ block.settings.badge_bg }}; color:{{ block.settings.badge_text }};">{{ block.settings.badge }}</span></span>{% endif %}
+                    {% endif %} 
+                    {% style %}
+                      .menu_badge--{{ block.id }}::before {
+                          border-bottom-color: {{ block.settings.badge_bg }};
+                      }
+                    {% endstyle %}
+                    {% endif %}
+                  {% endfor %}
+                  {%- if link.links != blank -%}
+                    <div>
+                      {% if onlymenulink %}
+                        <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                          <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                        </a>
+                      {% endif %}
+                      {% if assignsubmenu %}
+                        <div id="Details-HeaderMenu-{{ forloop.index }}" class="header-mega--menu">
+                          <div class="header__menu-item list-menu__item link focus-inset summary">
+                            <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                            {% render 'icon-caret' %}
+                          </div>
+                          <div id="HeaderMenu-MenuList-{{ forloop.index }}" class="menudrop_hover color-{{ section.settings.color__drop_menu }} gradient header__submenu {% if link.links.size < 4 and displaymegamenu == false %}hsmenucont{% endif %} list-menu list-menu--disclosure caption-large motion-reduce {% if link.links.size > 3 or displaymegamenu %}wbmenufull{% endif %}" tabindex="-1">
+                                  <div class="{% if section.settings.header_full != true %}container {% else %}around_padding{% endif %}">
+                                      <div class="row {% if link.levels == 1 %} mega-menu__list--condensed{% endif %}">
+                                          {%- for childlink in link.links -%}
+                                          <div class="{% if link.links.size == 1 %}col-12 {% elsif link.links.size == 2 %}col-6 {% elsif link.links.size == 3 %}col-4 {% else %}col-3 {% endif %}">
+                                              <div class="wbmenuinner">
+                                              <a href="{{ childlink.url }}" class="{% if childlink.links.size > 0 %}child_sub_menu {% endif %} header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                                {{ childlink.title | escape }}
+                                              </a>
+                                                <ul class="header__submenu list-menu motion-reduce">
+                                                  {%- for grandchildlink in childlink.links -%}
+                                                    <li>
+                                                      <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                                        {{ grandchildlink.title | escape }}
+                                                      </a>
+                                                    </li>
+                                                  {%- endfor -%}
+                                                </ul>
+                                                </div>
+                                              </div>
+                                          {%- endfor -%}
+                                      </div>
+                                  </div>
+                              {% render 'megamenu', blocks: section.blocks, title: link.title %}
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {%- else -%}
+                    {% if blank_link %}
+                      <div>
+                        {% if onlymenulink %}
+                            <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                              <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                            </a>
+                        {% endif %}
+                        {% if assignsubmenu %}
+                          <div id="Details-HeaderMenu-{{ forloop.index }}" class="header-mega--menu">
+                            <div class="header__menu-item list-menu__item link focus-inset summary">
+                              <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                                {% render 'icon-caret' %}
+                              </div>
+                              <div id="HeaderMenu-MenuList-{{ forloop.index }}" class="menudrop_hover color-{{ section.settings.color__drop_menu }} gradient header__submenu {% if link.links.size < 4 and displaymegamenu == false %}hsmenucont{% endif %} list-menu list-menu--disclosure caption-large motion-reduce {% if link.links.size > 3 or displaymegamenu %}wbmenufull{% endif %}" tabindex="-1">
+                              {% render 'megamenu', blocks: section.blocks, title: link.title %}
+                              </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% assign blank_link = false %}
+                    {% else %}
+                      <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                        <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                      </a>
+                    {% endif %}
+                  {%- endif -%}
+                </li>
+            {%- endfor -%}
+
+            </ul>
+          </desktop-webi-menu>
+        {%- endif -%}
+
+        {%- if section.settings.logo_position == 'top-left' -%}
+          {%- for block in section.blocks -%}
+            {%- if block.settings.secmenu != blank -%}
+              <nav class="wbsecmenu header-bottom secondary-menu-{{ block.id }} {% if section.settings.menu == blank %} wbsecmenupad{% endif %}">
+                <ul class="list-menu list-menu--inline">
+                {%- for link in block.settings.secmenu.links -%}
+                    <li>
+                      <a href="{{ link.url }}" class="underline-remove">
+                        <span>{{ link.title | escape }}</span>
+                      </a>
+                    </li>
+                {%- endfor -%}
+                </ul>
+              </nav>
+            {%- endif -%}
+            {%- style -%}
+              .secondary-menu-{{ block.id }} ul li:first-child a{
+                color: {{ block.settings.first_color }};
+              }
+              @media (min-width: 992px) {
+                .page-index .transparent_header .wbsecmenu ul li a { 
+                  color: rgba(var(--color-trans-text));
+                }
+                .page-index .transparent_header .wbsecmenu.secondary-menu-{{ block.id }} ul li:first-child a{
+                  color: {{ block.settings.first_color }}; 
+                }
+              }
+            {%- endstyle -%}
+          {% endfor %}
+        {%- endif -%}
+        
+      </div>
+    </div>
+  {% endif %}
+{%- endif -%}
 
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
