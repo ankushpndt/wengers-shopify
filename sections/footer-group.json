@@ -11,6 +11,95 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "newsletter_MaFtHU": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_9iCpai": {
+          "type": "heading",
+          "settings": {
+            "heading": "Newsletter heading",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_ywTHzg": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers.</p>",
+            "text_style": "body"
+          }
+        },
+        "email_form_Ky36rP": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_9iCpai",
+        "paragraph_ywTHzg",
+        "email_form_Ky36rP"
+      ],
+      "settings": {
+        "full_width": true,
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "scrolling_bar_diJX98": {
+      "type": "scrolling-bar",
+      "blocks": {
+        "text_EqU6Ej": {
+          "type": "text",
+          "settings": {
+            "icon": "chat",
+            "icon_width": 18,
+            "wb_marktext": "Fresh Cakes Daily!",
+            "upper_button": false,
+            "text_color": "#000000",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": "link"
+          }
+        },
+        "text_bq7eQV": {
+          "type": "text",
+          "settings": {
+            "icon": "chat",
+            "icon_width": 18,
+            "wb_marktext": "100% Authentic",
+            "upper_button": false,
+            "text_color": "#000000",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": "link"
+          }
+        }
+      },
+      "block_order": [
+        "text_EqU6Ej",
+        "text_bq7eQV"
+      ],
+      "settings": {
+        "top_bottom_border": true,
+        "border_color": "#777777",
+        "mark_space": 30,
+        "mark_speed": 30,
+        "marq_diection": "right_left",
+        "seprater": "dots",
+        "font_size": 18,
+        "text_padding_top": 10,
+        "text_padding_bottom": 10,
+        "card_color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -85,6 +174,8 @@
     }
   },
   "order": [
+    "newsletter_MaFtHU",
+    "scrolling_bar_diJX98",
     "footer"
   ]
 }
