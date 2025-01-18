@@ -73,7 +73,7 @@
         "footer_contact_no": "<p>+91-8384047514 +91-9354134477</p>",
         "show_social": true,
         "contactfollow": "Follow us",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "padding_top": 60,
         "padding_bottom": 60
       }
