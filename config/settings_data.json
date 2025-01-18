@@ -228,6 +228,20 @@
           "link_hover": "#333333",
           "shadow": "#121212"
         }
+      },
+      "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#661800",
+          "button": "#e73f00",
+          "button_label": "#ffffff",
+          "button_hover": "#333333",
+          "button_label_hover": "#ffffff",
+          "secondary_button_label": "#000000",
+          "link_hover": "#333333",
+          "shadow": "#121212"
+        }
       }
     }
   },
