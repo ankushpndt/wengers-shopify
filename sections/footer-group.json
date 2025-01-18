@@ -17,14 +17,14 @@
         "heading_9iCpai": {
           "type": "heading",
           "settings": {
-            "heading": "Newsletter heading",
-            "heading_size": "h1"
+            "heading": "Subscribe to us",
+            "heading_size": "h0"
           }
         },
         "paragraph_ywTHzg": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Share information about your brand with your customers.</p>",
+            "text": "<p>Be the first to know about exclusive offers.</p>",
             "text_style": "body"
           }
         },
@@ -42,9 +42,9 @@
         "full_width": true,
         "image_overlay_opacity": 0,
         "image_height": "small",
-        "desktop_content_position": "middle-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": true,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "",
         "mobile_content_alignment": "center",
         "padding_top": 36,
