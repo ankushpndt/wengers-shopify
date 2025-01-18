@@ -11,95 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "newsletter_UgVFxh": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_qecQ4Q": {
-          "type": "heading",
-          "settings": {
-            "heading": "Stay Updated",
-            "heading_size": "h0"
-          }
-        },
-        "paragraph_tcTz7z": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>",
-            "text_style": "body"
-          }
-        },
-        "email_form_L87jDm": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading_qecQ4Q",
-        "paragraph_tcTz7z",
-        "email_form_L87jDm"
-      ],
-      "settings": {
-        "full_width": true,
-        "image_overlay_opacity": 0,
-        "image_height": "adapt-image",
-        "desktop_content_position": "bottom-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "inverse",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "scrolling_bar_VtykLd": {
-      "type": "scrolling-bar",
-      "blocks": {
-        "text_UBfKhQ": {
-          "type": "text",
-          "settings": {
-            "icon": "chat",
-            "icon_width": 34,
-            "wb_marktext": "100% Authentic",
-            "upper_button": false,
-            "text_color": "#000000",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": "link"
-          }
-        },
-        "text_VfUMGh": {
-          "type": "text",
-          "settings": {
-            "icon": "serving_dish",
-            "icon_width": 36,
-            "wb_marktext": "Fresh Cakes Daily!",
-            "upper_button": false,
-            "text_color": "#000000",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": "link"
-          }
-        }
-      },
-      "block_order": [
-        "text_UBfKhQ",
-        "text_VfUMGh"
-      ],
-      "settings": {
-        "top_bottom_border": true,
-        "border_color": "#777777",
-        "mark_space": 30,
-        "mark_speed": 8,
-        "marq_diection": "right_left",
-        "seprater": "dots",
-        "font_size": 40,
-        "text_padding_top": 10,
-        "text_padding_bottom": 10,
-        "card_color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -174,8 +85,6 @@
     }
   },
   "order": [
-    "newsletter_UgVFxh",
-    "scrolling_bar_VtykLd",
     "footer"
   ]
 }
