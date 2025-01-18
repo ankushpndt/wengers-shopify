@@ -154,7 +154,7 @@
   margin-bottom: 10px;
 }
 .contacttxtmain p {
-  /* max-width: 270px; */
+  max-width: 270px;
   padding: 0;
   margin: 0;
 }
@@ -222,4 +222,25 @@
     margin-right: 0;
     display: block;
   }
+}
+
+.contact__button button {
+  background-color: #CA9A5C;
+  border: 1px solid transparent;
+}
+
+.p-10 {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.max-w-center{
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.contact-ihead div {
+  display: flex;
+  flex-direction: column;
 }

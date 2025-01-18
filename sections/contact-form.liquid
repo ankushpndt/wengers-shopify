@@ -2,26 +2,26 @@
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-.section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
-}
-@media screen and (max-width: 991px) {
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   }
-}
+  @media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  <div class="page-width">
+  <div class="page-width max-w-center">
     {%- unless section.settings.title == blank and section.settings.description == blank -%}
       <div class="heading-top">
         <div class="heading inline-richtext">
-          {%- if section.settings.title != blank -%} 
+          {%- if section.settings.title != blank -%}
             <h2 class="{{ section.settings.heading_size }}">
-                {{ section.settings.title }}
+              {{ section.settings.title }}
             </h2>
           {%- endif %}
           {%- if section.settings.description != blank -%}
@@ -58,224 +58,224 @@
           {%- endif -%}
           <div class="contact__fields">
           </div>
-            {% for block in section.blocks %}
-              {% case block.type %}
-                {% when 'text' %}
-                  <label class="" for="ContactForm-name">{{- block.settings.field_label -}}</label>
-                  <div class="field">
-                    <input
-                      class="field__input"
-                      autocomplete="name"
-                      type="text"
-                      id="ContactForm-name"
-                      name="contact[{{ 'templates.contact.form.name' | t }}]"
-                      value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                      placeholder="{{ 'templates.contact.form.name' | t }}"
-                      {% if block.settings.required_field %}
-                        required
-                      {% endif %}
-                    >
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'text' %}
+                <label class="" for="ContactForm-name">{{- block.settings.field_label -}}</label>
+                <div class="field">
+                  <input
+                    class="field__input"
+                    autocomplete="name"
+                    type="text"
+                    id="ContactForm-name"
+                    name="contact[{{ 'templates.contact.form.name' | t }}]"
+                    value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                    placeholder="{{ 'templates.contact.form.name' | t }}"
+                    {% if block.settings.required_field %}
+                      required
+                    {% endif %}
+                  >
                     <label class="field__label" for="ContactForm-name">{{- block.settings.label_placeholder -}}
                     {% if block.settings.required_field %}
                       <span aria-hidden="true" class="required_star">*</span>
                     {% endif %}
-                    </label>
-                  </div>
-          
-                {% when 'email' %}
-                  <label class="" for="ContactForm-email">{{- block.settings.field_label -}}</label>
-                  <div class="field field--with-error">
-                    <input
-                      autocomplete="email"
-                      type="email"
-                      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                      id="ContactForm-email"
-                      class="field__input"
-                      name="contact[email]"
-                      spellcheck="false"
-                      autocapitalize="off"
-                      value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                      aria-required="true"
-                      {% if form.errors contains 'email' %}
-                        aria-invalid="true"
-                        aria-describedby="ContactForm-email-error"
-                      {% endif %}
-                      placeholder="{{ 'templates.contact.form.email' | t }}"
-                      {% if block.settings.required_field %}
-                        required
-                      {% endif %}
+                  </label>
+                </div>
 
-                    >
-                    <label class="field__label" for="ContactForm-email">
-                      {{- block.settings.label_placeholder -}}
-                      {% if block.settings.required_field %}
-                        <span aria-hidden="true" class="required_star">*</span>
-                      {% endif %}
-                      </label>
-                  </div>
-                  {%- if form.errors contains 'email' and block.settings.required_field -%}
-                    <small class="contact__field-error" id="ContactForm-email-error">
-                      <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-                      <span class="form__message">
-                        {%- render 'icon-error' -%}
-                        {{- form.errors.translated_fields.email | capitalize }}
-                        {{ form.errors.messages.email -}}
-                      </span>
-                    </small>
-                  {%- endif -%}
-                {% when 'phone' %}
-                  <label class="" for="ContactForm-phone">{{- block.settings.field_label -}}</label>
-                  <div class="field">
-                    <input
-                      type="tel"
-                      id="ContactForm-phone"
-                      class="field__input"
-                      autocomplete="tel"
-                      name="contact[{{ 'templates.contact.form.phone' | t }}]"
-                      pattern="[0-9\-]*"
-                      value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-                      placeholder="{{ 'templates.contact.form.phone' | t }}"
-                      {% if block.settings.required_field %}
-                        required
-                      {% endif %}
+              {% when 'email' %}
+                <label class="" for="ContactForm-email">{{- block.settings.field_label -}}</label>
+                <div class="field field--with-error">
+                  <input
+                    autocomplete="email"
+                    type="email"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                    id="ContactForm-email"
+                    class="field__input"
+                    name="contact[email]"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                    aria-required="true"
+                    {% if form.errors contains 'email' %}
+                      aria-invalid="true"
+                      aria-describedby="ContactForm-email-error"
+                    {% endif %}
+                    placeholder="{{ 'templates.contact.form.email' | t }}"
+                    {% if block.settings.required_field %}
+                      required
+                    {% endif %}
 
-                    >
+                  >
+                  <label class="field__label" for="ContactForm-email">
+                    {{- block.settings.label_placeholder -}}
+                    {% if block.settings.required_field %}
+                      <span aria-hidden="true" class="required_star">*</span>
+                    {% endif %}
+                  </label>
+                </div>
+                {%- if form.errors contains 'email' and block.settings.required_field -%}
+                  <small class="contact__field-error" id="ContactForm-email-error">
+                    <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                    <span class="form__message">
+                      {%- render 'icon-error' -%}
+                      {{- form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email -}}
+                    </span>
+                  </small>
+                {%- endif -%}
+              {% when 'phone' %}
+                <label class="" for="ContactForm-phone">{{- block.settings.field_label -}}</label>
+                <div class="field">
+                  <input
+                    type="tel"
+                    id="ContactForm-phone"
+                    class="field__input"
+                    autocomplete="tel"
+                    name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                    pattern="[0-9\-]*"
+                    value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                    placeholder="{{ 'templates.contact.form.phone' | t }}"
+                    {% if block.settings.required_field %}
+                      required
+                    {% endif %}
+
+                  >
                     <label class="field__label" for="ContactForm-phone">{{- block.settings.label_placeholder -}}
                     {% if block.settings.required_field %}
                       <span aria-hidden="true" class="required_star">*</span>
                     {% endif %}
-                   </label>
-                  </div>
-                {% when 'message' %}
-                  <label class="" for="ContactForm-body">{{- block.settings.field_label -}}</label>
-                  <div class="field">
-                    <textarea
-                      rows="10"
-                      id="ContactForm-body"
-                      class="text-area field__input"
-                      name="contact[{{ 'templates.contact.form.comment' | t }}]"
-                      placeholder="{{ 'templates.contact.form.comment' | t }}"
-                      {% if block.settings.required_field %}
-                        required
-                      {% endif %}
+                  </label>
+                </div>
+              {% when 'message' %}
+                <label class="" for="ContactForm-body">{{- block.settings.field_label -}}</label>
+                <div class="field">
+                  <textarea
+                    rows="10"
+                    id="ContactForm-body"
+                    class="text-area field__input"
+                    name="contact[{{ 'templates.contact.form.comment' | t }}]"
+                    placeholder="{{ 'templates.contact.form.comment' | t }}"
+                    {% if block.settings.required_field %}
+                      required
+                    {% endif %}
 
-                    >
+                  >
                       {{- form.body -}}
                     </textarea>
-                    <label class="form__label field__label" for="ContactForm-body">
-                      {{- block.settings.label_placeholder -}}
+                  <label class="form__label field__label" for="ContactForm-body">
+                    {{- block.settings.label_placeholder -}}
                     {% if block.settings.required_field %}
                       <span aria-hidden="true" class="required_star">*</span>
                     {% endif %}
-                      </label>
-                  </div>
-                {% when 'checkbox' %}
-                  {% if block.settings.field_label != blank %}
-                    <label for="ContactForm-checkbox">{{- block.settings.field_label -}}</label>
-                  {% endif %}
-                  {% if block.settings.required_field %}
-                    <span aria-hidden="true" class="required_star">*</span>
-                  {% endif %}
-                  <div class="field_checkbox">
-                    {% if block.settings.first_option != blank %}
+                  </label>
+                </div>
+              {% when 'checkbox' %}
+                {% if block.settings.field_label != blank %}
+                  <label for="ContactForm-checkbox">{{- block.settings.field_label -}}</label>
+                {% endif %}
+                {% if block.settings.required_field %}
+                  <span aria-hidden="true" class="required_star">*</span>
+                {% endif %}
+                <div class="field_checkbox">
+                  {% if block.settings.first_option != blank %}
                       <input type="checkbox" id="{{ block.settings.first_option }}" name="contact[{{- block.settings.first_option -}}]" value="{{ block.settings.first_option }}" checked="checked">
-                      <label for="{{ block.settings.first_option }}">{{ block.settings.first_option }}</label>
-                    {% endif %}
-                    {% if block.settings.second_option != blank %}
+                    <label for="{{ block.settings.first_option }}">{{ block.settings.first_option }}</label>
+                  {% endif %}
+                  {% if block.settings.second_option != blank %}
                       <input type="checkbox" id="{{ block.settings.second_option }}" name="contact[{{- block.settings.second_option -}}]" value="{{ block.settings.second_option }}">
-                      <label for="{{ block.settings.second_option }}">{{ block.settings.second_option }}</label>  
-                    {% endif %}
-                    {% if block.settings.third_option != blank %}
+                    <label for="{{ block.settings.second_option }}">{{ block.settings.second_option }}</label>
+                  {% endif %}
+                  {% if block.settings.third_option != blank %}
                       <input type="checkbox" id="{{ block.settings.third_option }}" name="contact[{{- block.settings.third_option -}}]" value="{{ block.settings.third_option }}">
-                      <label for="{{ block.settings.third_option }}">{{ block.settings.third_option }}</label>
-                    {% endif %}
-                    {% if block.settings.fourth_option != blank %}
+                    <label for="{{ block.settings.third_option }}">{{ block.settings.third_option }}</label>
+                  {% endif %}
+                  {% if block.settings.fourth_option != blank %}
                       <input type="checkbox" id="{{ block.settings.fourth_option }}" name="contact[{{- block.settings.fourth_option -}}]" value="{{ block.settings.fourth_option }}">
-                      <label for="{{ block.settings.fourth_option }}">{{ block.settings.fourth_option }}</label>
-                    {% endif %}
-                    {% if block.settings.fifth_option != blank %}
+                    <label for="{{ block.settings.fourth_option }}">{{ block.settings.fourth_option }}</label>
+                  {% endif %}
+                  {% if block.settings.fifth_option != blank %}
                       <input type="checkbox" id="{{ block.settings.fifth_option }}" name="contact[{{- block.settings.fifth_option -}}]" value="{{ block.settings.fifth_option }}">
-                      <label for="{{ block.settings.fifth_option }}">{{ block.settings.fifth_option }}</label>
-                    {% endif %}
-                    {% if block.settings.sixth_option != blank %}
+                    <label for="{{ block.settings.fifth_option }}">{{ block.settings.fifth_option }}</label>
+                  {% endif %}
+                  {% if block.settings.sixth_option != blank %}
                       <input type="checkbox" id="{{ block.settings.sixth_option }}" name="contact[{{- block.settings.sixth_option -}}]" value="{{ block.settings.sixth_option }}">
-                      <label for="{{ block.settings.sixth_option }}">{{ block.settings.sixth_option }}</label>
-                    {% endif %}
-                  </div>
-                {% when 'radio_buttons' %}
-                  {% if block.settings.field_label != blank %}
-                    <label for="ContactForm-radio">{{- block.settings.field_label -}}</label>
+                    <label for="{{ block.settings.sixth_option }}">{{ block.settings.sixth_option }}</label>
                   {% endif %}
-                  {% if block.settings.required_field %}
-                    <span aria-hidden="true" class="required_star">*</span>
-                  {% endif %}
-                  <div class="field_radio">
-                    {% if block.settings.first_option != blank %}
+                </div>
+              {% when 'radio_buttons' %}
+                {% if block.settings.field_label != blank %}
+                  <label for="ContactForm-radio">{{- block.settings.field_label -}}</label>
+                {% endif %}
+                {% if block.settings.required_field %}
+                  <span aria-hidden="true" class="required_star">*</span>
+                {% endif %}
+                <div class="field_radio">
+                  {% if block.settings.first_option != blank %}
                       <input type="radio" id="{{ block.settings.first_option }}" name="contact[radio]" value="{{ block.settings.first_option }}" checked="checked">
-                      <label for="{{ block.settings.first_option }}">{{ block.settings.first_option }}</label>
+                    <label for="{{ block.settings.first_option }}">{{ block.settings.first_option }}</label>
+                  {% endif %}
+                  {% if block.settings.second_option != blank %}
+                      <input type="radio" id="{{ block.settings.second_option }}" name="contact[radio]" value="{{ block.settings.second_option }}">
+                    <label for="{{ block.settings.second_option }}">{{ block.settings.second_option }}</label>
+                  {% endif %}
+                  {% if block.settings.third_option != blank %}
+                      <input type="radio" id="{{ block.settings.third_option }}" name="contact[radio]" value="{{ block.settings.third_option }}">
+                    <label for="{{ block.settings.third_option }}">{{ block.settings.third_option }}</label>
+                  {% endif %}
+                  {% if block.settings.fourth_option != blank %}
+                      <input type="radio" id="{{ block.settings.fourth_option }}" name="contact[radio]" value="{{ block.settings.fourth_option }}">
+                    <label for="{{ block.settings.fourth_option }}">{{ block.settings.fourth_option }}</label>
+                  {% endif %}
+                  {% if block.settings.fifth_option != blank %}
+                      <input type="radio" id="{{ block.settings.fifth_option }}" name="contact[radio]" value="{{ block.settings.fifth_option }}">
+                    <label for="{{ block.settings.fifth_option }}">{{ block.settings.fifth_option }}</label>
+                  {% endif %}
+                  {% if block.settings.sixth_option != blank %}
+                      <input type="radio" id="{{ block.settings.sixth_option }}" name="contact[radio]" value="{{ block.settings.sixth_option }}">
+                    <label for="{{ block.settings.sixth_option }}">{{ block.settings.sixth_option }}</label>
+                  {% endif %}
+                </div>
+              {% when 'select' %}
+                <label for="ContactForm-select">{{- block.settings.field_label -}}</label>
+                {% if block.settings.required_field %}
+                  <span aria-hidden="true" class="required_star">*</span>
+                {% endif %}
+                <div class="field">
+                  <select class="field__input" name="contact[select]">
+                    {% if block.settings.first_option != blank %}
+                          <option class="form__label field__label" value="{{ block.settings.first_option }}" selected="selected">
+                        {{ block.settings.first_option }}
+                      </option>
                     {% endif %}
                     {% if block.settings.second_option != blank %}
-                      <input type="radio" id="{{ block.settings.second_option }}" name="contact[radio]" value="{{ block.settings.second_option }}">
-                      <label for="{{ block.settings.second_option }}">{{ block.settings.second_option }}</label>  
+                      <option class="form__label field__label" value="{{ block.settings.second_option }}">
+                        {{ block.settings.second_option }}
+                      </option>
                     {% endif %}
                     {% if block.settings.third_option != blank %}
-                      <input type="radio" id="{{ block.settings.third_option }}" name="contact[radio]" value="{{ block.settings.third_option }}">
-                      <label for="{{ block.settings.third_option }}">{{ block.settings.third_option }}</label>
+                      <option class="form__label field__label" value="{{ block.settings.third_option }}">
+                        {{ block.settings.third_option }}
+                      </option>
                     {% endif %}
                     {% if block.settings.fourth_option != blank %}
-                      <input type="radio" id="{{ block.settings.fourth_option }}" name="contact[radio]" value="{{ block.settings.fourth_option }}">
-                      <label for="{{ block.settings.fourth_option }}">{{ block.settings.fourth_option }}</label>
+                      <option class="form__label field__label" value="{{ block.settings.fourth_option }}">
+                        {{ block.settings.fourth_option }}
+                      </option>
                     {% endif %}
                     {% if block.settings.fifth_option != blank %}
-                      <input type="radio" id="{{ block.settings.fifth_option }}" name="contact[radio]" value="{{ block.settings.fifth_option }}">
-                      <label for="{{ block.settings.fifth_option }}">{{ block.settings.fifth_option }}</label>
+                      <option class="form__label field__label" value="{{ block.settings.fifth_option }}">
+                        {{ block.settings.fifth_option }}
+                      </option>
                     {% endif %}
                     {% if block.settings.sixth_option != blank %}
-                      <input type="radio" id="{{ block.settings.sixth_option }}" name="contact[radio]" value="{{ block.settings.sixth_option }}">
-                      <label for="{{ block.settings.sixth_option }}">{{ block.settings.sixth_option }}</label>
+                      <option class="form__label field__label" value="{{ block.settings.sixth_option }}">
+                        {{ block.settings.sixth_option }}
+                      </option>
                     {% endif %}
-                  </div>
-                {% when 'select' %}
-                  <label for="ContactForm-select">{{- block.settings.field_label -}}</label>
-                  {% if block.settings.required_field %}
-                    <span aria-hidden="true" class="required_star">*</span>
-                  {% endif %}
-                  <div class="field">
-                    <select class="field__input" name="contact[select]">
-                        {% if block.settings.first_option != blank %}
-                          <option class="form__label field__label" value="{{ block.settings.first_option }}" selected="selected">
-                              {{ block.settings.first_option }}
-                          </option>
-                        {% endif %}
-                        {% if block.settings.second_option != blank %}
-                          <option class="form__label field__label" value="{{ block.settings.second_option }}">
-                            {{ block.settings.second_option }}
-                        </option>
-                        {% endif %}
-                        {% if block.settings.third_option != blank %}
-                          <option class="form__label field__label" value="{{ block.settings.third_option }}">
-                            {{ block.settings.third_option }}
-                        </option>
-                        {% endif %}
-                        {% if block.settings.fourth_option != blank %}
-                          <option class="form__label field__label" value="{{ block.settings.fourth_option }}">
-                            {{ block.settings.fourth_option }}
-                        </option>
-                        {% endif %}
-                        {% if block.settings.fifth_option != blank %}
-                          <option class="form__label field__label" value="{{ block.settings.fifth_option }}">
-                            {{ block.settings.fifth_option }}
-                        </option>
-                        {% endif %}
-                        {% if block.settings.sixth_option != blank %}
-                          <option class="form__label field__label" value="{{ block.settings.sixth_option }}">
-                            {{ block.settings.sixth_option }}
-                        </option>
-                        {% endif %}
-                    </select>
-                  </div>
-              {% endcase %}
-            {% endfor %}
+                  </select>
+                </div>
+            {% endcase %}
+          {% endfor %}
           <div class="contact__button">
             <button type="submit" class="button">
               {{ 'templates.contact.form.send' | t }}
@@ -283,63 +283,64 @@
           </div>
         {%- endform -%}
       </div>
-      {%- if section.settings.enable_all == 'google' -%}
-        <div class="contgmap">
-            <div id="map">{{ section.settings.contact_iframe_code }} </div>
-        </div>
-      {%- elsif section.settings.enable_all == 'image' -%}
-          <div class="image-with-text__media-item">
-              <div class="image-with-text__media global-media-settings media">
-                {%- if section.settings.image != blank -%} 
-                  {{ section.settings.image | image_url: width: 1500 | image_tag: loading: 'lazy' }}
-                {%- else -%}
-                  <div class="dummysvg">{{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-                {%- endif -%}
-              </div>
+      {%- if section.settings.enable_all == 'image' -%}
+        <div class="image-with-text__media-item">
+          <div class="image-with-text__media global-media-settings media">
+            {%- if section.settings.image != blank -%}
+              {{ section.settings.image | image_url: width: 1500 | image_tag: loading: 'lazy' }}
+            {%- else -%}
+              <div class="dummysvg">{{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            {%- endif -%}
           </div>
-        {%- elsif section.settings.enable_all == 'text' -%}
+        </div>
+      {%- elsif section.settings.enable_all == 'text' -%}
 
-          <div class="text-with-icon_card__info">
-            <div class="contacttxtmain">
+        <div class="text-with-icon_card__info">
+          <div class="contacttxtmain">
             {%- if section.settings.texttitle != blank -%}
               <h2>{{ section.settings.texttitle }}</h2>
             {%- endif -%}
             {%- if section.settings.demotext != blank -%}
               <p>{{ section.settings.demotext }}</p>
             {%- endif -%}
-            </div>
-
-            <div class="contact-ihead">
-              {%- if section.settings.contacttitle != blank -%}
-                <h2>{{ section.settings.contacttitle }}</h2>
-              {%- endif -%}
-              <div> 
-                {%- if section.settings.contsubtext != blank -%}
-                  <div class="contacttitle">
-                    {{ section.settings.contsubtext }}
-                  </div>
-                {%- endif -%}
-                {%- if section.settings.footer_contact_no != blank -%}
-                  <div class="contact-info">
-                    <div>{{ section.settings.footer_contact_no }}</div>
-                  </div>
-                {%- endif -%}
-              </div>
-            </div>
-            <div class="contactfollowus">
-              {%- if section.settings.contactfollow != blank -%}<h2>{{ section.settings.contactfollow }}</h2>{%- endif -%}
-               {% if section.settings.show_social == true %}
-                <div class="footer__column footer--social">
-                  {%- render 'social-icons' -%}
-              </div>
-              {% endif %}
-            </div>
-
           </div>
+
+          <div class="contact-ihead">
+            {%- if section.settings.contacttitle != blank -%}
+              <h2>{{ section.settings.contacttitle }}</h2>
+            {%- endif -%}
+            <div>
+              {%- if section.settings.contsubtext != blank -%}
+                <div class="contacttitle">
+                  {{ section.settings.contsubtext }}
+                </div>
+              {%- endif -%}
+              {%- if section.settings.footer_contact_no != blank -%}
+                <div class="contact-info">
+                  <div>{{ section.settings.footer_contact_no }}</div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="contactfollowus">
+              {%- if section.settings.contactfollow != blank -%}<h2>{{ section.settings.contactfollow }}</h2>{%- endif -%}
+            {% if section.settings.show_social == true %}
+              <div class="footer__column footer--social">
+                {%- render 'social-icons' -%}
+              </div>
+            {% endif %}
+          </div>
+
+        </div>
 
       {% endif %}
     </div>
   </div>
+  {%- if section.settings.contact_iframe_code -%}
+    <div class="contgmap max-w-center p-10">
+      <div id="map">{{ section.settings.contact_iframe_code }}</div>
+    </div>
+  {%- endif -%}
 </div>
 {% schema %}
 {
