@@ -17,70 +17,70 @@
         "padding_bottom": 0
       }
     },
-    "c9003700-5adc-47c4-926b-5c0c3f2ebbdf": {
+    "contact_form_LW4jWP": {
       "type": "contact-form",
       "blocks": {
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-text-1": {
+        "text_xtiLfB": {
           "type": "text",
           "settings": {
-            "field_label": "NAME",
+            "field_label": "",
             "label_placeholder": "Name",
-            "required_field": true
+            "required_field": false
           }
         },
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-email-1": {
+        "email_NnTD3F": {
           "type": "email",
           "settings": {
-            "field_label": "EMAIL",
+            "field_label": "",
             "label_placeholder": "Email",
             "required_field": true
           }
         },
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-phone-1": {
+        "phone_U4f6JD": {
           "type": "phone",
           "settings": {
-            "field_label": "PHONE",
+            "field_label": "",
             "label_placeholder": "Phone",
             "required_field": true
           }
         },
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-message-1": {
+        "message_MGEgWg": {
           "type": "message",
           "settings": {
-            "field_label": "MESSAGE",
+            "field_label": "",
             "label_placeholder": "Message",
             "required_field": false
           }
         }
       },
       "block_order": [
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-text-1",
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-email-1",
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-phone-1",
-        "template--21289153364246__c9003700-5adc-47c4-926b-5c0c3f2ebbdf-message-1"
+        "text_xtiLfB",
+        "email_NnTD3F",
+        "phone_U4f6JD",
+        "message_MGEgWg"
       ],
       "settings": {
         "title": "Get In Touch",
         "heading_size": "h0",
         "description": "",
         "description_style": "body",
-        "enable_all": "image",
-        "contact_iframe_code": "",
+        "enable_all": "text",
+        "contact_iframe_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3501.8782114625133!2d77.21812900000002!3d28.633412!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37c5a1c75f%3A0x61c81f34254f7faa!2sWenger's!5e0!3m2!1sen!2sus!4v1737191109310!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
         "texttitle": "Got Questions?",
         "demotext": "If you’d like to learn more about us and our products, contact us!",
-        "contacttitle": "Contact Info",
-        "contsubtext": "<p><strong>CHARGE SHOP</strong></p><p>FifthAve Street 31</p><p>New York, USA</p>",
-        "footer_contact_no": "<p>+01 122 334 566</p><p>example@example.com</p>",
+        "contacttitle": "Contact info",
+        "contsubtext": "<p>Find a nearest Store location</p>",
+        "footer_contact_no": "<p>+01 122 334 566</p>",
         "show_social": true,
-        "contactfollow": "",
-        "color_scheme": "background-1",
-        "padding_top": 0,
+        "contactfollow": "Follow us",
+        "color_scheme": "",
+        "padding_top": 60,
         "padding_bottom": 60
       }
     }
   },
   "order": [
     "main",
-    "c9003700-5adc-47c4-926b-5c0c3f2ebbdf"
+    "contact_form_LW4jWP"
   ]
 }
