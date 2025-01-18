@@ -71,7 +71,7 @@
         "contacttitle": "Contact info",
         "contsubtext": "<p>support@wengers.in</p>",
         "footer_contact_no": "<p>+91-8384047514 +91-9354134477</p>",
-        "show_social": false,
+        "show_social": true,
         "contactfollow": "Follow us",
         "color_scheme": "",
         "padding_top": 60,
