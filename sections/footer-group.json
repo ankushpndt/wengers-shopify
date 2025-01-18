@@ -54,12 +54,12 @@
     "scrolling_bar_diJX98": {
       "type": "scrolling-bar",
       "blocks": {
-        "text_EqU6Ej": {
+        "text_bq7eQV": {
           "type": "text",
           "settings": {
-            "icon": "chat",
+            "icon": "none",
             "icon_width": 18,
-            "wb_marktext": "Fresh Cakes Daily!",
+            "wb_marktext": "100% Authentic",
             "upper_button": false,
             "text_color": "#000000",
             "button_label": "",
@@ -67,12 +67,12 @@
             "button_style_secondary": "link"
           }
         },
-        "text_bq7eQV": {
+        "text_EqU6Ej": {
           "type": "text",
           "settings": {
-            "icon": "chat",
+            "icon": "none",
             "icon_width": 18,
-            "wb_marktext": "100% Authentic",
+            "wb_marktext": "Fresh Cakes Daily!",
             "upper_button": false,
             "text_color": "#000000",
             "button_label": "",
@@ -82,14 +82,14 @@
         }
       },
       "block_order": [
-        "text_EqU6Ej",
-        "text_bq7eQV"
+        "text_bq7eQV",
+        "text_EqU6Ej"
       ],
       "settings": {
         "top_bottom_border": true,
         "border_color": "#777777",
         "mark_space": 30,
-        "mark_speed": 30,
+        "mark_speed": 8,
         "marq_diection": "right_left",
         "seprater": "dots",
         "font_size": 40,
