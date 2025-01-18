@@ -547,7 +547,7 @@
 }
 .image-with-text__heading.h2 {
   font-size: calc(var(--font-body-scale) * 35px);
-  font-family: 'Playball-Regular', sans-serif;
+  font-family: 'Playball', sans-serif;
   color: #804033;
   font-weight: 400;
 }

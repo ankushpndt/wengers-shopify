@@ -232,15 +232,27 @@
 .p-10 {
   padding-left: 40px;
   padding-right: 40px;
+  @media (max-width: 1023px){
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
-.max-w-center{
+.max-w-center {
   max-width: 1140px;
   margin: 0 auto;
-  margin-top: 60px;
 }
 
 .contact-ihead div {
   display: flex;
   flex-direction: column;
 }
+
+.contgmap {
+  margin-top: 60px;
+}
+
+/* .contact-form-heading {
+  font-family: "Playball", Sans-serif !important;
+  color:#661800;
+} */
