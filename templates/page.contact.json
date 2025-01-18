@@ -23,15 +23,15 @@
         "text_xtiLfB": {
           "type": "text",
           "settings": {
-            "field_label": "",
+            "field_label": "NAME",
             "label_placeholder": "Name",
-            "required_field": false
+            "required_field": true
           }
         },
         "email_NnTD3F": {
           "type": "email",
           "settings": {
-            "field_label": "",
+            "field_label": "EMAIL",
             "label_placeholder": "Email",
             "required_field": true
           }
@@ -39,7 +39,7 @@
         "phone_U4f6JD": {
           "type": "phone",
           "settings": {
-            "field_label": "",
+            "field_label": "PHONE",
             "label_placeholder": "Phone",
             "required_field": true
           }
@@ -47,7 +47,7 @@
         "message_MGEgWg": {
           "type": "message",
           "settings": {
-            "field_label": "",
+            "field_label": "MESSAGE",
             "label_placeholder": "Message",
             "required_field": false
           }
