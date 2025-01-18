@@ -92,7 +92,7 @@
         "mark_speed": 30,
         "marq_diection": "right_left",
         "seprater": "dots",
-        "font_size": 18,
+        "font_size": 40,
         "text_padding_top": 10,
         "text_padding_bottom": 10,
         "card_color_scheme": "",
