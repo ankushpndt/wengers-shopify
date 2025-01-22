@@ -559,9 +559,9 @@
         "column_qWyccp": {
           "type": "column",
           "settings": {
-            "enable_video_looping": false,
-            "auto_play_video": false,
-            "enable_control": true,
+            "enable_video_looping": true,
+            "auto_play_video": true,
+            "enable_control": false,
             "enable_mute": true,
             "description": "",
             "multi_icon": "none",
