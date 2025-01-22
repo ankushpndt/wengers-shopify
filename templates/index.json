@@ -186,16 +186,16 @@
     "collection_list_YeFDhz": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_wKzNb4": {
+        "featured_collection_4UH4QX": {
           "type": "featured_collection",
           "settings": {
             "collection": "frontpage"
           }
         },
-        "featured_collection_4UH4QX": {
+        "featured_collection_wKzNb4": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage"
+            "collection": "cakes"
           }
         },
         "featured_collection_BXkmhd": {
@@ -224,8 +224,8 @@
         }
       },
       "block_order": [
-        "featured_collection_wKzNb4",
         "featured_collection_4UH4QX",
+        "featured_collection_wKzNb4",
         "featured_collection_BXkmhd",
         "featured_collection_MNPiTW",
         "featured_collection_T3hkHd",
