@@ -92,6 +92,16 @@
             if block.settings.image.aspect_ratio > highest_ratio
               assign highest_ratio = block.settings.image.aspect_ratio
             endif
+            assign video_id = block.settings.video_url.id | default: block.settings.video_url.id
+            assign controls = 0
+            if block.settings.enable_control == true
+              assign controls = 1
+            endif
+
+            assign muted = 0
+            if block.settings.enable_mute == true
+              assign muted = 1
+            endif
           endfor
         -%}
         {%- for block in section.blocks -%}
@@ -279,7 +289,7 @@
                       style: 'height:100%;width:100%;max-width:100%;border-radius:10px;object-fit:cover'
                   }}
                 {%- endif -%}
-                 {% comment %} video_url  {% endcomment %}
+                {% comment %} video_url  {% endcomment %}
                 {%- if block.settings.video == null and block.settings.video_url != null -%}
                   {%- liquid
                     assign loop = ''
@@ -287,7 +297,7 @@
                       assign loop = '&loop=1&playlist=' | append: video_id
                     endif
                   -%}
-        
+
                   {%- if block.settings.video_url.type == 'youtube' -%}
                     <iframe
                       src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&color=white&controls={{ controls }}&modestbranding=1&playsinline=1&rel=0&enablejsapi=1{{ loop }}"
@@ -674,7 +684,7 @@
         },
         {
           "type": "video_url",
-          "id": "product_description_video",
+          "id": "video_url",
           "accept": ["youtube", "vimeo"],
           "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
           "label": "t:sections.video.settings.video_url.label",
