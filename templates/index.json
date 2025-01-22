@@ -542,10 +542,10 @@
         "column_7kbqeT": {
           "type": "column",
           "settings": {
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "enable_video_looping": false,
-            "auto_play_video": false,
-            "enable_control": true,
+            "video_url": "https://www.youtube.com/watch?v=pjDLe7u0vlA",
+            "enable_video_looping": true,
+            "auto_play_video": true,
+            "enable_control": false,
             "enable_mute": true,
             "description": "",
             "multi_icon": "check_mark",
