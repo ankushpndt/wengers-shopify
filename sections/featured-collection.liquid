@@ -123,9 +123,9 @@
               {% endif %}
 
               {%- if section.settings.view_button_pos == 'top' or section.settings.arrow_position == 'top' -%}
-                {%- if section.settings.arrow_position == 'top' or section.settings.show_view_all and more_in_collection and section.settings.vbutton_label != blank -%}
-                  <div class="wb_button_combo {% unless section.settings.show_view_all and more_in_collection and section.settings.vbutton_label != blank %}bcombo_auto{% endunless %} {% if section.settings.view_button_pos == 'bottom' %}bcombo_auto{% endif %}">
-                    {%- if section.settings.show_view_all and more_in_collection and section.settings.vbutton_label != blank -%}
+                {%- if section.settings.arrow_position == 'top' or section.settings.show_view_all and section.settings.vbutton_label != blank -%}
+                  <div class="wb_button_combo {% unless section.settings.show_view_all and section.settings.vbutton_label != blank %}bcombo_auto{% endunless %} {% if section.settings.view_button_pos == 'bottom' %}bcombo_auto{% endif %}">
+                    {%- if section.settings.show_view_all and section.settings.vbutton_label != blank -%}
                       {%- if section.settings.view_button_pos == 'top' -%}
                         <div class="wb_home_sbtn">      
                           <a href="{{ section.settings.collection.url }}" class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}" aria-label="{{ 'sections.featured_collection.view_all' | t: collection_name: section.settings.collection.title }}">
