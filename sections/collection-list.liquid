@@ -25,7 +25,7 @@
 }
 {%- endstyle -%}
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="wbcollhome collection-list-wrapper page-width isolate {% if section.settings.title == blank %} no-heading{% endif %} {% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding collection-card-info slider-arrow--{{ section.settings.arrow_position }}">
+  <div class="wbcollhome collection-list-wrapper page-width isolate {% if section.settings.title == blank %} no-heading{% endif %} {% if section.settings.show_view_all == false %} no-mobile-link{% endif %} section-{{ section.id }}-padding collection-card-info slider-arrow--{{ section.settings.arrow_position }}">
     {% comment %} <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"> {% endcomment %}
     <{% if section.settings.auto_rotate %}slideshow-component{% else %}slider-component{% endif %} class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="heading-top {{ section.settings.heading_position }} {% if section.settings.title == blank and section.settings.subtitle == blank %}heading-topend{% endif %} {% if section.settings.title == blank and section.settings.subtitle == blank and section.settings.arrow_position != 'top' and section.settings.show_view_all != true or section.settings.button_label == blank %}heading-mnone{% endif %}">
@@ -42,9 +42,9 @@
             {%- endif %}
           </div>
           {%- if section.settings.view_button_pos == 'top' or section.settings.arrow_position == 'top' -%}
-            {%- if section.settings.arrow_position == 'top' or section.settings.show_view_all and section.blocks.size < collections.size and section.settings.button_label != blank -%}
-              <div class="wb_button_combo {% if section.settings.view_button_pos == 'bottom' %}bcombo_auto{% endif %}{% unless section.settings.show_view_all and section.blocks.size < collections.size and section.settings.button_label != blank %} bcombo_auto{% endunless %}">
-                {%- if section.settings.show_view_all and section.blocks.size < collections.size and section.settings.button_label != blank -%}
+            {%- if section.settings.arrow_position == 'top' or section.settings.show_view_all and section.settings.button_label != blank -%}
+              <div class="wb_button_combo {% if section.settings.view_button_pos == 'bottom' %}bcombo_auto{% endif %}{% unless section.settings.show_view_all and section.settings.button_label != blank %} bcombo_auto{% endunless %}">
+                {%- if section.settings.show_view_all and section.settings.button_label != blank -%}
                   {%- if section.settings.view_button_pos == 'top' -%}
                     <div class="wb_home_sbtn">
                       <a href="{{ routes.collections_url }}"
@@ -198,7 +198,7 @@
       {%- endif -%}
     </{% if section.settings.auto_rotate %}slideshow-component{% else %}slider-component{% endif %}>
 
-    {%- if section.settings.show_view_all and section.blocks.size < collections.size and section.settings.button_label != blank -%}
+    {%- if section.settings.show_view_all  and section.settings.button_label != blank -%}
       {%- if section.settings.view_button_pos == 'bottom' -%}
         <div class="center wb_home_sbtn">
           <a href="{{ routes.collections_url }}"
