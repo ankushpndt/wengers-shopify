@@ -286,7 +286,7 @@
         "vbutton_label": "View all",
         "view_all_style": "link",
         "view_button_pos": "top",
-        "show_view_all": false,
+        "show_view_all": true,
         "enable_desktop_slider": true,
         "arrow_position": "inline",
         "card_style": "standard",
