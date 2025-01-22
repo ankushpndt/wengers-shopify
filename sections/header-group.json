@@ -16,6 +16,7 @@
       "blocks": {
         "megamenu_product_bdinXy": {
           "type": "megamenu-product",
+          "disabled": true,
           "settings": {
             "menuname": "Contact",
             "showsubmenu": true,
@@ -33,7 +34,7 @@
           "type": "megamenu-gallery",
           "settings": {
             "menuname": "Collection",
-            "showsubmenu": true,
+            "showsubmenu": false,
             "image_ratio": "adapt",
             "wb1_img": "shopify://shop_images/Cookie.jpg",
             "wb1_text": "cookie",
