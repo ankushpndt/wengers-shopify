@@ -140,7 +140,7 @@
           "type": "button",
           "settings": {
             "button_label": "Know more",
-            "button_link": "",
+            "button_link": "shopify://pages/about-us",
             "link_window": true,
             "view_all_style": "solid"
           }
