@@ -207,19 +207,19 @@
         "featured_collection_MNPiTW": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage"
+            "collection": "salad"
           }
         },
         "featured_collection_T3hkHd": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage"
+            "collection": "sides"
           }
         },
         "featured_collection_mGi3Jq": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage"
+            "collection": "smoothie-shake"
           }
         }
       },
