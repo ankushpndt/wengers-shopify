@@ -242,7 +242,7 @@
         "button_label": "View all",
         "view_all_style": "solid",
         "view_button_pos": "top",
-        "show_view_all": false,
+        "show_view_all": true,
         "arrow_position": "inline",
         "columns_desktop": 5,
         "auto_rotate": false,
