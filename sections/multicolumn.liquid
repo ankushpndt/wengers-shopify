@@ -276,6 +276,50 @@
                       style: 'height:100%;width:100%;max-width:100%;border-radius:10px;object-fit:cover'
                   }}
                 {%- endif -%}
+                 {% comment %} video_url  {% endcomment %}
+                {%- if block.settings.video == null and block.settings.video_url != null -%}
+                  {%- liquid
+                    assign loop = ''
+                    if block.settings.enable_video_looping
+                      assign loop = '&loop=1&playlist=' | append: video_id
+                    endif
+                  -%}
+        
+                  {%- if block.settings.video_url.type == 'youtube' -%}
+                    <iframe
+                      src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&color=white&controls={{ controls }}&modestbranding=1&playsinline=1&rel=0&enablejsapi=1{{ loop }}"
+                      title="YouTube video player"
+                      frameborder="0"
+                      class="js-youtube"
+                      allow="autoplay;"
+                      width="100vw"
+                      height="100vh"
+                      title="{{ block.settings.description | escape }}"
+                    ></iframe>
+                  {%- else -%}
+                    <iframe
+                      src="https://player.vimeo.com/video/{{ video_id }}?muted={{ muted }}&title=0&byline=0&portrait=0&transparent=0&autoplay=1"
+                      frameborder="0"
+                      webkitallowfullscreen=""
+                      mozallowfullscreen=""
+                      allowfullscreen=""
+                      width="100vw"
+                      height="100vh"
+                      data-ready="true"
+                      title="{{ block.settings.description | escape }}"
+                    ></iframe>
+                  {%- endif -%}
+                {%- else -%}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      image_size: '1100x',
+                      autoplay: true,
+                      loop: block.settings.enable_video_looping,
+                      muted: block.settings.enable_mute,
+                      controls: block.settings.enable_control
+                  }}
+                {%- endif -%}
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
                   <a class="full-image-link" href="{{ block.settings.link }}"></a>
                 {%- endif -%}
@@ -624,6 +668,45 @@
           "type": "video",
           "id": "video",
           "label": "t:sections.multicolumn.blocks.column.settings.video.label"
+        },
+        {
+          "type": "video_url",
+          "id": "product_description_video",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "t:sections.video.settings.video_url.label",
+          "info": "t:sections.video.settings.video_url.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_video_looping",
+          "label": "t:sections.video.settings.enable_video_looping.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "auto_play_video",
+          "label": "t:sections.video.settings.auto_play_video.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_control",
+          "label": "t:sections.video.settings.enable_control.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_mute",
+          "label": "t:sections.video.settings.enable_mute.label",
+          "info": "t:sections.video.settings.enable_mute.info",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "t:sections.video.settings.description.label",
+          "info": "t:sections.video.settings.description.info"
         },
         {
           "type": "select",
