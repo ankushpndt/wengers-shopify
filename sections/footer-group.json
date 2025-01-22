@@ -116,25 +116,18 @@
             "show_bg": true
           }
         },
-        "link_list_GzeQdy": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Information",
-            "menu": "footer"
-          }
-        },
         "link_list_K8R8jA": {
           "type": "link_list",
           "settings": {
-            "heading": "Our Policies",
-            "menu": "footer"
+            "heading": "Quick Links",
+            "menu": "quick-links"
           }
         },
         "link_list_XaBNJe": {
           "type": "link_list",
           "settings": {
             "heading": "Collections",
-            "menu": "footer"
+            "menu": "collections"
           }
         },
         "8119be62-666b-44c2-8a3a-1289e36c0875": {
@@ -152,7 +145,6 @@
       },
       "block_order": [
         "text_6EbKwG",
-        "link_list_GzeQdy",
         "link_list_K8R8jA",
         "link_list_XaBNJe",
         "8119be62-666b-44c2-8a3a-1289e36c0875"
