@@ -186,6 +186,7 @@
                       width="100vw"
                       height="100vh"
                       title="{{ block.settings.description | escape }}"
+                      style="height:70vh;width:100%;max-width:100%;border-radius:10px;object-fit:cover" 
                     ></iframe>
                   {%- else -%}
                     <iframe
@@ -198,17 +199,19 @@
                       height="100vh"
                       data-ready="true"
                       title="{{ block.settings.description | escape }}"
+                      style="height:70vh;width:100%;max-width:100%;border-radius:10px;object-fit:cover" 
                     ></iframe>
                   {%- endif -%}
                 {%- else -%}
                   {{
-                    section.settings.video
+                    block.settings.video
                     | video_tag:
                       image_size: '300x',
                       autoplay: true,
                       loop: section.settings.enable_video_looping,
                       muted: section.settings.enable_mute,
-                      controls: section.settings.enable_control
+                      controls: section.settings.enable_control,
+                      style: 'height:100%;width:100%;max-width:100%;border-radius:10px;object-fit:cover'
                   }}
                 {%- endif -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
@@ -354,6 +357,7 @@
                       width="100vw"
                       height="100vh"
                       title="{{ block.settings.description | escape }}"
+                      style="height:70vh;width:100%;max-width:100%;border-radius:10px;object-fit:cover" 
                     ></iframe>
                   {%- else -%}
                     <iframe
@@ -366,17 +370,19 @@
                       height="100vh"
                       data-ready="true"
                       title="{{ block.settings.description | escape }}"
+                      style="height:70vh;width:100%;max-width:100%;border-radius:10px;object-fit:cover" 
                     ></iframe>
                   {%- endif -%}
                 {%- else -%}
                   {{
-                    section.settings.video
+                    block.settings.video
                     | video_tag:
                       image_size: '300x',
                       autoplay: true,
                       loop: section.settings.enable_video_looping,
                       muted: section.settings.enable_mute,
-                      controls: section.settings.enable_control
+                      controls: section.settings.enable_control,
+                      style: 'height:100%;width:100%;max-width:100%;border-radius:10px;object-fit:cover'
                   }}
                 {%- endif -%}
                 {%- if block.settings.link_label == blank and block.settings.link != blank -%}
