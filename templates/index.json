@@ -395,7 +395,7 @@
         "banner_heading_size": "h1",
         "sub_heading": "Wenger's",
         "button_label": "Buy Now",
-        "button_link": "shopify://products/cake",
+        "button_link": "shopify://collections/cakes",
         "link_window": true,
         "button_style_secondary": "solid",
         "content_position": "middle",
