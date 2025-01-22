@@ -240,7 +240,7 @@
         "subheading_position": "after_head",
         "heading_position": "left",
         "button_label": "View all",
-        "view_all_style": "solid",
+        "view_all_style": "link",
         "view_button_pos": "top",
         "show_view_all": true,
         "arrow_position": "inline",
