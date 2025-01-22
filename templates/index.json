@@ -542,10 +542,9 @@
         "column_Y36Q4e": {
           "type": "column",
           "settings": {
-            "product_description_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "enable_video_looping": false,
-            "auto_play_video": false,
-            "enable_control": true,
+            "enable_video_looping": true,
+            "auto_play_video": true,
+            "enable_control": false,
             "enable_mute": true,
             "description": "",
             "multi_icon": "none",
@@ -560,7 +559,6 @@
         "column_qWyccp": {
           "type": "column",
           "settings": {
-            "product_description_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": false,
             "auto_play_video": false,
             "enable_control": true,
@@ -578,7 +576,6 @@
         "column_ETbdbq": {
           "type": "column",
           "settings": {
-            "product_description_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": false,
             "auto_play_video": false,
             "enable_control": true,
@@ -596,7 +593,6 @@
         "column_pfyGJg": {
           "type": "column",
           "settings": {
-            "product_description_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": false,
             "auto_play_video": false,
             "enable_control": true,
@@ -614,7 +610,6 @@
         "column_L9FxMw": {
           "type": "column",
           "settings": {
-            "product_description_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": false,
             "auto_play_video": false,
             "enable_control": true,
@@ -632,7 +627,6 @@
         "column_6hWFyt": {
           "type": "column",
           "settings": {
-            "product_description_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": false,
             "auto_play_video": false,
             "enable_control": true,
