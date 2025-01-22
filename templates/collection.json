@@ -78,9 +78,9 @@
       ],
       "settings": {
         "color_scheme": "background-1",
-        "title": "Collection",
+        "title": "",
         "heading_size": "h0",
-        "subtitle": "New collection",
+        "subtitle": "",
         "subheading_style": "link",
         "subheading_position": "after_head",
         "heading_position": "left",
