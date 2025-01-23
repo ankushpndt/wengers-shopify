@@ -147,6 +147,7 @@
         },
         "caption_L6grBK": {
           "type": "caption",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "caption": "Wengers - CEO Bakery",
@@ -157,7 +158,7 @@
         "sign_image_ktTUNr": {
           "type": "sign_image",
           "settings": {
-            "sign_image": "shopify://shop_images/Wengers-Logo-Final-Color-600x304.png"
+            "sign_image": "shopify://shop_images/Wengers-Logo-Final-Color-300x152.png"
           }
         }
       },
@@ -175,8 +176,8 @@
         "desktop_image_width": "medium",
         "desktop_content_position": "bottom",
         "desktop_content_alignment": "center",
-        "imgtxt_bg": "shopify://shop_images/vecteezy_vector-bakery-retro-seamless-pattern-vintage-illustration_14469004.jpg",
-        "color_scheme": "background-1",
+        "imgtxt_bg": "shopify://shop_images/webgers-bg.jpg",
+        "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "padding_top": 0,
