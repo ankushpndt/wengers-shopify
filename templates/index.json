@@ -118,7 +118,7 @@
         "column_alignment": "left",
         "flex_direction": "row",
         "show_seprator": false,
-        "color_scheme": "background-2",
+        "color_scheme": "accent-2",
         "swipe_on_mobile": false,
         "margin_top": 0,
         "margin_bottom": 0,
