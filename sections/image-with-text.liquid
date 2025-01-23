@@ -138,7 +138,7 @@
                     {% if block.settings.sign_image != blank %}
                       <img
                         class="img-fluid lazyload"
-                        srcset="{{ block.settings.sign_image | image_url: width: 140, height: 50 }} 140w"
+                        srcset="{{ block.settings.sign_image | image_url: width: 140 }}"
                         src="{{ block.settings.sign_image | image_url: width: 140 }}"
                         width="140"
                         height="50"

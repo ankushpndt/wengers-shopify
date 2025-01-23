@@ -146,6 +146,7 @@
 .wbimgw_txt .image-with-text__grid.grid {
   column-gap: var(--grid-desktop-horizontal-spacing);
   row-gap: var(--grid-desktop-vertical-spacing);
+  align-items: center;
 }
 .wbimgw_txt1.wbimg_width {
   max-width: 80%;
