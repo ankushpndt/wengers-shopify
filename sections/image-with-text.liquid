@@ -21,7 +21,7 @@
 >
   <div class="{{ section.settings.img_position }} margin-auto wbimgw_txt image-with-text {% if section.settings.full_w == false %}page-width{% endif %} isolate{% unless section.settings.color_scheme == 'background-1' %} collapse-corners{% endunless %} section-{{ section.id }}-padding {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="{% if section.settings.desktop_image_width == 'small' %}space_manage {% endif %}{% if section.settings.imgtxt_bg == blank %} gradient color-{{ section.settings.color_scheme }} {% endif %} image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}">
-      <div class="image-with-text__media-item mt-9 image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
+      <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
         {%- if section.settings.image != blank -%}
           <div class="wbimgw_txt1{% if section.settings.image != blank and section.settings.image2 != blank %} wbimg_width{% endif %}">
             <div
