@@ -165,7 +165,7 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#000000",
           "button": "#000000",
           "button_label": "#ffffff",
           "button_hover": "#333333",
