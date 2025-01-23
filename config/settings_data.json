@@ -163,7 +163,7 @@
       },
       "background-2": {
         "settings": {
-          "background": "#ca9a5c",
+          "background": "#000000",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#000000",
@@ -171,7 +171,7 @@
           "button_hover": "#333333",
           "button_label_hover": "#ffffff",
           "secondary_button_label": "#121212",
-          "link_hover": "#ffffff",
+          "link_hover": "#e6c395",
           "shadow": "#333333"
         }
       },
