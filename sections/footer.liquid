@@ -272,7 +272,7 @@
                 <div class="foot_copy foot_bottom_inner">
                 <small class="copyright__content">&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
                 </small>
-                <small class="copyright__content">{{ powered_by_link }}</small>
+                {% comment %} <small class="copyright__content">{{ powered_by_link }}</small> {% endcomment %}
               </div>
               {%- endif -%}
 
