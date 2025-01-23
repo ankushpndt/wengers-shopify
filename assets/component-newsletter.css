@@ -31,6 +31,11 @@
 }
 .field_newsflex .field input {
   border: 1px solid transparent;
+  color: #661800;
+  &::selection{
+    color: white;
+    background-color: #661800;
+  }
 }
 .field_newsflex .field label {
   color: #661800;
