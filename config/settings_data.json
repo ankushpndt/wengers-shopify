@@ -52,7 +52,7 @@
     "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
-    "color_schemesearch": "background-1",
+    "color_schemesearch": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
     "simage_ratio": "square",
     "search_quick_links": "",
     "search_blog": "",
@@ -62,7 +62,7 @@
     "collection_list": [
       "frontpage"
     ],
-    "collection_card_color_scheme": "background-1",
+    "collection_card_color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
     "collection_card_style": "card",
     "coll_name_alignment": "center",
     "currency_code_enabled": false,

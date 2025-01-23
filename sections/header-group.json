@@ -65,7 +65,7 @@
         "border_bottom": false,
         "iconwidth_header": 20,
         "menu": "main-menu",
-        "color__drop_menu": "background-1",
+        "color__drop_menu": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
         "sticky_header_type": "always",
         "head_shadow": "head_shadow_home",
         "display_contact": false,
