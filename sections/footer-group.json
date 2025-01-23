@@ -62,7 +62,7 @@
             "icon_width": 18,
             "wb_marktext": "100% Authentic",
             "upper_button": false,
-            "text_color": "#000000",
+            "text_color": "#661800",
             "button_label": "",
             "button_link": "",
             "button_style_secondary": "link"
@@ -75,7 +75,7 @@
             "icon_width": 18,
             "wb_marktext": "Fresh Cakes Daily!",
             "upper_button": false,
-            "text_color": "#000000",
+            "text_color": "#661800",
             "button_label": "",
             "button_link": "",
             "button_style_secondary": "link"
@@ -88,7 +88,7 @@
       ],
       "settings": {
         "top_bottom_border": true,
-        "border_color": "#777777",
+        "border_color": "#661800",
         "mark_space": 30,
         "mark_speed": 8,
         "marq_diection": "right_left",
@@ -96,7 +96,7 @@
         "font_size": 40,
         "text_padding_top": 10,
         "text_padding_bottom": 10,
-        "card_color_scheme": "",
+        "card_color_scheme": "background-1",
         "padding_top": 0,
         "padding_bottom": 0
       }
