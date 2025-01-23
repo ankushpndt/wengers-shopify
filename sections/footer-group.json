@@ -39,7 +39,7 @@
         "email_form_Ky36rP"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "image": "shopify://shop_images/360_F_251969990_DQCbVDI1TusqTe7DDJP8n5rH2evLHFpL.webp",
         "image_overlay_opacity": 0,
         "image_height": "small",
