@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "show_collection_image": true,
@@ -76,6 +77,7 @@
         "featured_collection_GLjdTL",
         "featured_collection_3Gj77j"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
         "title": "",
@@ -145,7 +147,7 @@
         "enable_fill_category": true,
         "coll_fil": "Categories",
         "menu": "main-menu",
-        "pagination_color_scheme": "scheme-ea9ec5d4-4eea-4bba-a3a3-89b2b26abf5a",
+        "pagination_color_scheme": "scheme-994a0db6-5166-4763-aa94-a4fc2615cf59",
         "pagination_type": "paged",
         "columns_mobile": "2",
         "padding_top": 32,
