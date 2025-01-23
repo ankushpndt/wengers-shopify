@@ -871,7 +871,7 @@
             "author": "John Smith",
             "authorsub": "Product Manager",
             "color_scheme": "background-2",
-            "product": "bread",
+            "product": "almond-cake",
             "color_scheme1": ""
           }
         },
@@ -886,7 +886,7 @@
             "author": "John Smith",
             "authorsub": "Product Manager",
             "color_scheme": "background-2",
-            "product": "bread",
+            "product": "almond-croissant-2pcs",
             "color_scheme1": ""
           }
         },
@@ -901,7 +901,7 @@
             "author": "John Smith",
             "authorsub": "Product Manager",
             "color_scheme": "background-2",
-            "product": "bread",
+            "product": "blueberry",
             "color_scheme1": ""
           }
         },
@@ -915,9 +915,9 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "background-2",
-            "product": "bread",
-            "color_scheme1": ""
+            "color_scheme": "background-1",
+            "product": "french-fries",
+            "color_scheme1": "background-1"
           }
         }
       },
