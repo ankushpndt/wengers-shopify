@@ -475,7 +475,7 @@
     "featured_collection_zMW7UH": {
       "type": "featured-collection",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
         "title": "Wenger's",
         "heading_size": "h0",
         "subtitle": "",
@@ -870,9 +870,9 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "background-2",
+            "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
             "product": "almond-cake",
-            "color_scheme1": ""
+            "color_scheme1": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828"
           }
         },
         "quote_9VJQwW": {
@@ -885,9 +885,9 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "background-2",
+            "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
             "product": "almond-croissant-2pcs",
-            "color_scheme1": ""
+            "color_scheme1": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828"
           }
         },
         "quote_XD9EH6": {
@@ -900,9 +900,9 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "background-2",
+            "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
             "product": "blueberry",
-            "color_scheme1": ""
+            "color_scheme1": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828"
           }
         },
         "quote_rDqac9": {
@@ -915,9 +915,9 @@
             "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
             "author": "John Smith",
             "authorsub": "Product Manager",
-            "color_scheme": "background-1",
+            "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
             "product": "french-fries",
-            "color_scheme1": "background-1"
+            "color_scheme1": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828"
           }
         }
       },
@@ -928,7 +928,7 @@
         "quote_rDqac9"
       ],
       "settings": {
-        "color_scheme": "background-2",
+        "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
         "title": "Our Community Of Users",
         "heading_size": "h1",
         "subtitle": "Testimonial",
@@ -947,7 +947,7 @@
         "quote_color": "#000000",
         "display_review": true,
         "display_review_text": false,
-        "star_ratingclr": "#000000",
+        "star_ratingclr": "#661800",
         "border_around_product": false,
         "border_productimg": false,
         "productimg_color": "#dcdcdc",
