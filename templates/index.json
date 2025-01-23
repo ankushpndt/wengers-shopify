@@ -129,10 +129,17 @@
     "image_with_text_q8c9YN": {
       "type": "image-with-text",
       "blocks": {
+        "heading_Fxj9xE": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>About Wengers</strong>",
+            "heading_size": "h0"
+          }
+        },
         "text_CwgQ97": {
           "type": "text",
           "settings": {
-            "text": "<h2><strong>“Wengers was established in the year 1924 as a catering outfit for the British troops stationed in Delhi. In 1926 the tea room and Confectionery were inaugurated in Exchange stores in Kashmere gate. Sometime in the late 20’s early ’30s, Wengers shifted base from Kashmere Gate to Connaught Place and has been on this prominent location.”</strong></h2>",
+            "text": "<p>“Wengers was established in the year 1924 as a catering outfit for the British troops stationed in Delhi. In 1926 the tea room and Confectionery were inaugurated in Exchange stores in Kashmere gate. Sometime in the late 20’s early ’30s, Wengers shifted base from Kashmere Gate to Connaught Place and has been on this prominent location.”</p>",
             "text_style": "body"
           }
         },
@@ -163,6 +170,7 @@
         }
       },
       "block_order": [
+        "heading_Fxj9xE",
         "text_CwgQ97",
         "button_4MtLmX",
         "caption_L6grBK",
@@ -180,7 +188,7 @@
         "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "padding_top": 0,
+        "padding_top": 100,
         "padding_bottom": 100
       }
     },
