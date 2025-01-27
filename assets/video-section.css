@@ -331,14 +331,14 @@
     padding: 8px;
   }
 }
-@media (max-width: 425px){
+@media (max-width: 767px){
   .video-section__media.video-ratio-medium {
-    aspect-ratio: 3/7;
+    aspect-ratio: 3/4;
   }
   .video-section__media.video-ratio-small {
-    aspect-ratio: 3/7;
+    aspect-ratio: 3/4;
   }
   .video-section__media.video-ratio-large {
-    aspect-ratio: 3/7;
+    aspect-ratio: 3/4;
   }
 }
