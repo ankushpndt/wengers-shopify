@@ -108,7 +108,7 @@
 
     <div class="banner__content newsletter-banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
       {% if section.blocks.size > 0 %}
-        <div class="email-signup-banner__box banner__box newsletter newsletter__wrapper isolate {% if section.settings.show_text_box %} content-container {% endif %} color-{{ section.settings.color_scheme }} gradient content-container--full-width-mobile{% if section.settings.image == blank %} content-box{% endif %}">
+        <div class="email-signup-banner__box banner__box banner__content--{{ section.settings.desktop_content_position }} newsletter newsletter__wrapper isolate {% if section.settings.show_text_box %} content-container {% endif %} color-{{ section.settings.color_scheme }} gradient content-container--full-width-mobile{% if section.settings.image == blank %} content-box{% endif %}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               <div>
