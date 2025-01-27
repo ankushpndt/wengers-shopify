@@ -45,6 +45,7 @@
 .newsletter .newsletter__subheading{
   display: inline-flex;
   align-items: center;
+  margin-top: 0 !important;
 }
 
 .newsletter .newsletter__subheading input[type="radio"]{
