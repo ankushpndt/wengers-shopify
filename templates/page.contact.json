@@ -31,6 +31,7 @@
             "heading_size": "h0",
             "text": "",
             "text_style": "body",
+            "show_breadcrumbs": false,
             "button_label_1": "",
             "button_link_1": "",
             "link_window": true,
