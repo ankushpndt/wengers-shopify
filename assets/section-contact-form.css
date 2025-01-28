@@ -17,7 +17,7 @@
 }
 .wbcontform{
   display: flex;
-  gap: 30px;
+  gap: 8rem;
   justify-content: center;
   word-break: break-word;
 }
@@ -153,6 +153,10 @@
   font-size: calc(var(--font-heading-scale) * 22px);
   margin-bottom: 10px;
 }
+.contacttxtmain, .contact-ihead{
+  display: flex;
+  gap: 1rem;
+}
 .contacttxtmain p {
   max-width: 270px;
   padding: 0;
@@ -238,10 +242,10 @@
   }
 }
 
-.max-w-center {
+/* .max-w-center {
   max-width: 1140px;
   margin: 0 auto;
-}
+} */
 
 .contact-ihead div {
   display: flex;

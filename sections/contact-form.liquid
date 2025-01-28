@@ -298,28 +298,63 @@
         <div class="text-with-icon_card__info">
           <div class="contacttxtmain">
             {%- if section.settings.texttitle != blank -%}
-              <h2>{{ section.settings.texttitle }}</h2>
+              <svg class="icon-faddress" width="20" height="23" viewBox="0 0 20 23" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.6 10.2647C18.6 14.65 9.8 22 9.8 22C9.8 22 1 14.65 1 10.2647C1 5.87941 4.6841 1 9.8 1C15.0932 1 18.6 4.70588 18.6 10.2647Z" stroke-width="1.5"></path>
+                <path d="M6.38351 10.9436L9.7999 14.8004L13.2163 10.9436C13.8022 10.2823 13.893 9.3179 13.4409 8.55877C12.6236 7.18641 10.6148 7.25187 9.88854 8.67453L9.7999 8.84818L9.71126 8.67453C8.98503 7.25187 6.97624 7.18641 6.15893 8.55877C5.70683 9.3179 5.79764 10.2823 6.38351 10.9436Z" stroke-width="1.5"></path>
+                </svg>
             {%- endif -%}
-            {%- if section.settings.demotext != blank -%}
-              <p>{{ section.settings.demotext }}</p>
-            {%- endif -%}
+            <div>
+              {%- if section.settings.texttitle != blank -%}
+                <h2>{{ section.settings.texttitle }}</h2>
+              {%- endif -%}
+              {%- if section.settings.demotext != blank -%}
+                <p>{{ section.settings.demotext }}</p>
+              {%- endif -%}
+            </div>
           </div>
 
           <div class="contact-ihead">
             {%- if section.settings.contacttitle != blank -%}
-              <h2>{{ section.settings.contacttitle }}</h2>
+              <svg class="icon-fcontact" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.67962 2.32038L3 2L7 6L5.27175 7.72825C5.10946 7.89054 5.06923 8.13846 5.17187 8.34373C6.35853 10.7171 8.28294 12.6415 10.6563 13.8281C10.8615 13.9308 11.1095 13.8905 11.2717 13.7283L13 12L17 16L16.6796 16.3204C14.5683 18.4317 11.2257 18.6693 8.83698 16.8777L7.62857 15.9714C5.88504 14.6638 4.33622 13.115 3.02857 11.3714L2.12226 10.163C0.330722 7.7743 0.56827 4.43173 2.67962 2.32038Z" stroke="white" stroke-width="1.5"></path>
+              </svg>
             {%- endif -%}
             <div>
-              {%- if section.settings.contsubtext != blank -%}
-                <div class="contacttitle">
-                  {{ section.settings.contsubtext }}
-                </div>
+              {%- if section.settings.contacttitle != blank -%}
+                <h2>{{ section.settings.contacttitle }}</h2>
               {%- endif -%}
-              {%- if section.settings.footer_contact_no != blank -%}
-                <div class="contact-info">
-                  <div>{{ section.settings.footer_contact_no }}</div>
-                </div>
+              <div>
+                {%- if section.settings.contsubtext != blank -%}
+                  <div class="contacttitle">
+                    {{ section.settings.contsubtext }}
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.footer_contact_no != blank -%}
+                  <div class="contact-info">
+                    <div>{{ section.settings.footer_contact_no }}</div>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+          <div class="contact-ihead">
+            {%- if section.settings.emailtitle != blank -%}
+              <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25 0.25H17.75V13.75H0.25V0.25ZM1.75 1.75V12.25H16.25V1.75H1.75Z" fill="white"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.66459 4.67082L1.33541 3.32918L9 7.16147L16.6646 3.32918L17.3354 4.67082L9 8.83852L0.66459 4.67082Z" fill="white"></path>
+                </svg>
+            {%- endif -%}
+            <div>
+              {%- if section.settings.emailtitle != blank -%}
+                <h2>{{ section.settings.emailtitle }}</h2>
               {%- endif -%}
+              <div>
+                {%- if section.settings.footer_email != blank -%}
+                  <div class="contact-info">
+                    <div>{{ section.settings.footer_email }}</div>
+                  </div>
+                {%- endif -%}
+              </div>
             </div>
           </div>
           <div class="contactfollowus">
@@ -478,6 +513,18 @@
       "id": "footer_contact_no",
       "label": "t:sections.contact-form.settings.footer_contact_no.label",
       "default": "<p>+01 122 334 566</p>"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "emailtitle",
+      "default": "Email",
+      "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_email",
+      "label": "t:sections.contact-form.settings.footer_contact_no.label",
+      "default": "support@wengers.in"
     },
     {
       "type": "checkbox",
