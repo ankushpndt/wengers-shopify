@@ -149,6 +149,9 @@
   transform: rotate(45deg) translate(-50%, -50%);
   z-index: 2;
 }
+.contactfollowus{
+  margin-left: 44px !important;
+}
 .contacttxtmain h2, .contact-ihead h2, .contactfollowus h2 {
   font-size: calc(var(--font-heading-scale) * 22px);
   margin-bottom: 10px;
@@ -167,6 +170,9 @@
     min-width: 24px;
     max-width: 24px;
     margin-top: 0 !important;
+  }
+  .contactfollowus{
+    margin-left: 33px !important;
   }
 }
 
@@ -239,6 +245,8 @@
 .contact__button button {
   background-color: #CA9A5C;
   border: 1px solid transparent;
+  width: 100%;
+  min-height: 48px;
 }
 
 .p-10 {
