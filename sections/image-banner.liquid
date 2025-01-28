@@ -35,6 +35,7 @@
 
 
 <div class="section-{{ section.id }} section-{{ section.id }}-padding imagebannermain wbimgbnrblock color-{{ section.settings.section_color_scheme }} gradient">
+
   <div class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- if section.settings.subtitle != blank or section.settings.title != blank -%}
         <div class="heading-top {{ section.settings.heading_position }} {% if section.settings.full_width == true %}section--full-width{% else %}page-width{% endif %}">
@@ -112,6 +113,18 @@
                         <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
                           {{ block.settings.text }}
                         </div>
+                        {% if block.settings.show_breadcrumbs %}
+                          {% assign breadcrumbs = true %}
+                          {% if settings.enable_product == false and template contains 'product' %}
+                            {% assign breadcrumbs = false %}
+                          {% endif %}
+                          {% if settings.enable_collection == false and template contains 'collection' and collection.handle %}
+                            {% assign breadcrumbs = false %}
+                          {% endif %}
+                          {% if breadcrumbs %}
+                            {% render 'breadcrumbs' %}
+                          {% endif %}
+                        {% endif %}
                       {% endif %}
                       {%- if block.settings.button_label_1 != blank or block.settings.button_label_11 != blank -%}
                         <div class="imgbnr_btnboth">
@@ -616,6 +629,12 @@
           ],
           "default": "body",
           "label": "t:sections.image-banner.blocks.text.settings.text_style.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_breadcrumbs",
+          "label": "Show breadcrumbs",
+          "default": true
         },
         {
           "type": "header",
