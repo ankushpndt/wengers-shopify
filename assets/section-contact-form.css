@@ -162,6 +162,14 @@
   padding: 0;
   margin: 0;
 }
+@media (max-width: 991px) {
+  .contacttxtmain svg, .contact-ihead svg {
+    min-width: 24px;
+    max-width: 24px;
+    margin-top: 0 !important;
+  }
+}
+
 .contact-info p {
   margin-bottom: 0;
 }
