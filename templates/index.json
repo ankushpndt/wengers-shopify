@@ -423,9 +423,9 @@
         "heading_BMpbBg": {
           "type": "heading",
           "settings": {
-            "heading": "Ordering Made Simple& Easier",
+            "heading": "Every Slice is a Sweet Delight!",
             "heading_size": "h0",
-            "subtitle": "Don’t Miss Today’s Featured Deals",
+            "subtitle": "Freshly Baked, Perfectly Crafted Cakes for You!",
             "subtitle_size": "h2",
             "show_close_btn": false
           }
@@ -433,7 +433,7 @@
         "buttons_JybYPG": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Watch Video",
+            "button_label_1": "Know More",
             "button_link_1": "https://www.youtube.com/watch?v=FPE0BK8jkLI",
             "link_window": true,
             "view_all_style": "solid"
