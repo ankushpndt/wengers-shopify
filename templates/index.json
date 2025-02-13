@@ -417,13 +417,67 @@
         "padding_bottom": 0
       }
     },
+    "video_KDHzfP": {
+      "type": "video",
+      "blocks": {
+        "heading_BMpbBg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ordering Made Simple& Easier",
+            "heading_size": "h0",
+            "subtitle": "Don’t Miss Today’s Featured Deals",
+            "subtitle_size": "h2",
+            "show_close_btn": false
+          }
+        },
+        "buttons_JybYPG": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Watch Video",
+            "button_link_1": "https://www.youtube.com/watch?v=FPE0BK8jkLI",
+            "link_window": true,
+            "view_all_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BMpbBg",
+        "buttons_JybYPG"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "subtitle": "",
+        "subheading_style": "link",
+        "subheading_position": "after_head",
+        "heading_position": "left",
+        "enable_video_looping": true,
+        "auto_play_video": true,
+        "enable_control": false,
+        "enable_mute": true,
+        "vid_heading": "",
+        "color_video_text": "#ffffff",
+        "show_play_btn": false,
+        "video": "shopify://files/videos/videoplayback.mp4",
+        "video_url": "",
+        "description": "",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "block_color_scheme": "scheme-538e3d2b-719e-42a6-aac1-f70d04942786",
+        "full_width": true,
+        "video_ratio": "medium",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
     "featured_collection_4cjMxa": {
       "type": "featured-collection",
       "settings": {
         "color_scheme": "scheme-e6fcb6ce-0d57-439c-99ca-4eb6200d0828",
-        "title": "Wenger's",
+        "title": "",
         "heading_size": "h0",
-        "subtitle": "Trending now",
+        "subtitle": "",
         "subheading_style": "link",
         "subheading_position": "after_head",
         "heading_position": "left",
@@ -488,60 +542,6 @@
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 60,
-        "padding_bottom": 0
-      }
-    },
-    "video_KDHzfP": {
-      "type": "video",
-      "blocks": {
-        "heading_BMpbBg": {
-          "type": "heading",
-          "settings": {
-            "heading": "Ordering Made Simple& Easier",
-            "heading_size": "h0",
-            "subtitle": "Don’t Miss Today’s Featured Deals",
-            "subtitle_size": "h2",
-            "show_close_btn": false
-          }
-        },
-        "buttons_JybYPG": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Watch Video",
-            "button_link_1": "https://www.youtube.com/watch?v=FPE0BK8jkLI",
-            "link_window": true,
-            "view_all_style": "solid"
-          }
-        }
-      },
-      "block_order": [
-        "heading_BMpbBg",
-        "buttons_JybYPG"
-      ],
-      "settings": {
-        "heading": "",
-        "heading_size": "h2",
-        "subtitle": "",
-        "subheading_style": "link",
-        "subheading_position": "after_head",
-        "heading_position": "left",
-        "enable_video_looping": true,
-        "auto_play_video": true,
-        "enable_control": false,
-        "enable_mute": true,
-        "vid_heading": "",
-        "color_video_text": "#ffffff",
-        "show_play_btn": false,
-        "video": "shopify://files/videos/videoplayback.mp4",
-        "video_url": "",
-        "description": "",
-        "desktop_content_position": "middle-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "block_color_scheme": "scheme-538e3d2b-719e-42a6-aac1-f70d04942786",
-        "full_width": true,
-        "video_ratio": "medium",
-        "padding_top": 36,
         "padding_bottom": 0
       }
     },
@@ -1040,8 +1040,8 @@
     "collection_list_YeFDhz",
     "2688e762-762a-4aee-a82c-9d2bac46d642",
     "featured_collection_GTqCtP",
-    "featured_collection_4cjMxa",
     "video_KDHzfP",
+    "featured_collection_4cjMxa",
     "featured_collection_zMW7UH",
     "multicolumn_36wPML",
     "multicolumn_PbTbTH",
