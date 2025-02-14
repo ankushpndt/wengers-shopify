@@ -788,6 +788,7 @@
         "column_Y36Q4e": {
           "type": "column",
           "settings": {
+            "video": "shopify://files/videos/cake1.mp4",
             "video_url": "",
             "enable_video_looping": true,
             "auto_play_video": true,
@@ -806,7 +807,7 @@
         "column_YU3dGU": {
           "type": "column",
           "settings": {
-            "video": "shopify://files/videos/reel4.mp4",
+            "video": "shopify://files/videos/cake2.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": true,
             "auto_play_video": true,
