@@ -1,14 +1,14 @@
 .wbcollhome .card__content.blank__image {
   justify-content: end;
 }
-.card:hover::after{
+.card::after{
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%; /* Adjust based on the shadow coverage you want */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  height: 20%; /* Adjust based on the shadow coverage you want */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
   pointer-events: none;
   border-radius: calc(var(--media-radius));
 }
