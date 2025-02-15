@@ -1,17 +1,17 @@
 .wbcollhome .card__content.blank__image {
   justify-content: end;
 }
-.card::after{
+/* .card::after{
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%; /* Adjust based on the shadow coverage you want */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  height: 30%; 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
   pointer-events: none;
   border-radius: calc(var(--media-radius));
-}
+} */
 .wbcollhome .clist-adapt.card--standard.over, .wbmaincol-page .clist-adapt.card--standard.over {
   flex-direction: row !important;
 }
