@@ -826,8 +826,8 @@
         "column_i3wGeY": {
           "type": "column",
           "settings": {
-            "video": "shopify://files/videos/reel4.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video": "shopify://files/videos/cake2.mp4",
+            "video_url": "",
             "enable_video_looping": true,
             "auto_play_video": true,
             "enable_control": false,
@@ -845,8 +845,8 @@
         "column_TRKPtw": {
           "type": "column",
           "settings": {
-            "video": "shopify://files/videos/reel4.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video": "shopify://files/videos/Fluffy, golden, and oh-so-indulgent!   Our pancakes are here to make your mornings brighter and your cravings happier.Think soft stacks layered with love and topped with everything you adore – from rich, velvety Nutel.mp4",
+            "video_url": "",
             "enable_video_looping": true,
             "auto_play_video": true,
             "enable_control": false,
@@ -864,7 +864,7 @@
         "column_VKnD3r": {
           "type": "column",
           "settings": {
-            "video": "shopify://files/videos/reel4.mp4",
+            "video": "shopify://files/videos/Savour the perfect blend of flavors with our Paneer Tikka Sandwich! Creamy paneer straight from the tandoor, layered with house-made spread and served with crispy French fries. A taste sensation you won’t want to miss.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": true,
             "auto_play_video": true,
@@ -883,7 +883,7 @@
         "column_xcMifr": {
           "type": "column",
           "settings": {
-            "video": "shopify://files/videos/reel4.mp4",
+            "video": "shopify://files/videos/cake1.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "enable_video_looping": true,
             "auto_play_video": true,
