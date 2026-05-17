@@ -15,7 +15,7 @@
         "heading_MYycrg": {
           "type": "heading",
           "settings": {
-            "heading": "Ordering Made Simple& Easier",
+            "heading": "Ordering Made Simple & Easier",
             "heading_size": "h0",
             "subtitle": "Don’t Miss Today’s Featured Deals",
             "subtitle_size": "h2",
@@ -25,7 +25,7 @@
         "buttons_EdPijg": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Order Now",
+            "button_label_1": "View Collection",
             "button_link_1": "shopify://products/confectionery",
             "link_window": true,
             "view_all_style": "solid"
