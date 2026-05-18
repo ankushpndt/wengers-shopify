@@ -26,7 +26,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "View Collection",
-            "button_link_1": "shopify://products/confectionery",
+            "button_link_1": "shopify://collections",
             "link_window": true,
             "view_all_style": "solid"
           }
