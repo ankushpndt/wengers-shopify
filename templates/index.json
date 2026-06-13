@@ -222,7 +222,7 @@
         "featured_collection_T3hkHd": {
           "type": "featured_collection",
           "settings": {
-            "collection": "sides"
+            "collection": "chocolate"
           }
         },
         "featured_collection_mGi3Jq": {
@@ -242,7 +242,86 @@
       ],
       "settings": {
         "color_scheme": "scheme-994a0db6-5166-4763-aa94-a4fc2615cf59",
-        "title": "Wenger's Delicacies",
+        "title": "Wenger's Collection",
+        "heading_size": "h0",
+        "subtitle": "",
+        "subheading_style": "link",
+        "subheading_position": "after_head",
+        "heading_position": "left",
+        "button_label": "View all",
+        "view_all_style": "link",
+        "view_button_pos": "top",
+        "show_view_all": true,
+        "arrow_position": "inline",
+        "columns_desktop": 5,
+        "auto_rotate": false,
+        "change_slides_speed": 3,
+        "collection_card_color_scheme": "scheme-538e3d2b-719e-42a6-aac1-f70d04942786",
+        "collection_card_style": "standard",
+        "coll_name_alignment": "left",
+        "image_ratio": "small",
+        "collection_image": "collection_image",
+        "design_type": "below",
+        "show_count": false,
+        "coll_name_size": "large",
+        "coll_name_style": "normal",
+        "arrow_button": true,
+        "columns_mobile": "1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "collection_list_kfhFUq": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_TyXkng": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "burger"
+          }
+        },
+        "featured_collection_a7rDJf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dessert"
+          }
+        },
+        "featured_collection_UjxnmH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "meal"
+          }
+        },
+        "featured_collection_JrkcHJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hot-dog"
+          }
+        },
+        "featured_collection_cbYxAq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sides"
+          }
+        },
+        "featured_collection_f7EwCA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "smoothie-shake"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_TyXkng",
+        "featured_collection_a7rDJf",
+        "featured_collection_UjxnmH",
+        "featured_collection_JrkcHJ",
+        "featured_collection_cbYxAq",
+        "featured_collection_f7EwCA"
+      ],
+      "settings": {
+        "color_scheme": "scheme-994a0db6-5166-4763-aa94-a4fc2615cf59",
+        "title": "Wenger's Deli Collection",
         "heading_size": "h0",
         "subtitle": "",
         "subheading_style": "link",
@@ -1039,6 +1118,7 @@
     "text_with_icons_WwGzEB",
     "image_with_text_q8c9YN",
     "collection_list_YeFDhz",
+    "collection_list_kfhFUq",
     "2688e762-762a-4aee-a82c-9d2bac46d642",
     "featured_collection_GTqCtP",
     "video_KDHzfP",
