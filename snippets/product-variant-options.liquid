@@ -78,21 +78,7 @@
       {{ label_unavailable }}
     {%- endcapture -%}
     
-    {%
-      render 'swatch-input',
-      product: product,
-      id: input_id,
-      name: option.name,
-      value: value | escape,
-      swatch: value.swatch,
-      product_form_id: product_form_id,
-      checked: checked,
-      visually_disabled: option_disabled,
-      show_colorswatch: block.settings.show_colorswatch,
-      swatches_source: block.settings.swatches_source,
-      swatches_type: block.settings.swatches_type,
-      help_text: help_text
-    %}
+    {% render 'swatch-input', product: product, id: input_id, name: option.name, value: value, swatch: value.swatch, product_form_id: product_form_id, checked: checked, visually_disabled: option_disabled, show_colorswatch: block.settings.show_colorswatch, swatches_source: block.settings.swatches_source, swatches_type: block.settings.swatches_type, help_text: help_text %}
       
     
   {%- elsif picker_type == 'button' -%}
@@ -188,4 +174,32 @@
       {%- endif %}
     </option>
   {%- endif -%}
-{%- endfor -%} 
+{%- endfor -%} {%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+          render 'swatch-input',
+          product: product,
+          id: input_id,
+          name: option.name,
+          value: value | escape,
+          swatch: value.swatch,
+          product_form_id: product_form_id,
+          checked: checked,
+          visually_disabled: option_disabled,
+          show_colorswatch: block.settings.show_colorswatch,
+          swatches_source: block.settings.swatches_source,
+          swatches_type: block.settings.swatches_type,
+          help_text: help_text
+        %}
+  to: "{% render 'swatch-input', product: product, id: input_id, name: option.name,
+    value: value, swatch: value.swatch, product_form_id: product_form_id, checked:
+    checked, visually_disabled: option_disabled, show_colorswatch: block.settings.show_colorswatch,
+    swatches_source: block.settings.swatches_source, swatches_type: block.settings.swatches_type,
+    help_text: help_text %}"
+  position: 2691..3060
+{%- endcomment -%}
